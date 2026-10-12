@@ -1,0 +1,91 @@
+/* Prototype stage · portfolio shell: hero-style background, Inter, title block, restart button. */
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+:root { --andes-font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+
+/* Same soft gradient as the case hero */
+html, body {
+  background:
+    radial-gradient(ellipse 38% 45% at 82% 30%, rgba(242,153,74,.28) 0%, rgba(242,153,74,0) 70%),
+    radial-gradient(ellipse 40% 50% at 92% 70%, rgba(195,59,216,.22) 0%, rgba(195,59,216,0) 70%),
+    radial-gradient(ellipse 45% 40% at 10% 100%, rgba(240,86,106,.14) 0%, rgba(240,86,106,0) 70%),
+    #ffffff !important;
+  background-attachment: fixed !important;
+}
+
+/* Inter everywhere, icon fonts untouched */
+body, button, input, textarea, select, .cam-gallery-overlay, .cam-gallery-overlay * { font-family: var(--andes-font) !important; }
+.ph, [class^="ph-"], [class*=" ph-"], .ti, [class^="ti-"], [class*=" ti-"], i[class*="ph"] { font-family: "Phosphor", "tabler-icons" !important; }
+.ph-fill, .ph-fill::before { font-family: "Phosphor-Fill" !important; }
+
+/* Title block (top-left, above the side panel cards) */
+.proto-sidebar { left: 48px !important; top: 40px !important; bottom: 32px !important; width: 340px !important; gap: 14px !important; }
+.proto-intro { padding: 0 0 6px; }
+.proto-intro .eyebrow { margin: 0 0 12px; font: 600 12px/1 var(--andes-font); letter-spacing: .08em; text-transform: uppercase; color: var(--c-ink-muted); }
+.proto-intro h1 { margin: 0 0 14px; font: 800 38px/1.02 var(--andes-font); letter-spacing: -.04em; color: var(--c-ink); }
+.proto-intro h1 .grad-text { background: var(--c-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.proto-intro p { margin: 0; font: 400 15px/1.5 var(--andes-font); color: var(--c-ink-soft); max-width: 320px; }
+.proto-intro p + p { margin-top: 8px; }
+.proto-intro b { font-weight: 600; color: var(--c-ink); }
+.proto-sidebar-intro { margin-top: 10px !important; }
+
+/* Restart: icon on the left */
+.proto-reset-btn { display: inline-flex !important; align-items: center; gap: 8px; padding: 0 14px 0 12px !important; }
+.proto-reset-btn::before {
+  content: ""; width: 16px; height: 16px; flex: none; background: currentColor;
+  -webkit-mask: var(--restart-icon) center / contain no-repeat; mask: var(--restart-icon) center / contain no-repeat;
+  --restart-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M224 128a96 96 0 0 1-94.71 96H128a95.38 95.38 0 0 1-65.9-26.2 8 8 0 0 1 11-11.63 80 80 0 1 0-1.69-114.7L60.69 88H80a8 8 0 0 1 0 16H32a8 8 0 0 1-8-8V48a8 8 0 0 1 16 0v28.69l17-16A96 96 0 0 1 224 128Z'/%3E%3C/svg%3E");
+}
+
+/* Phone sits in the space to the right of the title/panel column */
+.devices-wrap { padding-left: 420px !important; box-sizing: border-box !important; }
+.proto-intro h1 { font-size: 36px; }
+
+/* Link back to the case study: secondary (the prototype is the primary thing to try) */
+.proto-case-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; height: 40px; padding: 0 16px 0 18px; border-radius: 999px; background: transparent; color: var(--c-ink); box-shadow: inset 0 0 0 1.5px var(--c-ink); font: 600 14px/1 var(--andes-font); text-decoration: none; transition: background .15s; }
+.proto-case-btn:hover { background: rgba(21,21,21,.06); }
+.proto-case-btn:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
+.proto-case-btn span { width: 14px; height: 14px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.proto-intro p + p { margin-top: 2px; }
+.proto-intro p b { font: 600 12px/1 var(--andes-font); letter-spacing: .08em; text-transform: uppercase; color: var(--c-ink-muted); }
+.proto-intro h1 { margin-bottom: 18px; }
+.proto-intro p + p { margin-top: 8px; }
+.proto-intro p b { font: 600 15px/1.5 var(--andes-font); letter-spacing: 0; text-transform: none; color: var(--c-ink); }
+.proto-intro h1 { margin-bottom: 14px; }
+
+/* Tool names for 10 s when camera / preview open: they open inside the same dark pill, which widens to the left while they show */
+@keyframes tool-label-open { 0% { max-width: 0; opacity: 0; padding-left: 0; } 4% { max-width: 120px; opacity: 1; padding-left: 14px; } 94% { max-width: 120px; opacity: 1; padding-left: 14px; } 100% { max-width: 0; opacity: 0; padding-left: 0; } }
+body.show-tool-labels .cam-header-actions, body.show-tool-labels .prev-fx-actions { align-items: flex-end !important; }
+body.show-tool-labels .cam-header-actions .cam-icon-btn, body.show-tool-labels .prev-fx-actions .prev-fx-icon-btn { width: auto !important; min-width: 44px; flex-direction: row !important; align-items: center; justify-content: flex-end; border-radius: 999px !important; }
+body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label {
+  display: block !important; position: static !important; transform: none !important; overflow: hidden; white-space: nowrap; pointer-events: none; background: none !important;
+  font: 600 13px/1 var(--andes-font); color: #fff; text-shadow: none; text-align: right; padding-right: 0; animation: tool-label-open 10s ease-in-out both; }
+@media (prefers-reduced-motion: reduce) { body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label { animation: none; max-width: 120px; padding-left: 14px; } }
+
+/* Labels stay exactly 8px to the left of their icon (and 8px from the pill's left edge) while the pill widens:
+   the text is anchored to the icon, so only the pill's left side moves */
+@keyframes tool-label-open { 0% { max-width: 0; opacity: 0; padding-left: 0; } 5% { max-width: 100px; opacity: 1; padding-left: 8px; } 94% { max-width: 100px; opacity: 1; padding-left: 8px; } 100% { max-width: 0; opacity: 0; padding-left: 0; } }
+body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label { direction: rtl; text-align: left; margin-right: -1px; }
+@media (prefers-reduced-motion: reduce) { body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label { max-width: 100px; padding-left: 8px; } }
+/* measured: text → icon glyph = 8px, widest text → pill's left edge = 8px */
+@keyframes tool-label-open { 0% { max-width: 0; opacity: 0; padding-left: 0; } 5% { max-width: 100px; opacity: 1; padding-left: 4px; } 94% { max-width: 100px; opacity: 1; padding-left: 4px; } 100% { max-width: 0; opacity: 0; padding-left: 0; } }
+body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label { margin-right: -3px; }
+@media (prefers-reduced-motion: reduce) { body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label { padding-left: 4px; } }
+
+/* Hand-drawn notes (title + objective + arrows) */
+.pn { position: fixed; z-index: 1; pointer-events: none; width: 200px; font-family: "Gaegu", "Segoe Print", cursive; color: #6a6a72; }
+.pn-title { font-size: 30px; line-height: 1; letter-spacing: .01em; }
+.pn-label { margin-top: 14px; font-size: 17px; line-height: 1; }
+.pn-text { margin-top: 3px; font-size: 15px; line-height: 1.05; }
+.pn-extra .pn-text { margin-top: 0; font-size: 15px; }
+.pn-svg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; overflow: visible; fill: none; stroke: #8a8a92; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pn-right { width: 130px; }
+
+.pn-wide { width: 200px; }
+.pn-wide .pn-text b { display: block; font-size: 18px; color: #6a6a72; }
+.pn-heading .pn-text { font-size: 24px; color: #6a6a72; font-weight: 700; }
+.pn-title { color: #b02fc4; }
+
+/* Tool labels: 16px between the pill's left edge and the widest label (was 8px) */
+@keyframes tool-label-open { 0% { max-width: 0; opacity: 0; padding-left: 0; } 5% { max-width: 112px; opacity: 1; padding-left: 12px; } 94% { max-width: 112px; opacity: 1; padding-left: 12px; } 100% { max-width: 0; opacity: 0; padding-left: 0; } }
+@media (prefers-reduced-motion: reduce) { body.show-tool-labels .cam-header-actions .cam-tool-label, body.show-tool-labels .prev-fx-actions .prev-fx-tool-label { max-width: 112px; padding-left: 12px; } }

@@ -1,0 +1,60 @@
+/* Color tokens · María Paula León portfolio
+   One source for the site and the prototypes. See palette.html for usage rules.
+   All text pairs meet WCAG 2.2 AA (4.5:1); UI parts and large text meet 3:1.
+
+   Hierarchy (most → least emphasis)
+   1. Primary action ........ ink (light UI) / white (dark UI) · one per screen
+   2. Selection & progress .. accent (solid orange) · recording uses coral
+   3. Highlight ............. brand gradient · rewards, key words, "New", AI · max 1–2 per screen
+   4. Information ........... blue
+   5. Confirmation .......... green
+   6. Text .................. ink → ink-soft → ink-muted
+   7. Structure ............. line, surface-2, surface
+   8. Warning & error ....... only for system messages */
+:root {
+  /* Neutrals · light UI */
+  --c-ink: #151515;          /* headings, key text, primary buttons · 18.3:1 */
+  --c-ink-soft: #5e5e5e;     /* body text, labels · 6.5:1 */
+  --c-ink-muted: #767676;    /* meta, hints, placeholders · 4.5:1 */
+  --c-line: #e8e8e8;         /* dividers, card borders (decorative) */
+  --c-line-strong: #8f8f8f;  /* input and control borders · 3.2:1 */
+  --c-surface-2: #f5f5f6;    /* chips, secondary buttons, grey sections */
+  --c-surface: #ffffff;      /* canvas, cards */
+
+  /* Neutrals · dark UI (camera, chapter dividers) */
+  --c-night: #0c0c0c;
+  --c-night-2: #1c1c1c;
+  --c-night-3: #2a2a2a;
+  --c-glass: rgba(255, 255, 255, .14);
+  --c-on-dark: #ffffff;
+  --c-on-dark-soft: rgba(255, 255, 255, .72);
+
+  /* Accent · primary (orange): selection, active, progress, confirm
+     Base works on dark UI (8.8:1) and as a fill with ink text. On light UI use the
+     strong shade for thin indicators and text (base is only 2.2:1 on white). */
+  --c-accent: #f2994a;
+  --c-accent-strong: #ad5a1a; /* indicators on light, accent text, badges with white text · 4.9:1 */
+  --c-accent-tint: #fef0e4;   /* selected backgrounds (ink text on top) */
+
+  /* Coral · secondary: recording and the middle of the gradient */
+  --c-coral: #f0566a;         /* shutter / recording · 5.8:1 on night */
+  --c-coral-strong: #c9304a;  /* coral text, badges with white text · 5.2:1 */
+  --c-coral-tint: #fde8eb;
+  --c-orange: var(--c-accent); --c-orange-strong: var(--c-accent-strong); --c-orange-tint: var(--c-accent-tint);
+
+  /* Brand colors · each with a strong shade (white text) and a tint (backgrounds) */
+  --c-purple: #c33bd8;  --c-purple-strong: #b02fc4;  --c-purple-tint: #f8e9fb;   /* gradient 1 · AI tags */
+  --c-blue: #6ea1c5;    --c-blue-strong: #3a729c;    --c-blue-tint: #eaf2f8;     /* information: tips, info, active take number (ink on base; white text uses strong) */
+  --c-green: #b9e28c;   --c-green-strong: #3f7a1c;   --c-green-tint: #f2faea;    /* confirmation: completed, saved (ink text on base) */
+
+  /* Brand gradient · highlight only, never for controls */
+  --c-brand-1: #c33bd8;
+  --c-brand-2: #f0566a;
+  --c-brand-3: #f2994a;
+  --c-grad: linear-gradient(90deg, #c33bd8, #f0566a 55%, #f2994a);
+
+  /* Feedback · system messages only */
+  --c-success: #3f7a1c;       /* white text · 5.2:1 */
+  --c-warning: #f5c043;       /* amber, distinct from the orange accent · ink text on top */
+  --c-error: #d63a40;         /* white text · 4.6:1 */
+}

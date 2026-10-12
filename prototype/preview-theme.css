@@ -1,0 +1,263 @@
+/* Preview screen · portfolio theme (loaded after luma-theme.css and the original styles).
+   Uses the shared tokens: ink / white primary actions, glass over media, gradient only for highlights. */
+
+/* ---------- Not in the shipped product: hidden ---------- */
+#prev-sheet-vfx, #prev-sheet-voice-interview, #prev-sheet-audio-mix,
+#prev-fx-mic-btn, .prev-fx-voice-action, .prev-voice-disclosure { display: none !important; }
+
+/* ---------- Status bar + back ---------- */
+.prev-statusbar { text-shadow: 0 1px 3px rgba(0,0,0,.45); }
+.prev-back-btn { width: 44px !important; height: 44px !important; border-radius: 50% !important; padding: 0 !important;
+  background: rgba(12,12,12,.55) !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.prev-back-btn > * { display: none !important; }
+.prev-back-btn::before { font-family: "Phosphor"; content: "\e058"; font-size: 26px; line-height: 1; color: #fff; }
+.prev-back-btn:focus-visible, .prev-fx-icon-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* ---------- Tools: vertical glass pill, top-right, icon only ---------- */
+.prev-fx-actions { top: 68px !important; right: 12px !important; transform: none !important; align-items: center !important; gap: 2px !important;
+  padding: 4px; border-radius: 24px; background: rgba(12,12,12,.62); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.prev-fx-actions .prev-fx-tool-label { display: none !important; }
+.prev-fx-icon-btn { width: 44px !important; height: 44px !important; border-radius: 50% !important; }
+.prev-fx-icon-btn.is-active { background: rgba(255,255,255,.2) !important; color: #fff !important; }
+.prev-fx-icon-slot { position: relative; display: grid !important; place-items: center; width: 44px; height: 44px; }
+.prev-fx-icon-slot > * { display: none !important; }
+.prev-fx-icon-slot::before { font-family: "Phosphor"; font-size: 26px; line-height: 1; color: #fff; content: "\e44a"; }
+#prev-fx-trim-btn .prev-fx-icon-slot::before { content: "\eae0"; }
+#prev-fx-text-btn .prev-fx-icon-slot::before { content: "\e6ee"; }
+#prev-fx-stickers-btn .prev-fx-icon-slot::before { content: "\e5ac"; }
+#prev-fx-sound-btn .prev-fx-icon-slot::before { content: "\e44a"; }
+#prev-fx-sound-btn[aria-pressed="true"] .prev-fx-icon-slot::before { content: "\e45a"; }
+#prev-fx-cc-btn .prev-fx-icon-slot::before { content: "\e1a8"; }
+
+/* ---------- Play ---------- */
+.prev-play-btn { background: rgba(12,12,12,.5) !important; }
+.prev-play-btn > * { display: none !important; }
+.prev-play-btn::before { font-family: "Phosphor-Fill"; content: "\e3d0"; font-size: 34px; line-height: 1; color: #fff; }
+
+/* ---------- Bottom bar: Add more · Upload (gradient already set in the page) ---------- */
+.prev-sheet { padding: 48px 16px var(--safe-bottom) !important; }
+.prev-sheet-actions { gap: 10px !important; }
+.prev-add-btn, .prev-btn-fill { height: 52px !important; border-radius: 999px !important; font: 600 16px/20px var(--andes-font) !important; }
+.prev-add-btn { background: rgba(255,255,255,.2) !important; color: #fff !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.prev-btn-fill { background: #fff !important; color: var(--c-ink) !important; box-shadow: none !important; }
+.prev-btn-fill:disabled { background: rgba(255,255,255,.35) !important; color: rgba(21,21,21,.6) !important; }
+.prev-cta-icon img { display: none !important; }
+.prev-cta-icon::before { font-family: "Phosphor"; font-size: 20px; line-height: 1; }
+.prev-add-btn .prev-cta-icon::before { content: "\e3d4"; }
+.prev-btn-fill .prev-cta-icon::before { content: "\e06c"; }
+.prev-add-priority-pill, .prev-add-priority-pill.is-guided, .prev-thumb-points-pill, .prev-thumb-points-pill.is-guided {
+  background: var(--c-grad) !important; color: var(--c-ink) !important; border-radius: 999px !important; font-weight: 700 !important; }
+.prev-add-priority-pill *, .prev-thumb-points-pill * { color: var(--c-ink) !important; }
+.prev-add-priority-pill img, .prev-add-priority-pill svg, .prev-thumb-points-pill img, .prev-thumb-points-pill svg { display: none !important; }
+
+/* ---------- Selected media tray ---------- */
+.prev-media-tray { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 100%) !important; }
+.prev-photo-set-thumb { border: 1.5px solid rgba(255,255,255,.55) !important; border-radius: 14px !important; background: rgba(255,255,255,.12) !important; }
+.prev-photo-set-thumb.is-selected { border: 2px solid #fff !important; box-shadow: none !important; }
+
+/* ---------- Snackbar ---------- */
+.prev-snackbar { background: rgba(21,21,21,.92) !important; border-radius: 999px !important; text-align: center; box-shadow: none !important; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+/* ---------- Discard modal ---------- */
+.prev-modal { border-radius: 24px !important; box-shadow: 0 24px 60px rgba(0,0,0,.35) !important; }
+.prev-modal-title { font: 700 20px/26px var(--andes-font) !important; letter-spacing: -.01em; }
+.prev-modal-description { color: var(--c-ink-soft) !important; }
+.prev-modal-btn-discard { background: var(--c-ink) !important; color: #fff !important; border-radius: 999px !important; }
+.prev-modal-btn-discard:active { background: #000 !important; }
+.prev-modal-btn-cancel { background: transparent !important; color: var(--c-ink) !important; border-radius: 999px !important; font-weight: 600; }
+.prev-modal-btn-cancel:active { background: var(--c-surface-2) !important; }
+
+/* ---------- Loading ---------- */
+.prev-loading { background: var(--c-night) !important; }
+.prev-loading-blob.a { background: var(--c-brand-1, #c33bd8) !important; }
+.prev-loading-blob.b { background: var(--c-brand-2, #f0566a) !important; }
+.prev-loading-blob.c { background: var(--c-brand-3, #f2994a) !important; }
+
+/* ---------- Sheets (stickers · subtitles): light, rounded ---------- */
+.cam-fx-sheet { background: #fff !important; border-radius: 24px 24px 0 0 !important; color: var(--c-ink); font-family: var(--andes-font); padding-bottom: var(--safe-bottom); }
+.ss-sheet-handle { background: rgba(21,21,21,.18) !important; }
+.ss-search-bar { background: var(--c-surface-2) !important; border: 0 !important; }
+.ss-pill { background: var(--c-surface-2) !important; border-color: transparent !important; color: var(--c-ink) !important; border-radius: 999px !important; }
+.ss-pill.ss-pill-suggested { background: linear-gradient(#fff, #fff) padding-box, var(--c-grad) border-box !important; border: 1.5px solid transparent !important; }
+.ss-section-header { color: var(--c-ink-muted) !important; }
+
+/* Subtitles sheet + on-video subtitles */
+#prev-sheet-captions .cc-line.is-active, .cc-line.is-active { border-color: var(--c-ink) !important; background: var(--c-surface-2) !important; }
+.cc-toggle-row input:checked { background: var(--c-ink) !important; }
+.cc-style-swatch.is-selected { outline: 3px solid var(--c-ink) !important; }
+.cc-style-swatch.is-selected::after { background: var(--c-ink) !important; color: #fff !important; }
+.cc-style-yellow, .prev-voice-caption[data-style="yellow"] { background: var(--c-accent) !important; color: var(--c-ink) !important; }
+.cc-position-btn.is-selected { border-color: var(--c-ink) !important; background: var(--c-surface-2) !important; color: var(--c-ink) !important; }
+.cc-bottom-actions button { background: var(--c-ink) !important; color: #fff !important; border-radius: 999px !important; }
+
+/* Text editor + stickers on canvas */
+.tx-edit-round[data-bg="yellow"] { background: var(--c-accent) !important; color: var(--c-ink) !important; }
+.tx-kb-key--done { background: var(--c-ink) !important; color: #fff !important; }
+.tx-safe-guide { background: var(--c-coral) !important; }
+.tx-safe-guide.is-hit { box-shadow: 0 0 8px 2px rgba(240,86,106,.6) !important; }
+
+/* Trim */
+.prev-trim-action--confirm { background: #fff !important; color: var(--c-ink) !important; }
+
+/* Side panel: no old icon squares */
+.proto-feature-icon-row { display: none !important; }
+
+/* ===== iOS keyboard for the text editor (and subtitles) ===== */
+.tx-fake-keyboard, .cc-fake-keyboard { background: #d1d3d9 !important; padding: 8px 3px var(--safe-bottom) !important; height: auto !important; gap: 10px !important; }
+.tx-fake-keyboard .tx-kb-row:first-child { display: none !important; }
+.tx-fake-keyboard .tx-kb-nav { display: none !important; }
+.tx-kb-key { height: 42px !important; border-radius: 5px !important; background: #fff !important; box-shadow: 0 1px 0 rgba(0,0,0,.3) !important; font: 400 22px/1 var(--andes-font) !important; color: #000 !important; }
+.tx-kb-key--wide, .tx-kb-key--narrow { background: #aeb3be !important; color: #000 !important; }
+.tx-kb-key--symbol { display: none !important; }
+.tx-kb-key--space { flex: 4 !important; background: #fff !important; font-size: 16px !important; }
+.tx-kb-key--narrow { height: 42px !important; font: 400 16px/1 var(--andes-font) !important; }
+.tx-kb-key--done { background: var(--c-ink) !important; color: #fff !important; flex: 2 !important; font-weight: 600 !important; box-shadow: 0 1px 0 rgba(0,0,0,.3) !important; }
+.tx-fake-keyboard.is-shift [data-action="shift"] { background: #fff !important; }
+
+/* ===== Trim: iOS look (no Android status/nav bars, timeline at the bottom) ===== */
+.device-frame:has(.prev-trim-overlay.is-open) > .dynamic-island { top: 20px !important; width: 126px !important; height: 36px !important; border-radius: 20px !important; }
+.prev-trim-statusbar { height: var(--preview-ios-top) !important; justify-content: flex-end !important; gap: 6px; padding: 0 8px !important; font-weight: 500 !important; }
+.prev-trim-android-nav { display: none !important; }
+.prev-trim-footer { height: calc(80px + var(--safe-bottom)) !important; background: #000 !important; box-shadow: none !important; }
+.prev-trim-actions { flex: 0 0 auto !important; gap: 10px !important; padding: 16px 16px 0 !important; }
+.prev-trim-action { height: 52px !important; border-radius: 999px !important; font: 600 16px/20px var(--andes-font) !important; }
+.prev-trim-action--cancel { background: rgba(255,255,255,.2) !important; color: #fff !important; }
+.prev-trim-action--confirm { background: #fff !important; color: var(--c-ink) !important; }
+.prev-trim-timeline-wrap { top: auto !important; bottom: calc(80px + var(--safe-bottom) + 16px) !important; }
+.prev-trim-preview { inset: 0 0 calc(80px + var(--safe-bottom) + 16px + 57px + 16px) !important; }
+.prev-trim-header { top: 64px !important; }
+.prev-trim-close { width: 44px !important; height: 44px !important; flex-basis: 44px !important; border-radius: 50% !important; background: rgba(12,12,12,.55) !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.prev-trim-close > * { display: none !important; }
+.prev-trim-close::before { font-family: "Phosphor"; content: "\e4f6"; font-size: 22px; line-height: 1; color: #fff; }
+.prev-trim-title { background: rgba(12,12,12,.55) !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.prev-trim-header-spacer { width: 44px !important; flex-basis: 44px !important; }
+.prev-trim-play-btn { background: rgba(12,12,12,.5) !important; top: 50% !important; }
+.prev-trim-play-btn > * { display: none !important; }
+.prev-trim-play-btn::before { font-family: "Phosphor-Fill"; content: "\e3d0"; font-size: 34px; line-height: 1; color: #fff; }
+.prev-trim-selection { border-radius: 6px; border-width: 3px !important; }
+.prev-trim-track { border-radius: 6px; background: #1c1c1c !important; }
+.ss-content { padding-bottom: var(--safe-bottom) !important; }
+
+/* ===== Media full-bleed: no black bars; the bottom bar floats over it with the gradient ===== */
+.prev-body { bottom: 0 !important; }
+#prev-gallery-video.prev-media, #prev-live-cam.prev-media, #prev-frozen-frame.prev-media { object-fit: cover !important; }
+.prev-header-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,0)) !important; filter: none !important; height: 120px !important; }
+
+/* No points pill in the preview */
+.prev-add-priority-pill, .prev-add-priority-pill.is-guided { display: none !important; }
+
+/* =====================================================================
+   Phosphor icons everywhere + each tool adapted to the design
+   ===================================================================== */
+
+/* ---- Image icons swapped for Phosphor SVGs (white on dark, ink on light) ---- */
+img[src*="text-align-left"]   { content: url("assets/icons/text-align-left-white.svg"); }
+img[src*="text-align-center"] { content: url("assets/icons/text-align-center-white.svg"); }
+img[src*="text-align-right"]  { content: url("assets/icons/text-align-right-white.svg"); }
+img[src*="text-background"]   { content: url("assets/icons/text-aa-white.svg"); }
+img[src*="stickers-and-text/search"]  { content: url("assets/icons/magnifying-glass-ink.svg"); }
+img[src*="stickers-and-text/sparkle"] { content: url("assets/icons/sparkle-ink.svg"); }
+img[src*="stickers-and-text/delete"], img[src*="voice/delete"] { content: url("assets/icons/trash-white.svg"); }
+
+/* ---- Text editor ---- */
+.tx-edit-overlay.editor-scrim { background: rgba(12,12,12,.72) !important; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.tx-edit-header { padding-top: 8px; }
+.tx-edit-action--cancel, .tx-edit-action--done { width: auto !important; height: 44px !important; padding: 0 18px !important; border-radius: 999px !important; font: 600 15px/20px var(--andes-font) !important; }
+.tx-edit-action--cancel { background: rgba(255,255,255,.2) !important; color: #fff !important; }
+.tx-edit-action--done { background: #fff !important; color: var(--c-ink) !important; }
+.tx-edit-round { width: 44px !important; height: 44px !important; padding: 0 !important; border-radius: 50% !important; background: rgba(255,255,255,.2) !important; }
+.tx-edit-round img { width: 24px !important; height: 24px !important; }
+#tx-bg-btn { --tx-active-color: var(--c-ink) !important; }
+.tx-edit-round[data-bg="white"] { background: #fff !important; }
+.tx-edit-round[data-bg="white"] img { content: url("assets/icons/text-aa-ink.svg"); }
+.tx-edit-round[data-bg="black"] { background: #000 !important; }
+.tx-font-chip { background: rgba(255,255,255,.2) !important; border: 0 !important; color: #fff !important; }
+.tx-font-chip.is-selected { background: #fff !important; color: var(--c-ink) !important; }
+.tx-edit-round:focus-visible, .tx-edit-action:focus-visible, .tx-font-chip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.shared-colorslider__thumb { border-color: #fff !important; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.tx-delete-zone__icon { width: 56px !important; height: 56px !important; background: rgba(255,255,255,.2) !important; border: 0 !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.tx-delete-zone__icon img { width: 26px !important; height: 26px !important; }
+.tx-delete-zone.is-armed .tx-delete-zone__icon { background: var(--c-error) !important; }
+
+/* ---- Stickers and subtitles sheets: close button and header icons ---- */
+.cam-fx-icon-close-btn svg, .cam-fx-icon-close-btn img { display: none !important; }
+.cam-fx-icon-close-btn { width: 36px !important; height: 36px !important; border-radius: 50% !important; background: var(--c-surface-2) !important; display: grid !important; place-items: center; color: var(--c-ink) !important; }
+.cam-fx-icon-close-btn::before { font-family: "Phosphor"; content: "\e4f6"; font-size: 20px; line-height: 1; color: var(--c-ink); }
+.cam-fx-title { font: 700 20px/26px var(--andes-font) !important; letter-spacing: -.01em; color: var(--c-ink) !important; }
+.ss-section-header img { width: 16px; height: 16px; }
+
+/* ---- Trim: iOS-style handles ---- */
+.prev-trim-handle { width: 22px !important; height: 100% !important; top: 0 !important; transform: none !important; align-items: center; justify-content: center; }
+.prev-trim-handle--start { left: -3px !important; }
+.prev-trim-handle--end { right: -3px !important; }
+.prev-trim-handle::before { content: "" !important; position: absolute; inset: 0; background: #fff; border-radius: 8px 0 0 8px; }
+.prev-trim-handle--end::before { border-radius: 0 8px 8px 0; }
+.prev-trim-handle::after { position: relative; z-index: 1; font-family: "Phosphor"; font-size: 14px; line-height: 1; color: var(--c-ink); background: none !important; width: auto !important; height: auto !important; border: 0 !important; }
+.prev-trim-handle--start::after { content: "\e138" !important; }
+.prev-trim-handle--end::after { content: "\e13a" !important; }
+.prev-trim-selection { border-width: 3px 0 !important; border-radius: 0 !important; }
+
+/* ---- Discard modal icon ---- */
+.prev-modal-icon > * { display: none !important; }
+.prev-modal-icon { width: 64px !important; height: 64px !important; border-radius: 50% !important; background: var(--c-surface-2) !important; display: grid !important; place-items: center; margin-bottom: 16px !important; }
+.prev-modal-icon::before { font-family: "Phosphor"; content: "\e4a6"; font-size: 30px; line-height: 1; color: var(--c-ink); }
+
+/* Text editor: cancel is an icon button (X) */
+.tx-edit-action--cancel { width: 44px !important; padding: 0 !important; border-radius: 50% !important; display: grid !important; place-items: center; }
+.tx-edit-action--cancel > * { display: none !important; }
+.tx-edit-action--cancel::before { font-family: "Phosphor"; content: "\e4f6"; font-size: 22px; line-height: 1; color: #fff; }
+
+.prev-modal-icon { border: 0 !important; box-shadow: none !important; outline: 0 !important; }
+.prev-modal-icon::after { display: none !important; }
+
+/* One gradient only: the bottom bar's. The thumbnails tray no longer adds its own. */
+.prev-media-tray { background: none !important; box-shadow: none !important; }
+
+/* Thumbnails sit 16px above the Add more / Upload buttons (measured: buttons top is 108px above the phone bottom) */
+.prev-media-tray { bottom: 128px !important; padding-bottom: 0 !important; }
+
+/* Text editor overlay reaches the top of the screen; its controls stay below the status bar */
+.tx-edit-overlay.editor-scrim { top: 0 !important; }
+.tx-edit-header { height: 120px !important; padding-top: 60px !important; align-items: flex-start !important; }
+
+/* Drag to delete sits at the bottom of the screen */
+.tx-delete-zone { top: auto !important; bottom: 40px !important; padding-bottom: 0 !important; }
+
+/* Trim: the selected section can be dragged to move the whole window */
+.prev-trim-selection { pointer-events: auto !important; }
+
+/* First video / photo / guided video: points pill + gradient border */
+.prev-thumb-points-pill, .prev-thumb-points-pill.is-guided { display: flex !important; top: 6px !important; left: 6px !important; height: 18px !important; padding: 0 7px !important; border-radius: 999px !important; font: 700 11px/1 var(--andes-font) !important; letter-spacing: 0; }
+.prev-thumb-points-pill { white-space: nowrap !important; width: max-content; font-size: 10px !important; padding: 0 6px !important; }
+/* Number only, white on the strong gradient shades (all stops >= 4.9:1 with white) */
+.prev-thumb-points-pill, .prev-thumb-points-pill.is-guided { background: linear-gradient(90deg, var(--c-purple-strong), var(--c-coral-strong) 55%, var(--c-accent-strong)) !important; color: #fff !important; padding: 0 7px !important; font-size: 11px !important; }
+.prev-thumb-points-pill * { color: #fff !important; }
+
+/* Add more: gradient border that fades in and out every 5 s */
+.prev-add-btn { position: relative; }
+.prev-add-btn.needs-media::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(90deg, #c33bd8, #f0566a, #f2994a, #c33bd8); background-size: 300% 100%; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: 0; animation: add-more-ring 5s ease-in-out infinite; }
+@keyframes add-more-ring { 0% { opacity: 0; background-position: 0 0; } 15% { opacity: 1; } 55% { opacity: 1; } 70% { opacity: 0; } 100% { opacity: 0; background-position: 100% 0; } }
+@media (prefers-reduced-motion: reduce) { .prev-add-btn.needs-media::after { animation: none; opacity: 1; } }
+
+/* "You earned N points": slides down from the top, then away */
+.prev-earn-toast { position: absolute; top: 60px; left: 50%; z-index: 90; display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 20px 0 10px; border-radius: 999px; background: #fff; color: var(--c-ink); font: 500 15px/1 var(--andes-font); box-shadow: 0 10px 28px rgba(21,21,21,.28); white-space: nowrap; transform: translate(-50%, calc(-100% - 70px)); opacity: 0; transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .3s ease; pointer-events: none; }
+.prev-earn-toast.is-in { transform: translate(-50%, 0); opacity: 1; }
+.prev-earn-toast b { font-weight: 800; }
+.prev-earn-toast__coin { width: 36px; height: 36px; background: url("assets/portfolio/reward.svg") center / contain no-repeat; flex: none; }
+@media (prefers-reduced-motion: reduce) { .prev-earn-toast { transition: opacity .2s; transform: translate(-50%, 0); } }
+
+/* Ticket pills: two styles. Guided video = strong gradient + white; everything else = light pink + gradient border + ink */
+.prev-thumb-points-pill:not(.is-guided) { background: linear-gradient(var(--c-coral-tint), var(--c-coral-tint)) padding-box, var(--c-grad) border-box !important; border: 1.5px solid transparent !important; color: var(--c-ink) !important; }
+.prev-thumb-points-pill:not(.is-guided) * { color: var(--c-ink) !important; }
+
+/* Tickets message sits between the back button and the tools column, so both can show together */
+.prev-earn-toast { left: 66px; top: 62px; height: 44px; padding: 0 16px 0 8px; gap: 8px; font-size: 14px; transform: translate(0, calc(-100% - 70px)); }
+.prev-earn-toast.is-in { transform: translate(0, 0); }
+.prev-earn-toast__coin { width: 30px; height: 30px; }
+@media (prefers-reduced-motion: reduce) { .prev-earn-toast { transform: translate(0, 0); } }
+
+/* Tickets message: centred and always on top of the tools (even while their names show) */
+.prev-earn-toast { left: 50%; z-index: 500; height: 48px; font-size: 15px; padding: 0 20px 0 10px; transform: translate(-50%, calc(-100% - 70px)); }
+.prev-earn-toast.is-in { transform: translate(-50%, 0); }
+.prev-earn-toast__coin { width: 32px; height: 32px; }
+@media (prefers-reduced-motion: reduce) { .prev-earn-toast { transform: translate(-50%, 0); } }

@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guided Review Camera · María Paula León</title>
+  <meta name="description" content="Case study: a native in-app camera that guides buyers to record useful video reviews. Shipped in Brazil, 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css?v=163">
+</head>
+<body>
+
+<!-- DRAFT · Items marked TBC are pending confirmation. Remove them before publishing. -->
+
+<header class="topbar">
+  <a href="index.html"><strong>María Paula León</strong></a>
+  <nav>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="../prototype/index.html">Prototype</a>
+    <a href="mailto:marialeon.lop@gmail.com">Contact</a>
+  </nav>
+</header>
+
+<!-- 1 · HERO -->
+<section class="hero">
+  <div class="hero-layers" aria-hidden="true">
+    <div class="hl hl-bg"></div>
+    <img class="hl hl-person" src="img/hero-person.webp?v=2" alt="" width="1171" height="1244">
+  </div>
+  <script>
+    (function () {
+      var hero = document.currentScript.closest('.hero');
+      if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var bg = hero.querySelector('.hl-bg'), person = hero.querySelector('.hl-person');
+      var tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+      function tick() {
+        x += (tx - x) * .08; y += (ty - y) * .08;
+        bg.style.transform = 'translate3d(' + (x * -18) + 'px,' + (y * -14) + 'px,0) scale(1.1)';
+        person.style.transform = 'translate3d(' + (x * 40) + 'px,' + (y * 24) + 'px,0)';
+        raf = (Math.abs(tx - x) > .001 || Math.abs(ty - y) > .001) ? requestAnimationFrame(tick) : 0;
+      }
+      function go() { if (!raf) raf = requestAnimationFrame(tick); }
+      hero.addEventListener('mousemove', function (e) {
+        var r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width * 2 - 1; ty = (e.clientY - r.top) / r.height * 2 - 1; go();
+      });
+      hero.addEventListener('mouseleave', function () { tx = 0; ty = 0; go(); });
+    })();
+  </script>
+  <div class="wrap">
+    <p class="eyebrow">Case study 01 · Social commerce</p>
+    <h1>Guided camera for <span class="grad-text">video reviews</span></h1>
+    <span class="pill">Product Designer · Co-lead</span>
+    <a class="pbtn" href="../prototype/index.html">Try the prototype<i aria-hidden="true">→</i></a>
+  </div>
+  <p class="hero-foot">0→1 · Native mobile · Shipped in Brazil, rolling out across Latin America · 2026</p>
+</section>
+
+<!-- 2 · SUMMARY -->
+<section class="slide">
+  <div class="wrap summary">
+    <div>
+      <h3>Mission</h3>
+      <p>Help buyers record useful product videos for their reviews, and turn those videos into content the marketplace can reuse.</p>
+
+      <div hidden>
+      <h3>My contributions</h3>
+      <p>We designed the camera from scratch, from research to handoff.</p>
+      <ul>
+        <li><strong>I led</strong> the interaction states and edge cases: interruptions, going back from preview, discarding and the timer</li>
+        <li><strong>I led</strong> the motion library for the camera, used in the engineering handoff</li>
+        <li><strong>We</strong> ran the research: journey map, competitive benchmark and a camera feature benchmark (79 features, 4 apps)</li>
+        <li><strong>We</strong> designed the review form, camera modes and controls, and low- and mid-fidelity prototypes <span class="tbc">TBC: role of Claude / Codex</span></li>
+        <li><strong>We</strong> led the handoff with engineering and the presentations to product and stakeholders</li>
+      </ul>
+      </div>
+
+      <h3>Results</h3>
+      <ul>
+        <li>Shipped a native camera inside the review flow, from concept to production in three months</li>
+        <li>Scaled to 100% in Brazil after an A/B test, then rolled out to other countries</li>
+        <li>In an A/B test, more reviews included video, and buyers added more video per review</li>
+        <li>Shipped in two planned releases: guided capture first, then quick quality helps and editing</li>
+      </ul>
+    </div>
+    <dl class="facts">
+      <dt>Role</dt><dd>Product Designer · Co-lead</dd>
+      <dt>Team</dt><dd>2 product designers, 2 product managers, 2 engineers</dd>
+      <dt>Timeline</dt><dd>Jul – Sep 2026 · iteration ongoing</dd>
+      <dt>Platform</dt><dd>Native app · Android &amp; iOS</dd>
+      <dt>Market</dt><dd>Latin America</dd>
+      <dt>Skills</dt>
+      <dd class="tags">
+        <span class="tag">Product design</span><span class="tag">Interaction design</span><span class="tag">Benchmark</span><span class="tag">AI prototyping</span><span class="tag">Motion</span><span class="tag">A/B testing</span>
+      </dd>
+    </dl>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="slide dark" hidden>
+  <div class="wrap">
+    <p class="kicker">Timeline</p>
+    <h2 class="title">From research to rollout in three months</h2>
+    <ol class="timeline">
+      <li><time>Jul</time><b>Research</b><span>Journey map of the current flow, Q&amp;A with the Reviews team, product requirements.</span></li>
+      <li><time>Aug</time><b>Explore &amp; prototype</b><span>Camera feature benchmark (79 features, 4 apps). Low- and mid-fidelity prototypes.</span></li>
+      <li><time>Late Aug</time><b>A/B test</b><span>New camera vs. previous flow, in Brazil, on Android.</span></li>
+      <li><time>Sep</time><b>100% in Brazil</b><span>Scaled to every buyer in Brazil.</span></li>
+      <li><time>Sep</time><b>Regional rollout</b><span>Progressive rollout to other countries.</span></li>
+      <li class="now"><time>Sep → now</time><b>Release 2</b><span>Quick quality helps while recording, and editing in preview.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 3 · PROBLEM -->
+<section class="chapter">
+  <div class="wrap">
+    <p class="num">01.</p>
+    <h2>The problem</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">01.</p>
+      <h2 class="title">From “having video” to “having good video”</h2>
+      <p class="lede">Buyers could already add a video to a review, but only through a very basic camera that gave no help.</p>
+
+      <p class="label">Context</p>
+      <p>Reviews help buyers decide with real experiences. Social commerce leaders had stopped treating the review as a form and turned it into native, incentivised video content. Until then, the review flow simply opened the phone’s own camera to take a photo or record a video. Nothing was guided or standardised, and the experience was inconsistent across iOS and Android.</p>
+
+      <p class="label">Challenge</p>
+      <p><strong>For buyers:</strong> “I don’t know what to record.” Videos missed the product details that matter, or buyers gave up.</p>
+      <p><strong>For the business:</strong> review videos were a valuable but underused asset that could feed product pages and short-video content.</p>
+    </div>
+    <div class="media">
+      <div class="ph"><b>Image · Previous experience</b>The review form + the phone’s default camera, annotated with pain points (deck style, blue callouts).</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" hidden>
+  <div class="wrap">
+    <p hidden><span class="ask">How might we help buyers record a useful product video with little effort, without lowering review completion?</span></p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">?</div>
+        <h3>“I don’t know what to show”</h3>
+        <p>Wants to help but needs guidance on what to record. Benefits most from step-by-step prompts.</p>
+      </div>
+      <div class="card">
+        <div class="icon">→</div>
+        <h3>The fast reviewer</h3>
+        <p>Knows what to say and values speed. Needs a short, simple flow.</p>
+      </div>
+      <div class="card">
+        <div class="icon">★</div>
+        <h3>The creator</h3>
+        <p>Enjoys making detailed videos and is motivated by rewards. Produces the most reusable content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · RESEARCH & BENCHMARK -->
+<section class="chapter">
+  <div class="wrap">
+    <p class="num">02.</p>
+    <h2>Research &amp; benchmark</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="wrap">
+    <p class="kicker">02.</p>
+    <h2 class="title">Journey map: the current flow</h2>
+    <p class="lede">We started with the problem, not the solution: mapping the existing review flow, step by step, to find where buyers drop off.</p>
+    <p><span class="ask">Where does the current flow lose buyers who want to record a video?</span></p>
+    <div class="journey-wrap">
+      <div class="journey">
+        <div class="rowh"><span class="emo">🧭</span>Stage</div>
+        <div class="stage"><span class="emo big">🔔</span>Trigger<small>Push 5 days after delivery</small></div>
+        <div class="stage"><span class="emo big">📝</span>Review form<small>Stars, photo/video, text</small></div>
+        <div class="stage"><span class="emo big">🔐</span>Permissions<small>First time only</small></div>
+        <div class="stage"><span class="emo big">🎥</span>Recording<small>Phone camera, no guidance</small></div>
+        <div hidden class="stage"><span class="emo big">⚠️</span>Validation<small>Errors after upload</small></div>
+        <div class="lc stage"><span class="emo big">📤</span>Submit<small>Confirms and sends</small></div>
+        <div hidden class="stage"><span class="emo big">⏳</span>Moderation<small>Async content review</small></div>
+        <div hidden class="stage"><span class="emo big">🎉</span>Result<small>Points + review visible</small></div>
+        <div class="rowh emo-h"><span><span class="emo">🎭</span>Emotion</span></div>
+        <div class="curve"><svg viewBox="0 0 800 150" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="emo-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0"><stop offset="0" stop-color="#c33bd8"/><stop offset=".55" stop-color="#f0566a"/><stop offset="1" stop-color="#f2994a"/></linearGradient></defs><line x1="0" y1="75" x2="800" y2="75" stroke="rgba(21,21,21,.14)" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/><polyline points="80,75 240,97 400,75 560,119 720,53" fill="none" stroke="url(#emo-grad)" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg><span class="mk neu" style="left:10%;top:50.0%"><i>😐</i><b>Neutral</b></span><span class="mk cau" style="left:30%;top:64.7%"><i>🤔</i><b>Unsure</b></span><span class="mk neu" style="left:50%;top:50.0%"><i>😐</i><b>Neutral</b></span><span class="mk cau" style="left:70%;top:79.3%"><i>😟</i><b>Insecure</b></span><span class="mk pos" style="left:90%;top:35.3%"><i>😌</i><b>Relieved</b></span></div>
+        <div class="rowh"><span class="emo">👤</span>Buyer does</div>
+        <div>Gets a push notification. Often doesn’t have the product at hand and ignores it.</div>
+        <div>Sees the stars, photo and video buttons and an empty text field. Taps “Video”.</div>
+        <div>Accepts the system camera permission with one tap.</div>
+        <div>Records in one take with the phone’s default camera, then confirms or discards.</div>
+        <div hidden>Back in the form, sees errors if the video is too short, too long or flagged.</div>
+        <div class="lc">Confirms and sends. Sees the rewards earned.</div>
+        <div hidden>Waits without knowing how long it will take.</div>
+        <div hidden>Points are credited and the review appears on the product page.</div>
+        <div class="rowh"><span class="emo">💔</span>Pain points</div>
+        <div class="pain"><span class="bad">⚠️</span> Timing is right for testing the product, but not for having it nearby. The push is forgotten.</div>
+        <div class="pain hot"><span class="drop">🔥 Drop-off #1</span><br>Empty text field with no guidance. The reward is not linked to the video.</div>
+        <div class="pain"><span class="bad">⚠️</span> Low friction. Not a relevant drop-off point.</div>
+        <div class="pain hot"><span class="drop">🔥 Drop-off #2</span><br>The phone’s own camera: no framing guide, no prompts, no take count, no light adjustment. One-take pressure. Inconsistent across platforms.</div>
+        <div hidden class="pain hot"><span class="drop">🔥 Drop-off #3</span><br>Reactive validation: the buyer learns about the error after recording and waiting. No clear way to re-record.</div>
+        <div class="lc pain"><span class="bad">⚠️</span> Confirmation doesn’t say the video still needs approval.</div>
+        <div hidden class="pain"><span class="bad">⚠️</span> Rejected videos get no clear reason and no invitation to retry.</div>
+        <div hidden class="pain"><span class="bad">⚠️</span> No signal of impact, so no reason to do it again.</div>
+        <div class="rowh last"><span class="emo">💡</span>Opportunity</div>
+        <div class="opp last">Snooze option and a deep link to a pre-filled form.</div>
+        <div class="opp last">Show the reward per action at the moment of choice. Guidance chips by product type.</div>
+        <div class="opp last">Keep it simple.</div>
+        <div class="opp last">Our own camera: framing guides, what-to-record prompts, multi-take, auto light adjustment.</div>
+        <div hidden class="opp last">Prevent errors while recording (minimum length, dark screen). Human message + “Re-record with guide”.</div>
+        <div class="lc opp last">Explain what happens next.</div>
+        <div hidden class="opp last">Rejection reason in plain language + direct path to re-record.</div>
+        <div hidden class="opp last">Close the loop: show that the review helped someone.</div>
+      </div>
+    </div>
+    <p class="scroll-hint">Scroll sideways to see the full journey →</p>
+    <aside class="ai"><span class="ai-chip">✦ AI-native</span><p><strong>AI to find the pain points.</strong> We used AI first to understand the current flow, then gave it the funnel metrics to see where the main pain points were. We took those to the team and asked which drops mattered most, and built the journey map from there.</p></aside>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <h2 class="title" style="font-size:clamp(28px,3.4vw,40px)">Three critical drop-off points</h2>
+    <div class="dp">
+      <div class="dp-stage" aria-hidden="true">
+        <img class="on" data-i="0" src="img/drops/form.png" alt="">
+        <img data-i="1" src="img/drops/recording.png" alt="">
+        <img data-i="2" src="img/drops/validation.png" alt="">
+      </div>
+      <div class="dp-list">
+        <button type="button" class="dp-card on" data-i="0"><span class="n">Drop-off 1 · Review form</span><h3>Nothing says what to record</h3><p>The form shows an empty text field and a video button. With no hint of what to show, or what it earns, the buyer skips the video.</p></button>
+        <button type="button" class="dp-card" data-i="1"><span class="n">Drop-off 2 · Recording</span><h3>An open camera and no idea what to do</h3><p>Without guidance on what to show or say, the buyer can’t make a video worth posting, and cancels.</p></button>
+        <button type="button" class="dp-card" data-i="2"><span class="n">Drop-off 3 · Validation</span><h3>Errors arrive after recording</h3><p>The buyer learns the video is too short, too long or flagged only after recording and waiting, with no clear way to record again.</p></button>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.dp').forEach(function (dp) {
+        var cards = dp.querySelectorAll('.dp-card'), imgs = dp.querySelectorAll('.dp-stage img');
+        function show(i) {
+          cards.forEach(function (c) { c.classList.toggle('on', c.dataset.i === i); });
+          imgs.forEach(function (m) { m.classList.toggle('on', m.dataset.i === i); });
+        }
+        cards.forEach(function (c) {
+          c.addEventListener('mouseenter', function () { show(c.dataset.i); });
+          c.addEventListener('focus', function () { show(c.dataset.i); });
+          c.addEventListener('click', function () { show(c.dataset.i); });
+        });
+      });
+    </script>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="wrap">
+    <p class="kicker">02.</p>
+    <h2 class="title">Competitive solutions by problem</h2>
+    <p class="lede">With the problems defined, we looked at how other players solve each one, instead of comparing feature lists.</p>
+    <p><span class="ask">Who solves each problem, and how?</span></p>
+    <div class="bt" role="tablist" aria-label="Benchmark view">
+      <button type="button" role="tab" class="bt-tab on" aria-selected="true" data-tab="sum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Key patterns</button>
+      <button type="button" role="tab" class="bt-tab" aria-selected="false" data-tab="full"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 15h18M9 4v16"/></svg>Full benchmark</button>
+    </div>
+    <div class="sev-legend"><span class="sev1"><span class="sev">1</span> Neutral</span><span class="sev2"><span class="sev">2</span> Friction</span><span class="sev3"><span class="sev">3</span> Cause of drop-off</span></div>
+    <div class="bt-panel" data-panel="sum">
+    <div class="bsum">
+      <div class="bs-grid"><div class="bs-item sev3"><span class="bs-p"><span class="sev">3</span>Blank slate · No narrative</span><svg class="bs-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="3" width="18" height="34" rx="4"/><rect x="14.5" y="9" width="11" height="5" rx="1.2"/><rect x="14.5" y="16.5" width="11" height="5" rx="1.2"/><rect x="14.5" y="24" width="11" height="5" rx="1.2" stroke-dasharray="2 2"/><path d="M33 6v4M31 8h4"/></svg><h3>Guided takes with prompts</h3><p>Short takes in a set order, each with a prompt adapted to the product category.</p><span class="bs-from">Seen in Shopee · TikTok Shop, partly</span></div><div class="bs-item sev3"><span class="bs-p"><span class="sev">3</span>One-take pressure</span><svg class="bs-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="13" width="9.5" height="14" rx="2"/><rect x="15.25" y="13" width="9.5" height="14" rx="2"/><rect x="27.5" y="13" width="9.5" height="14" rx="2" stroke-dasharray="2 2"/><path d="M30 17.5l4.5 5M34.5 17.5l-4.5 5"/></svg><h3>Multi-clip recording</h3><p>The video is recorded in segments, and one can be discarded without losing the rest.</p><span class="bs-from">Seen in Shopee · our own camera</span></div><div class="bs-item sev2"><span class="bs-p"><span class="sev">2</span>Doesn’t see the reward</span><svg class="bs-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h30v5a3 3 0 0 0 0 6v5H5v-5a3 3 0 0 0 0-6z"/><path d="M15 12v16" stroke-dasharray="2 2.5"/><path d="M24.5 16.5l1.3 2.7 3 .4-2.2 2 .6 2.9-2.7-1.4-2.7 1.4.6-2.9-2.2-2 3-.4z"/></svg><h3>Reward visible upfront</h3><p>What each action earns is shown before recording, starting from the delivery notification.</p><span class="bs-from">Seen in TikTok Shop · Shopee</span></div><div class="bs-item sev2"><span class="bs-p"><span class="sev">2</span>Records a dark screen</span><svg class="bs-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="9" width="30" height="22" rx="4"/><circle cx="20" cy="20" r="5.5"/><path d="M14 5h12"/><circle cx="31" cy="31" r="6" fill="#fff"/><path d="M28.4 31l1.8 1.8 3.4-3.6"/></svg><h3>Checks before upload</h3><p>The camera detects when the product isn’t visible and blocks the upload with a clear message.</p><span class="bs-from">Seen in Shopee</span></div><div class="bs-item sev2"><span class="bs-p"><span class="sev">2</span>No help with framing, light or audio</span><svg class="bs-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="22" r="6"/><path d="M18 10v2.5M18 31.5V34M6 22h2.5M27.5 22H30M9.5 13.5l1.8 1.8M24.7 28.7l1.8 1.8M9.5 30.5l1.8-1.8M24.7 15.3l1.8-1.8"/><path d="M32 4l1.2 2.8L36 8l-2.8 1.2L32 12l-1.2-2.8L28 8l2.8-1.2z"/></svg><h3>Automatic camera help</h3><p>Light, HDR and night adjustments apply when the camera opens, with no extra step.</p><span class="bs-from">Seen in TikTok Shop · Shopee</span></div><div class="bs-item sev1"><span class="bs-p"><span class="sev">1</span>No editing · Photo instead of video</span><svg class="bs-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a3 3 0 0 1 3-3h4l2.5-3.5h9L25 11h4a3 3 0 0 1 3 3v6"/><path d="M4 14v13a3 3 0 0 0 3 3h12"/><circle cx="16" cy="20" r="5"/><circle cx="26" cy="32" r="2.5"/><circle cx="34" cy="32" r="2.5"/><path d="M27.8 30.2L35 22M32.2 30.2L25 22"/></svg><h3>Native camera and light editor</h3><p>A camera that only records video, plus trim, filters, music, stickers and text.</p><span class="bs-from">Seen in Shopee · TikTok Shop</span></div></div>
+    </div>
+    </div>
+    <div class="bt-panel" data-panel="full" hidden>
+    <div class="table-wrap">
+      <table class="matrix bench">
+        <thead><tr><th><span class="emo">🧭</span>Problem</th><th>TikTok Shop<small>App flow + technical teardown</small></th><th>Shopee<small>Real purchase + technical teardown</small></th><th>WhatsApp<small>App flow <span class="tbc">TBC</span></small></th><th>Our camera<small>Our own product</small></th></tr></thead>
+        <tbody>
+            <tr class="group"><th colspan="5"><span class="emo">🔔</span>Before opening the camera</th></tr>
+            <tr class="sev3"><th><span class="sev">3 · Drop-off #1</span>Blank slate: doesn’t know what to say or show</th><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>Two topic chips as a light hint. No structure.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Guided mode: three short takes with prompts by product category.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>No templates or prompts.</p></td></tr>
+            <tr class="sev2"><th><span class="sev">2 · Friction</span>Late timing: the request arrives when the excitement is gone</th><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>The reward shows up in the delivery notification.</p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>No timing hook.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>Not part of the post-delivery flow.</p></td></tr>
+            <tr class="sev2"><th><span class="sev">2 · Friction</span>Doesn’t see the reward before recording</th><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Coins shown before recording, from the delivery notification.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Coins split by effort: text, photo, video, guided video.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Not validated</b></span><p>Not validated.</p></td></tr>
+            <tr class="sev1"><th><span class="sev">1 · Neutral</span>No anonymity for sensitive categories</th><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Anonymous toggle inside the review flow.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Anonymous toggle inside the review flow.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>Videos are public and tied to the creator’s profile.</p></td></tr>
+            <tr class="group"><th colspan="5"><span class="emo">🎥</span>While recording</th></tr>
+            <tr class="sev3"><th><span class="sev">3 · Drop-off #2</span>One-take pressure: a mistake means starting over</th><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>A single take. No multi-clip.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Records in segments. One can be discarded without losing the rest.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Native multi-clip. Segments are discarded one by one.</p></td></tr>
+            <tr class="sev3"><th><span class="sev">3 · Drop-off #2</span>No narrative: what to show, and in what order</th><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>Topic chips suggest what to cover, not the order.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Three takes set the order: intro, product in use, verdict. Each with its own prompt.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>No guided structure.</p></td></tr>
+            <tr class="sev2"><th><span class="sev">2 · Friction</span>No help with framing, light or audio</th><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>Automatic HDR, night mode and AI adjustment when the camera opens. No framing guide.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Automatic light correction on open, brightness sliders and front flash.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>No help while recording.</p></td></tr>
+            <tr class="sev2"><th><span class="sev">2 · Friction</span>Records a dark screen or doesn’t show the product</th><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>Detects speech vs. silence. Doesn’t block when the product is missing.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Detects it live and blocks the upload with a clear message.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>No detection. The video goes straight to moderation.</p></td></tr>
+            <tr class="group"><th colspan="5"><span class="emo">📤</span>After recording</th></tr>
+            <tr class="sev1"><th><span class="sev">1 · Neutral</span>No editing: what you record is what gets published</th><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Full editor: auto-cut, beat sync, templates and AI effects.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Trim, filters, music, stickers and text.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Filters, text and music.</p></td></tr>
+            <tr class="sev1"><th><span class="sev">1 · Neutral</span>Uploads a photo instead of a video</th><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>The native camera only records video.</p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Native camera with no gallery, so formats can’t be mixed.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-ok"><span class="sol"><span class="st ok">✓</span><b>Solved</b></span><p>Records straight to video.</p></td></tr>
+            <tr class="sev2"><th><span class="sev">2 · Friction</span>Rejected with no reason and no retry</th><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>In-app notice. The reason isn’t always given.</p></td><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>Status notice. No clear way to retry.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>No rejection feedback and no retry.</p></td></tr>
+            <tr class="sev1"><th><span class="sev">1 · Neutral</span>Doesn’t know if the review helped anyone</th><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>Not addressed.</p></td><td class="s-no"><span class="sol"><span class="st no">✕</span><b>Not solved</b></span><p>Not addressed.</p></td><td class="s-nv"><span class="sol"><span class="st nv">—</span><b>Pending</b></span><p><span class="tbc">TBC</span></p></td><td class="s-part"><span class="sol"><span class="st part">~</span><b>Partial</b></span><p>Likes and view counts.</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <script>
+      (function () {
+        var tabs = document.querySelectorAll('.bt-tab'), panels = document.querySelectorAll('.bt-panel');
+        tabs.forEach(function (t) {
+          t.addEventListener('click', function () {
+            tabs.forEach(function (x) { var on = x === t; x.classList.toggle('on', on); x.setAttribute('aria-selected', on); });
+        panels.forEach(function (p) { p.hidden = p.dataset.panel !== t.dataset.tab; });
+          });
+        });
+      })();
+    </script>
+    <aside class="ai"><span class="ai-chip">✦ AI-native</span><p><strong>Where this comes from.</strong> We went through each player’s review flow in the app and recorded a full review on a real Shopee purchase. With AI, we ran a technical teardown of the TikTok Shop and Shopee apps to see how their cameras actually behave, not only what the screens show: which helps are automatic and which depend on the user. In the full benchmark, each column says how that player was reviewed.</p></aside>
+  </div>
+</section>
+
+<!-- 5 · EXPLORING THE FLOW -->
+<section class="chapter">
+  <div class="wrap">
+    <p class="num">03.</p>
+    <h2>Exploring the flow</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="wrap">
+    <p hidden><span class="ask">Where does the camera live, and how does the content get back to the review?</span></p>
+    <div class="uf-head"><h3>User flow · the buyer’s goal at each step</h3></div>
+    <div class="ug">
+      <div class="ug-step"><span class="ug-n">01</span><span class="ug-e">🔔</span><h4>Get the request</h4><p>“My order arrived. Is it worth my time?”</p></div>
+      <div class="ug-step"><span class="ug-n">02</span><span class="ug-e">⭐</span><h4>Rate the product</h4><p>“Let me say quickly what I think.”</p></div>
+      <div class="ug-step"><span class="ug-n">03</span><span class="ug-e">🎥</span><h4>Show the product</h4><p>“I want to show it, but I don’t know what to record.”</p></div>
+      <div class="ug-step"><span class="ug-n">04</span><span class="ug-e">👀</span><h4>Check the result</h4><p>“Does it look right before others see it?”</p></div>
+      <div class="ug-step"><span class="ug-n">05</span><span class="ug-e">📤</span><h4>Send and get rewarded</h4><p>“Done. What did I earn?”</p></div>
+    </div>
+    <div class="flow-head"><h3>Low-fidelity endgame · happy path</h3></div>
+    <div class="lf-ctx">
+      <p><strong>Why we built it.</strong> Before deciding what to ship, we needed to see the whole experience in one place: where the camera lives inside the review, how the video gets back to the form, and which helps the buyer needs at each moment.</p>
+      <p><strong>What we were looking for.</strong> A complete version to test on a phone, find where the flow felt long or confusing, and use as the base to decide what goes into the first release and what waits.</p>
+    </div>
+    <p class="scroll-hint">Scroll sideways →</p>
+    <div class="screens">
+        <figure><img src="img/reviews/lofi-01-a-formulario-vacio-3.webp?v=3" alt="Low-fidelity screen: Review form: rating, photo or video, text" loading="lazy" width="480" height="1020"><figcaption><b>Entry</b>Review form: rating, photo or video, text</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-02-b-formulario-con-video-5-ai-revisando.webp?v=3" alt="Low-fidelity screen: The video returns to the form" loading="lazy" width="480" height="1020"><figcaption><b>Media added</b>The video returns to the form</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-03-1-modal-de-calidad.webp?v=3" alt="Low-fidelity screen: What makes a good review: length, product, voice" loading="lazy" width="480" height="1020"><figcaption><b>Before recording</b>What makes a good review: length, product, voice</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-04-2-default-sin-grabar.webp?v=3" alt="Low-fidelity screen: Ready to record, with framing guide" loading="lazy" width="480" height="1020"><figcaption><b>Camera</b>Ready to record, with framing guide</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-08-4-consejos-empaque-s1.webp?v=3" alt="Low-fidelity screen: Show how the package arrived" loading="lazy" width="480" height="1020"><figcaption><b>Take 1 tip</b>Show how the package arrived</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-12-6-grabando-s1-clip-1-activo.webp?v=3" alt="Low-fidelity screen: Take 1 in progress" loading="lazy" width="480" height="1020"><figcaption><b>Recording</b>Take 1 in progress</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-13-7-grabando-s2-s1-completado.webp?v=3" alt="Low-fidelity screen: Take 1 saved, next prompt" loading="lazy" width="480" height="1020"><figcaption><b>Take 2</b>Take 1 saved, next prompt</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-14-8-preview-de-clip-regrabar-opcion.webp?v=3" alt="Low-fidelity screen: Review the takes before continuing" loading="lazy" width="480" height="1020"><figcaption><b>Preview</b>Review the takes before continuing</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-15-14-audio-con-sin-deteccion-de-voz.webp?v=3" alt="Low-fidelity screen: Audio on or off, basic edits" loading="lazy" width="480" height="1020"><figcaption><b>Edit</b>Audio on or off, basic edits</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-16-15-resena-publicada-volver-a-mis-opinion.webp?v=3" alt="Low-fidelity screen: Review published, reward earned" loading="lazy" width="480" height="1020"><figcaption><b>Done</b>Review published, reward earned</figcaption></figure>
+    </div>
+    <div class="flow-head"><h3>Also explored</h3><span>Ideas tested in low fidelity; not all made it to the first releases</span></div>
+    <div class="screens explored">
+        <figure><img src="img/reviews/lofi-05-3-efectos-stickers-fondos-filtros.webp?v=3" alt="Low-fidelity screen: Stickers on the viewfinder" loading="lazy" width="480" height="1020"><figcaption><b>Effects</b>Stickers on the viewfinder</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-06-3b-efectos-tab-fondos.webp?v=3" alt="Low-fidelity screen: Virtual backgrounds" loading="lazy" width="480" height="1020"><figcaption><b>Backgrounds</b>Virtual backgrounds</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-07-3c-efectos-tab-filtros.webp?v=3" alt="Low-fidelity screen: Colour filters with intensity" loading="lazy" width="480" height="1020"><figcaption><b>Filters</b>Colour filters with intensity</figcaption></figure>
+        <span class="sep" aria-hidden="true">→</span>
+        <figure><img src="img/reviews/lofi-11-5-guias-ar-donde-poner-el-producto.webp?v=3" alt="Low-fidelity screen: Where to place the product" loading="lazy" width="480" height="1020"><figcaption><b>AR guide</b>Where to place the product</figcaption></figure>
+    </div>
+    <aside class="ai"><span class="ai-chip">✦ AI-native</span><p><strong>An endgame first, built in code.</strong> With AI, we mapped every solution from the benchmark against what buyers needed. From that map we built a low-fidelity endgame: the complete version, designed without thinking about team capacity. We built it as working HTML with Claude and Codex, so we could test the flow on a real phone and use the full picture to prioritise which features go first.</p></aside>
+  </div>
+</section>
+
+<!-- 6 · AI-NATIVE PROTOTYPING -->
+<section class="chapter" hidden>
+  <div class="wrap">
+    <p class="num">04.</p>
+    <h2>AI-native prototyping</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide" hidden>
+  <svg class="blob" viewBox="0 0 600 600" style="right:-160px;top:-60px;width:min(720px,80vw)" aria-hidden="true"><defs><linearGradient id="blobg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd9cf"/><stop offset="1" stop-color="#f3d3f7"/></linearGradient></defs><path fill="url(#blobg)" d="M421 63c76 43 146 120 151 205 5 86-56 180-136 236-80 57-179 77-262 44C91 515 24 430 8 336-7 241 28 136 98 79 168 22 345 20 421 63Z"/></svg>
+  <div class="wrap split">
+    <div>
+      <p class="kicker">04.</p>
+      <h2 class="title">Prototypes we could hold in our hands</h2>
+      <p class="lede">A camera is hard to judge in static frames. We tested gestures, timers and states on a real device.</p>
+      <aside class="ai" style="margin-top:8px"><span class="ai-chip">✦ AI in every stage</span>
+        <ul class="ai-steps">
+          <li><b>Research</b><span>Synthesis of the flow and data into the journey map</span></li>
+          <li><b>Benchmark</b><span>Technical teardown of each app and a 79-feature catalogue</span></li>
+          <li><b>Prototypes</b><span>Working prototypes in code with Claude and Codex, tested on device</span></li>
+          <li><b>Motion</b><span>A motion library for the camera, ready for engineering</span></li>
+          <li><b>Learning</b><span>Review of published videos to spot common situations</span></li>
+          <li><b>Handoff</b><span>Figma only to organise and hand off</span></li>
+        </ul>
+      </aside>
+      <p class="label">What I decided</p>
+      <p>AI made exploring fast. The calls stayed with us: which states matter, what stays out of the first release, and how the camera should move and respond. <span class="tbc">TBC</span></p>
+    </div>
+    <div class="media">
+      <div class="ph"><b>Video · Coded prototype on device</b>10–15 s screen recording of the prototype: switching modes, recording a guided take, preview.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · KEY DECISIONS -->
+<section class="chapter">
+  <div class="wrap">
+    <p class="num">04.</p>
+    <h2>Key decisions</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <p class="kicker">04.</p>
+    <h2 class="title">From the endgame to priorities</h2>
+    <p class="lede">We listed every feature from the endgame and ranked it by impact on getting good videos against effort. We went first for the causes of drop-off, and placed everything else around them.</p>
+    <div class="dc">
+      <div class="dc-item">
+        <span class="dc-tag">Explains · Release 1 and Release 2</span>
+        <svg class="dc-ill" viewBox="0 0 440 150" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="22" y="22" width="120" height="30" rx="10"/><path d="M36 33h60M36 42h38"/>
+          <rect x="22" y="60" width="120" height="30" rx="10"/><path d="M36 71h74M36 80h46"/>
+          <rect x="22" y="98" width="120" height="30" rx="10"/><path d="M36 109h52M36 118h66"/>
+          <path d="M160 75h58"/><path d="M210 67l9 8-9 8"/>
+          <rect x="256" y="10" width="86" height="130" rx="16"/><rect x="266" y="26" width="66" height="76" rx="8" stroke-dasharray="4 4"/>
+          <rect x="268" y="108" width="40" height="14" rx="7" fill="#d6336c" stroke="none"/>
+          <path d="M296 66l3.5 7 7.5 1-5.5 5.2 1.4 7.6-6.9-3.7-6.9 3.7 1.4-7.6-5.5-5.2 7.5-1z" fill="#f2994a" stroke="none"/>
+          <rect x="358" y="30" width="64" height="22" rx="11" fill="#fff"/><path d="M370 41h40"/>
+          <rect x="358" y="62" width="64" height="22" rx="11" fill="#fff"/><path d="M370 73h30"/>
+          <rect x="358" y="94" width="64" height="22" rx="11" fill="#fff"/><path d="M370 105h36"/>
+          <path d="M342 41h14M342 73h14M342 105h14" stroke-dasharray="2 3"/>
+        </svg>
+        <h3>Guide with what people already say</h3>
+        <p><strong>The problem.</strong> An empty camera gives no hint of what to show or say.</p>
+        <p><strong>What we decided.</strong> Prompts that change with the product in the first release. In the second, stickers built from what buyers already say: we took the comments users had left on the platform and analysed them with AI to find what they mention most.</p>
+        <p><strong>Why.</strong> Guidance that sounds like the buyer’s own words is easier to follow and feels less like a form.</p>
+      </div>
+      <div class="dc-item">
+        <span class="dc-tag">Explains · Release 2</span>
+        <svg class="dc-ill" viewBox="0 0 440 150" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="70" y="10" width="86" height="130" rx="16"/>
+          <rect x="80" y="24" width="66" height="80" rx="8" fill="#151515"/>
+          <rect x="84" y="32" width="58" height="22" rx="11" fill="#fff"/>
+          <circle cx="96" cy="43" r="6" fill="#d6336c" stroke="none"/><path d="M96 40v4M96 46v.5" stroke="#fff" stroke-width="1.4"/>
+          <path d="M107 43h26"/>
+          <circle cx="113" cy="123" r="8" fill="#d6336c" stroke="none"/>
+          <path d="M184 75h72"/><path d="M248 67l9 8-9 8"/>
+          <rect x="284" y="10" width="86" height="130" rx="16"/>
+          <rect x="294" y="24" width="66" height="80" rx="8" fill="#f2994a" fill-opacity=".28"/>
+          <circle cx="327" cy="62" r="20" fill="#fff"/><path d="M317 62l7 7 13-15" stroke="#3f7a1c" stroke-width="3"/>
+          <circle cx="327" cy="123" r="8" fill="#3f7a1c" stroke="none"/>
+        </svg>
+        <h3>Prevent instead of correct</h3>
+        <p><strong>The problem.</strong> Buyers found out about a dark or empty video only after recording and waiting.</p>
+        <p><strong>What we decided.</strong> Flag it while recording, and improve light, audio and framing automatically, so nothing depends on the buyer fixing it.</p>
+        <p><strong>Why.</strong> An error caught before sending costs a few seconds. One caught after costs the whole video.</p>
+      </div>
+    </div>
+    <div class="pz">
+        <div class="pz-col pz-now"><div class="pz-head"><span class="pz-n">1</span><h3>Release 1</h3><p>Our hypothesis: a guided video would give fuller, better-quality videos, and more videos in reviews.</p></div><ul><li><b>Native camera in the review</b><span>With timer, flash and flip camera. Replaces the gallery upload and the phone’s camera.</span><div class="pz-chips"><span class="pz-chip i-high">Impact · High</span><span class="pz-chip e-high">Effort · High</span></div></li><li><b>Three modes: guided video, video and photo</b><span>One camera, one mode per intent.</span><div class="pz-chips"></div></li><li><b>Guided prompts</b><span>What to show and say, adapted to the product.</span><div class="pz-chips"><span class="pz-chip i-high">Impact · High</span><span class="pz-chip e-medium">Effort · Medium</span></div></li><li><b>Reward per action, upfront</b><span>What each action earns, before recording.</span><div class="pz-chips"><span class="pz-chip i-medium">Impact · Medium</span><span class="pz-chip e-low">Effort · Low</span></div></li></ul></div>
+        <div class="pz-col pz-next"><div class="pz-head"><span class="pz-n">2</span><h3>Release 2</h3><p>Quick helps that improve the video with no extra effort.</p></div><ul><li><b>Checks while recording</b><span>Flags a dark screen or a missing product before sending.</span><div class="pz-chips"><span class="pz-chip i-high">Impact · High</span><span class="pz-chip e-medium">Effort · Medium</span></div></li><li><b>Automatic audio and subtitles</b><span>Cleans the audio and adds editable subtitles.</span><div class="pz-chips"><span class="pz-chip i-medium">Impact · Medium-high</span><span class="pz-chip e-medium">Effort · Medium</span></div></li><li><b>Stickers from real reviews</b><span>Built from the comments users already left on the platform.</span><div class="pz-chips"></div></li><li><b>Simple edits in preview</b><span>Trim, text and stickers.</span><div class="pz-chips"></div></li></ul></div>
+        <div class="pz-col pz-later"><div class="pz-head"><span class="pz-n">3</span><h3>Later</h3><p>Valuable, but outside the camera.</p></div><ul><li><b>Rejection feedback and retry</b><span>A clear reason and a way to record again.</span><div class="pz-chips"><span class="pz-chip i-high">Impact · High</span><span class="pz-chip e-low">Effort · Low</span></div></li><li><b>Reminder when the product isn’t at hand</b><span>Save the intention and come back later.</span><div class="pz-chips"><span class="pz-chip i-medium">Impact · Medium-high</span><span class="pz-chip e-low">Effort · Low</span></div></li><li><b>Reviewer profile and anonymity</b><span>Visibility as a one-tap choice.</span><div class="pz-chips"><span class="pz-chip i-medium">Impact · Medium</span><span class="pz-chip e-medium">Effort · Medium</span></div></li><li><b>Video reviews grouped on the product page</b><span>For the buyers who watch.</span><div class="pz-chips"><span class="pz-chip i-medium">Impact · Medium</span><span class="pz-chip e-medium">Effort · Medium</span></div></li></ul></div>
+        <div class="pz-col pz-parked"><div class="pz-head"><span class="pz-n">—</span><h3>Explored, parked</h3><p>Tested in the endgame, left out to keep the camera simple.</p></div><ul><li><b>Effects and stickers on the viewfinder</b><span></span><div class="pz-chips"></div></li><li><b>Virtual backgrounds</b><span></span><div class="pz-chips"></div></li><li><b>Colour filters</b><span></span><div class="pz-chips"></div></li><li><b>AR guide for placing the product</b><span></span><div class="pz-chips"></div></li></ul></div>
+    </div>
+    <p class="pz-note" hidden>Impact and effort as estimated with the team before the flow was defined. <span class="tbc">TBC: release split</span></p>
+  </div>
+</section>
+
+<section class="slide dark" hidden>
+  <div class="wrap">
+    <p class="lede" style="color:#fff">Three trade-offs that shaped the first version. <span class="tbc">TBC: confirm these were the hardest calls</span></p>
+
+    <div class="decision">
+      <p class="n">1</p>
+      <div>
+        <h3>Guidance vs. speed</h3>
+        <div class="options">
+          <div class="opt"><small>Option A</small>A full guided storyboard with an editor, like the quality-first benchmark.</div>
+          <div class="opt chosen"><small>We chose</small>Three short takes with one prompt each, and no editor in the first version.</div>
+        </div>
+        <p><strong>Why:</strong> guidance had to help the buyer who doesn’t know what to show, without slowing down the buyer in a hurry or lowering review completion.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <p class="n">2</p>
+      <div>
+        <h3>Separate modes by intent</h3>
+        <div class="options">
+          <div class="opt"><small>Option A</small>One camera that mixes guided capture, free recording and gallery uploads.</div>
+          <div class="opt chosen"><small>We chose</small>Three tabs. Guided video records in-app only; free video and photo also accept the gallery.</div>
+        </div>
+        <p><strong>Why:</strong> guided takes only work if they are recorded with the prompts. Buyers with an existing video still have a fast path.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <p class="n">3</p>
+      <div>
+        <h3>Designing for interruptions</h3>
+        <p>A call, a locked screen or the app going to background should never cost the buyer their work. I defined what each mode keeps:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Situation</th><th>Free video</th><th>Guided video</th><th>Photo</th></tr></thead>
+            <tbody>
+              <tr><th>Interruption while recording</th><td>Pauses and keeps everything recorded</td><td>Drops only the take in progress; completed takes stay</td><td>Returns ready to shoot</td></tr>
+              <tr><th>Back from preview</th><td>Keeps the video and recording state</td><td>Keeps every take and step</td><td>Starts fresh</td></tr>
+              <tr><th>Discard</th><td>Asks for confirmation</td><td>Asks for confirmation</td><td>No confirmation: easy to retake</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px"><strong>Why:</strong> the cost of losing content grows with the effort it took. Confirmation and persistence follow that cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · FINAL PRODUCT -->
+<section class="chapter">
+  <div class="wrap">
+    <p class="num">05.</p>
+    <h2>Final product</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+
+<section class="slide">
+  <div class="wrap">
+    <p class="kicker">05.</p>
+    <h2 class="title">The final flow</h2>
+    <p class="lede">From the review form to a sent review, with the camera and the preview at the centre.</p>
+    <a class="pbtn pbtn-d" href="../prototype/index.html">Open the prototype<i aria-hidden="true">→</i></a>
+    <div class="uf-head"><h3>User flow</h3><span>Tap a step to jump to it · scroll sideways →</span></div>
+    <div class="uf-wrap">
+      <div class="uf">
+        <div class="uf-col">
+          <div class="uf-node" role="link" tabindex="0" data-target="st-0"><span class="uf-k">Screen</span><span class="uf-e">📝</span><h4>Review form</h4><ul><li>Stars and text</li><li>Tickets shown per action</li><li>Add a video or photo</li></ul></div>
+        </div>
+        <div class="uf-arrow" aria-hidden="true"></div>
+        <div class="uf-col">
+          <div class="uf-node sys" role="link" tabindex="0" data-target="st-2"><span class="uf-k">System · first time</span><span class="uf-e">🔐</span><h4>Camera and mic permission</h4><ul><li>One tap, then straight to the camera</li></ul></div>
+        </div>
+        <div class="uf-arrow" aria-hidden="true"></div>
+        <div class="uf-col wide">
+          <div class="uf-node key" role="link" tabindex="0" data-target="st-2"><span class="uf-k">Screen</span><span class="uf-e">🎥</span><h4>Camera · 3 modes</h4>
+            <div class="uf-modes">
+              <div class="uf-mode"><b>Guided video</b><span>3 parts, a prompt for each. Quality messages while recording.</span></div>
+              <div class="uf-mode"><b>Video</b><span>Free recording, with pause and resume.</span></div>
+              <div class="uf-mode"><b>Photo</b><span>Capture or pick from the gallery.</span></div>
+            </div>
+            <div class="uf-alt"><span>↺ Retake a part</span><span>✕ Exit: keep recording or discard</span></div>
+          </div>
+        </div>
+        <div class="uf-arrow" aria-hidden="true"></div>
+        <div class="uf-col">
+          <div class="uf-node key" role="link" tabindex="0" data-target="st-6"><span class="uf-k">Screen</span><span class="uf-e">✂️</span><h4>Preview</h4><ul><li>Automatic video adjustments</li><li>Trim, text, stickers, subtitles</li><li>Save or discard</li></ul><div class="uf-alt"><span>↺ Add more: back to the camera</span></div></div>
+        </div>
+        <div class="uf-arrow" aria-hidden="true"></div>
+        <div class="uf-col">
+          <div class="uf-node" role="link" tabindex="0" data-target="st-15"><span class="uf-k">Screen</span><span class="uf-e">📝</span><h4>Back to the form</h4><ul><li>Media added as thumbnails</li><li>Tickets updated</li><li>Send the review</li></ul></div>
+        </div>
+        <div class="uf-arrow" aria-hidden="true"></div>
+        <div class="uf-col">
+          <div class="uf-node end" role="link" tabindex="0" data-target="st-15"><span class="uf-k">Outcome</span><span class="uf-e">🎉</span><h4>Review sent</h4><ul><li>“You earned N tickets”</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        document.querySelectorAll('.uf-node[data-target]').forEach(function (n) {
+          function go() { var t = document.getElementById(n.dataset.target); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+          n.addEventListener('click', go);
+          n.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        });
+      })();
+    </script>
+  </div>
+</section>
+
+<section id="s-story" class="slide grey">
+  <canvas class="story-bg" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="kicker">05.</p>
+    <h2 class="title">Review a product, step by step</h2>
+    <p class="lede">Scroll to follow a buyer through the happy path: from the review form to a posted review, with the guided video at the centre.</p>
+    <a class="pbtn pbtn-d" href="../prototype/index.html">Try it yourself in the prototype<i aria-hidden="true">→</i></a>
+    <div class="story">
+      <div class="story-stage">
+        <div class="story-phone"><img class="on" src="img/story/s0-form.webp?v=3" alt="" width="540" height="1174"><div class="story-cycle story-lupa" data-kind="lupa"><img class="cy on" src="img/story/s6-hints.webp?v=5" alt="" width="540" height="1174" data-label="Too dark"><img class="cy" src="img/story/s6-static.webp?v=5" alt="" width="540" height="1174" data-label="Still camera"><img class="cy" src="img/story/s6-noprod.webp?v=5" alt="" width="540" height="1174" data-label="Product not in frame"><div class="lupa-lens"><img class="lz on" src="img/story/s6-hints.webp?v=5" alt="" aria-hidden="true"><img class="lz" src="img/story/s6-static.webp?v=5" alt="" aria-hidden="true"><img class="lz" src="img/story/s6-noprod.webp?v=5" alt="" aria-hidden="true"></div><span class="lupa-tag">Too dark</span></div><div class="story-cycle" data-kind="cycle"><img class="cy on" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174"><img class="cy" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174"><img class="cy" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174"></div><img class="" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s4-guided-2.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s5-guided-done.webp?v=7" alt="" width="540" height="1174" loading="lazy"><div class="story-cycle story-lupa" data-kind="lupa" data-variant="story-lupa-add"><img class="cy on" src="img/story/s7-preview.webp?v=5" alt="" width="540" height="1174" data-label="Add more"><div class="lupa-lens"><img class="lz on" src="img/story/s7-preview.webp?v=5" alt="" aria-hidden="true"></div><span class="lupa-tag">Add more</span></div><img class="" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s9-preview-all.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p1-trim.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p2-text.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p3-stickers.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p4-sound.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p5-subs.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s9-form-all.webp?v=3" alt="" width="540" height="1174" loading="lazy"></div>
+        <div class="story-nav"><button type="button" class="sn-btn sn-prev" aria-label="Previous step"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5-5 5 5"/></svg></button><p class="story-count"><span id="story-now">01</span> / 16</p><button type="button" class="sn-btn sn-next" aria-label="Next step"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></button></div>
+      </div>
+      <ol class="story-steps">
+        <li class="story-step is-active" id="st-0" data-i="0">
+          <img class="story-inline" src="img/story/s0-form.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">01</span>
+          <h3>Start in the <span class="grad-text">review form</span></h3>
+          <p>Rating, media and comment in one place, each with the reward it earns. The buyer sees what every action is worth before starting.</p>
+          
+        </li>
+        <li class="story-step" id="st-1" data-i="1">
+          <img class="story-inline" src="img/story/s6-hints.webp?v=5" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">02</span>
+          <h3>Quick helps while recording</h3>
+          <p>While the camera is open, messages guide the buyer in the moment. Watch the lens: it follows each case the camera detects. Autofocus works on its own.</p><ol class="story-inside story-cases"><li><b>Too dark</b><span>Find a spot with more light</span></li><li><b>Still camera</b><span>Move the camera a little</span></li><li><b>Product not visible</b><span>The product isn’t visible</span></li></ol><p hidden></p>
+          <div class="story-new"><b>Fixes before sending</b><span>The buyer finds out while recording, not after sending the video and waiting.</span></div>
+        </li>
+        <li class="story-step" id="st-2" data-i="2">
+          <span class="story-inline story-inline-three"><img src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy"></span>
+          <span class="story-n">03</span>
+          <h3>One <span class="grad-text">camera</span>, three modes</h3>
+          <p>Once the camera opens, the buyer can take a <strong class="mode-k" data-k="0">guided video</strong>, <strong class="mode-k" data-k="1">a free video</strong> or <strong class="mode-k" data-k="2">a photo</strong>. Guided video comes first, because it gets the fullest videos.</p>
+          <div class="story-new"><b>Three modes for three profiles</b><span>Guided video for the buyer who isn’t sure what to show, free video for the one who already knows, and photo for a quick shot.</span></div>
+        </li>
+        <li class="story-hgroup" data-group="h1">
+<div class="story-hpanel" data-group="h1">
+<div class="story-hhead"><span class="story-hn">04</span><span class="story-ht"><span class="grad-text">Guided video</span></span><span class="story-hdots"><i></i><i></i><i></i></span></div>
+<div class="story-hstack">
+<div class="story-hp" data-i="3"><span class="story-n">04</span>
+          <h3><span class="grad-text">Guided video</span></h3>
+          <p>Tap video and the camera opens on guided video first, the mode that gets the fullest videos. Inside, three short takes:</p><ol class="story-inside"><li><b>1 · Show</b><span>The product from the front</span></li><li><b>2 · Close-up</b><span>Get closer to show the details</span></li><li><b>3 · Use</b><span>Show how it’s used</span></li></ol><p hidden></p>
+          <div class="story-new"><b>Our own camera inside the review flow</b><span>It replaced the phone’s default camera with one consistent experience on iOS and Android.</span></div><div class="story-detail"><b>Flash on both cameras</b><span>The rear camera uses the torch; the front camera lights up the screen.</span></div></div>
+<div class="story-hp" data-i="4"><span class="story-n">05</span>
+          <h3>One prompt per take</h3>
+          <p>Each take asks for one thing, and a finished take stays saved. A mistake never means starting over.</p>
+          <div class="story-new"><b>A guided mode</b><span>Three short takes, each with an on-screen prompt: the full product, the details, the product in use.</span></div><div class="story-detail"><b>Focused recording</b><span>While recording, tabs and controls hide and framing guides appear.</span></div></div>
+<div class="story-hp" data-i="5"><span class="story-n">06</span>
+          <h3>Three takes, ready</h3>
+          <p>When the three takes are done the buyer moves on, or goes back to retake just one.</p>
+          </div>
+</div>
+</div>
+<div class="story-hspacers">
+<div class="story-step story-spacer" id="st-3" data-i="3" data-flow="h1">
+          <img class="story-inline" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">04</span>
+          <h3><span class="grad-text">Guided video</span></h3>
+          <p>Tap video and the camera opens on guided video first, the mode that gets the fullest videos. Inside, three short takes:</p><ol class="story-inside"><li><b>1 · Show</b><span>The product from the front</span></li><li><b>2 · Close-up</b><span>Get closer to show the details</span></li><li><b>3 · Use</b><span>Show how it’s used</span></li></ol><p hidden></p>
+          <div class="story-new"><b>Our own camera inside the review flow</b><span>It replaced the phone’s default camera with one consistent experience on iOS and Android.</span></div><div class="story-detail"><b>Flash on both cameras</b><span>The rear camera uses the torch; the front camera lights up the screen.</span></div>
+        </div>
+<div class="story-step story-spacer" id="st-4" data-i="4" data-flow="h1">
+          <img class="story-inline" src="img/story/s4-guided-2.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">05</span>
+          <h3>One prompt per take</h3>
+          <p>Each take asks for one thing, and a finished take stays saved. A mistake never means starting over.</p>
+          <div class="story-new"><b>A guided mode</b><span>Three short takes, each with an on-screen prompt: the full product, the details, the product in use.</span></div><div class="story-detail"><b>Focused recording</b><span>While recording, tabs and controls hide and framing guides appear.</span></div>
+        </div>
+<div class="story-step story-spacer" id="st-5" data-i="5" data-flow="h1">
+          <img class="story-inline" src="img/story/s5-guided-done.webp?v=7" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">06</span>
+          <h3>Three takes, ready</h3>
+          <p>When the three takes are done the buyer moves on, or goes back to retake just one.</p>
+          
+        </div>
+</div>
+        </li>
+        <li class="story-step" id="st-6" data-i="6">
+          <img class="story-inline" src="img/story/s7-preview.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">07</span>
+          <h3>The <span class="grad-text">preview</span></h3>
+          <p>When the guided video is ready, the preview shows it with the tickets it earned. Tap Add more to go back to the camera and add something else.</p>
+          
+        </li>
+        <li class="story-step" id="st-7" data-i="7">
+          <img class="story-inline" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">08</span>
+          <h3>Free <span class="grad-text">video</span></h3>
+          <p>Back in the camera, the buyer can switch to free video: record continuously or in parts, for when they already know what to show.</p>
+          <div class="story-detail"><b>Settings that persist</b><span>Flash and front/rear camera stay the same across modes.</span></div>
+        </li>
+        <li class="story-step" id="st-8" data-i="8">
+          <img class="story-inline" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">09</span>
+          <h3><span class="grad-text">Photo</span></h3>
+          <p>Or take a photo, or pick one from the gallery, to complete the review.</p>
+          <div class="story-detail"><b>Timer for hands-free takes</b><span>The camera locks during the countdown so a stray tap can’t break it.</span></div>
+        </li>
+        <li class="story-hgroup" data-group="h2">
+<div class="story-hpanel" data-group="h2">
+<div class="story-hhead"><span class="story-hn">10</span><span class="story-ht">The <span class="grad-text">preview</span></span><span class="story-hdots"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="story-hstack">
+<div class="story-hp" data-i="9"><span class="story-n">10</span>
+          <h3>The <span class="grad-text">preview</span>, with everything added</h3>
+          <p>Now the preview shows all three: the guided video, the free video and the photo. Swipe through the tools to polish each one.</p>
+          </div>
+<div class="story-hp" data-i="10"><span class="story-n">11</span>
+          <h3>Trim</h3>
+          <p>Pick where the video starts and ends, and drag the selected part to move it. Only what matters stays.</p>
+          </div>
+<div class="story-hp" data-i="11"><span class="story-n">12</span>
+          <h3>Add text</h3>
+          <p>Write on the video and change the font, colour and alignment.</p>
+          </div>
+<div class="story-hp" data-i="12"><span class="story-n">13</span>
+          <h3>Stickers</h3>
+          <p>Add stickers and emojis. Some are suggested from the buyer’s own review, so they can say what matters in one tap.</p>
+          <div class="story-new"><b>Stickers from real reviews</b><span>We analysed the comments buyers write most and turned them into stickers.</span></div></div>
+<div class="story-hp" data-i="13"><span class="story-n">14</span>
+          <h3>Sound</h3>
+          <p>One of the biggest problems in the videos we saw was background noise. With the sound tool the buyer can turn the original audio off, and the app also cleans it automatically, so the video sounds clearer and the quality goes up.</p>
+          <div class="story-new"><b>Automatic quality</b><span>Audio clean-up, stabilisation and framing, and auto trim apply on their own, with no extra step.</span></div></div>
+<div class="story-hp" data-i="14"><span class="story-n">15</span>
+          <h3>Subtitles</h3>
+          <p>Show captions and edit each line. A buyer watching without sound can still follow the review.</p>
+          </div>
+</div>
+</div>
+<div class="story-hspacers">
+<div class="story-step story-spacer" id="st-9" data-i="9" data-flow="h2">
+          <img class="story-inline" src="img/story/s9-preview-all.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">10</span>
+          <h3>The <span class="grad-text">preview</span>, with everything added</h3>
+          <p>Now the preview shows all three: the guided video, the free video and the photo. Swipe through the tools to polish each one.</p>
+          
+        </div>
+<div class="story-step story-spacer" id="st-10" data-i="10" data-flow="h2">
+          <img class="story-inline" src="img/story/p1-trim.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">11</span>
+          <h3>Trim</h3>
+          <p>Pick where the video starts and ends, and drag the selected part to move it. Only what matters stays.</p>
+          
+        </div>
+<div class="story-step story-spacer" id="st-11" data-i="11" data-flow="h2">
+          <img class="story-inline" src="img/story/p2-text.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">12</span>
+          <h3>Add text</h3>
+          <p>Write on the video and change the font, colour and alignment.</p>
+          
+        </div>
+<div class="story-step story-spacer" id="st-12" data-i="12" data-flow="h2">
+          <img class="story-inline" src="img/story/p3-stickers.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">13</span>
+          <h3>Stickers</h3>
+          <p>Add stickers and emojis. Some are suggested from the buyer’s own review, so they can say what matters in one tap.</p>
+          <div class="story-new"><b>Stickers from real reviews</b><span>We analysed the comments buyers write most and turned them into stickers.</span></div>
+        </div>
+<div class="story-step story-spacer" id="st-13" data-i="13" data-flow="h2">
+          <img class="story-inline" src="img/story/p4-sound.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">14</span>
+          <h3>Sound</h3>
+          <p>One of the biggest problems in the videos we saw was background noise. With the sound tool the buyer can turn the original audio off, and the app also cleans it automatically, so the video sounds clearer and the quality goes up.</p>
+          <div class="story-new"><b>Automatic quality</b><span>Audio clean-up, stabilisation and framing, and auto trim apply on their own, with no extra step.</span></div>
+        </div>
+<div class="story-step story-spacer" id="st-14" data-i="14" data-flow="h2">
+          <img class="story-inline" src="img/story/p5-subs.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">15</span>
+          <h3>Subtitles</h3>
+          <p>Show captions and edit each line. A buyer watching without sound can still follow the review.</p>
+          
+        </div>
+</div>
+        </li>
+        <li class="story-step" id="st-15" data-i="15">
+          <img class="story-inline" src="img/story/s9-form-all.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <span class="story-n">16</span>
+          <h3>Back to the <span class="grad-text">form</span></h3>
+          <p>The three pieces of media return to the form as thumbnails and the tickets update. Posting shows the tickets the buyer earned.</p>
+          <div class="story-new"><b>Ship in phases</b><span>A basic camera first, to learn fast. Then, release by release, quick helps that improve videos with no extra effort.</span></div><div class="story-detail"><b>Smart entry</b><span>The next time, the camera opens on photo, because the guided video is already in.</span></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var steps = document.querySelectorAll('.story-step'), panels = document.querySelectorAll('.story-hp'), items = document.querySelectorAll('.story-phone > *'), now = document.getElementById('story-now');
+      var flow = Array.prototype.map.call(steps, function (s) { return s.dataset.flow || 'v'; });
+      var cycleTimer = 0;
+      function cycle(el) {
+        clearInterval(cycleTimer); cycleTimer = 0;
+        document.querySelectorAll('.mode-k').forEach(function (w) { w.classList.remove('hot'); });
+        if (!el || !el.classList.contains('story-cycle')) return;
+        var cy = el.querySelectorAll('.cy'), lz = el.querySelectorAll('.lz'), tag = el.querySelector('.lupa-tag'), n = 0, every = el.dataset.kind === 'lupa' ? 2400 : 1500;
+        function set(k) {
+          cy.forEach(function (c, i) { c.classList.toggle('on', i === k); });
+          lz.forEach(function (c, i) { c.classList.toggle('on', i === k); });
+          if (tag && cy[k]) tag.textContent = cy[k].dataset.label || '';
+          if (el.dataset.kind === 'cycle') document.querySelectorAll('.mode-k').forEach(function (w) { w.classList.toggle('hot', +w.dataset.k === k); });
+        }
+        set(0);
+        cycleTimer = setInterval(function () { n = (n + 1) % cy.length; set(n); }, every);
+      }
+      function show(a) {
+        items.forEach(function (m, k) {
+          var cls = m.dataset.kind === 'lupa' ? 'story-cycle story-lupa story-img ' + (m.dataset.variant || '') : (m.classList.contains('story-cycle') ? 'story-cycle story-img' : 'story-img');
+          if (k === a) cls += ' on';
+          else if (flow[k] !== 'v' && flow[k] === flow[a]) cls += k < a ? ' h-prev' : ' h-next';
+          else cls += k < a ? ' v-prev' : ' v-next';
+          m.className = cls;
+        });
+        cycle(items[a]);
+        steps.forEach(function (s, k) { s.classList.toggle('is-active', k === a); });
+        document.querySelectorAll('.story-hpanel').forEach(function (pn) {
+          var ps = pn.querySelectorAll('.story-hp'), dots = pn.querySelectorAll('.story-hdots i'), idx = -1;
+          ps.forEach(function (p, j) { if (+p.dataset.i === a) idx = j; });
+          dots.forEach(function (d, j) { d.classList.toggle('on', j === idx); d.classList.toggle('done', idx > -1 && j < idx); });
+          pn.classList.toggle('off', idx === -1);
+        });
+        panels.forEach(function (p) {
+          var k = +p.dataset.i, c = 'story-hp';
+          if (k === a) c += ' on'; else c += k < a ? ' hp-prev' : ' hp-next';
+          p.className = c;
+        });
+        now.textContent = ('0' + (a + 1)).slice(-2);
+      }
+      show(0);
+      var current = 0, ticking = false, lockUntil = 0, anim = 0;
+      function mid(i) { var r = steps[i].getBoundingClientRect(); return r.top + window.scrollY + r.height / 2 - window.innerHeight / 2; }
+      function sync() {
+        ticking = false;
+        if (anim) return;
+        var c = window.innerHeight / 2, idx = -1;
+        for (var i = 0; i < steps.length; i++) { var r = steps[i].getBoundingClientRect(); if (r.top <= c && r.bottom > c) { idx = i; break; } }
+        if (idx > -1 && idx !== current) { current = idx; show(idx); }
+      }
+      var calm = matchMedia('(prefers-reduced-motion: reduce)').matches, snapTimer = 0, lastY = window.scrollY, dir = 0;
+      function stop() { if (anim) { cancelAnimationFrame(anim); anim = 0; } }
+      /* One gentle, eased glide for every automatic move (snap, arrows, taps, sideways swipe) */
+      function glide(y) {
+        stop();
+        var from = window.scrollY, dist = y - from;
+        if (Math.abs(dist) < 3) return;
+        if (calm) { window.scrollTo(0, y); return; }
+        var dur = Math.max(520, Math.min(900, Math.abs(dist) * 0.5 + 380)), t0 = 0;
+        lockUntil = performance.now() + dur + 40;
+        function tick(t) {
+          if (!t0) t0 = t;
+          var p = Math.min(1, (t - t0) / dur), k = 1 - Math.pow(1 - p, 4);
+          window.scrollTo(0, from + dist * k);
+          if (p < 1) anim = requestAnimationFrame(tick); else { anim = 0; dir = 0; lastY = window.scrollY; }
+        }
+        anim = requestAnimationFrame(tick);
+      }
+      ['touchstart', 'mousedown', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function () { if (anim && performance.now() > 0) { stop(); lockUntil = 0; } }, { passive: true }); });
+      /* When the scrolling pauses, settle on the nearest step so the text always lands in place */
+      function snap() {
+        if (anim || performance.now() < lockUntil) return;
+        var c = window.innerHeight / 2, i = -1, f = 0;
+        for (var k = 0; k < steps.length; k++) { var r = steps[k].getBoundingClientRect(); if (r.top <= c && r.bottom > c) { i = k; f = (c - r.top) / r.height; break; } }
+        if (i < 0 || dir === 0) return;
+        if (Math.abs(window.scrollY - mid(i)) < 14) { dir = 0; return; }
+        var t = i;
+        if (dir > 0 && f > 0.2 && i + 1 < steps.length) t = i + 1;
+        else if (dir < 0 && f < 0.8 && i > 0) t = i - 1;
+        dir = 0;
+        glide(mid(t));
+      }
+      window.addEventListener('scroll', function () {
+        var y = window.scrollY;
+        if (!anim) { if (y !== lastY) dir = y > lastY ? 1 : -1; clearTimeout(snapTimer); snapTimer = setTimeout(snap, 220); }
+        lastY = y;
+        if (!ticking) { ticking = true; requestAnimationFrame(sync); }
+      }, { passive: true });
+      window.addEventListener('resize', sync);
+      sync();
+      function goTo(i) { if (i >= 0 && i < steps.length) { current = i; show(i); glide(mid(i)); } }
+      document.querySelector('.sn-prev').addEventListener('click', function () { goTo(current - 1); });
+      document.querySelector('.sn-next').addEventListener('click', function () { goTo(current + 1); });
+      /* Tap a segment at the top of a group to jump to that step */
+      document.querySelectorAll('.story-hpanel').forEach(function (pn) {
+        var ps = pn.querySelectorAll('.story-hp');
+        pn.querySelectorAll('.story-hdots i').forEach(function (d, j) {
+          d.setAttribute('role', 'button'); d.setAttribute('tabindex', '0'); d.setAttribute('aria-label', 'Go to step ' + (j + 1));
+          function go() { if (ps[j]) goTo(+ps[j].dataset.i); }
+          d.addEventListener('click', go);
+          d.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        });
+      });
+      /* Vertical wheel / trackpad inside the story: one step per gesture, however hard or long the swipe */
+      var wheelGate = false, wheelTimer = 0, sec = document.getElementById('s-story');
+      window.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || Math.abs(e.deltaY) < 1) return;
+        var sr = sec.getBoundingClientRect(), mid0 = window.innerHeight / 2;
+        if (sr.top > mid0 || sr.bottom < mid0) return;
+        var d = e.deltaY > 0 ? 1 : -1, next = current + d;
+        if (next < 0 || next >= steps.length) { return; }
+        var atEdge = Math.abs(window.scrollY - mid(current)) > window.innerHeight * 0.6;
+        if (atEdge) return;
+        e.preventDefault();
+        clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(function () { wheelGate = false; }, 160);
+        if (wheelGate || anim || performance.now() < lockUntil) return;
+        wheelGate = true;
+        dir = 0;
+        goTo(next);
+      }, { passive: false });
+      /* A sideways swipe or horizontal wheel moves one step inside a group */
+      window.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaX) < Math.abs(e.deltaY) * 1.2 || Math.abs(e.deltaX) < 8) return;
+        if (flow[current] === 'v') return;
+        e.preventDefault();
+        if (anim || performance.now() < lockUntil) return;
+        var next = current + (e.deltaX > 0 ? 1 : -1);
+        if (next < 0 || next >= steps.length || flow[next] !== flow[current]) return;
+        goTo(next);
+      }, { passive: false });
+    })();
+  </script>
+  <script>
+    /* Animated dot grid behind the story: a Game of Life that advances while you scroll */
+    (function () {
+      var section = document.getElementById('s-story'), cv = section.querySelector('.story-bg');
+      var ctx = cv.getContext('2d'), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var GAP = 14, cols = 0, rows = 0, w = 0, h = 0, dpr = 1, cur, nxt, glow, visible = false, raf = 0, lastGen = 0, acc = 0, lastY = window.scrollY;
+      function size() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = cv.clientWidth; h = cv.clientHeight; cv.width = w * dpr; cv.height = h * dpr;
+        cols = Math.ceil(w / GAP) + 1; rows = Math.ceil(h / GAP) + 1;
+        cur = new Uint8Array(cols * rows); nxt = new Uint8Array(cols * rows); glow = new Float32Array(cols * rows);
+        seed(0.13);
+      }
+      function seed(p) { for (var i = 0; i < cur.length; i++) if (Math.random() < p) cur[i] = 1; }
+      function gen() {
+        var alive = 0;
+        for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) {
+          var n = 0;
+          for (var dy = -1; dy <= 1; dy++) for (var dx = -1; dx <= 1; dx++) {
+            if (!dx && !dy) continue;
+            n += cur[((y + dy + rows) % rows) * cols + ((x + dx + cols) % cols)];
+          }
+          var c = cur[y * cols + x], v = (c && (n === 2 || n === 3)) || (!c && n === 3) ? 1 : 0;
+          nxt[y * cols + x] = v; alive += v;
+        }
+        var t = cur; cur = nxt; nxt = t;
+        // keep it alive: a few sparks every generation, a fresh scatter if it dies down
+        for (var k = 0; k < 5; k++) cur[(Math.random() * cur.length) | 0] = 1;
+        if (alive < cur.length * 0.025) seed(0.1);
+      }
+      var COLORS = [[195, 59, 216], [240, 86, 106], [242, 153, 74]];
+      function colorAt(f) { var s = f * 2, i = Math.min(1, Math.floor(s)), t = s - i, a = COLORS[i], b = COLORS[i + 1]; return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+      function draw() {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+        for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) {
+          var i = y * cols + x, g = glow[i] += ((cur[i] ? 1 : 0) - glow[i]) * 0.2, px = x * GAP + GAP / 2, py = y * GAP + GAP / 2;
+          ctx.fillStyle = 'rgba(21,21,21,0.07)'; ctx.beginPath(); ctx.arc(px, py, 1.1, 0, 6.2832); ctx.fill();
+          if (g > 0.03) { var c = colorAt(Math.min(1, px / w)); ctx.fillStyle = 'rgba(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ',' + (0.5 * g).toFixed(3) + ')'; ctx.beginPath(); ctx.arc(px, py, 1.2 + 1.5 * g, 0, 6.2832); ctx.fill(); }
+        }
+      }
+      function frame(t) {
+        raf = 0; if (!visible) return;
+        if (!still && t - lastGen > 520) { gen(); lastGen = t; }
+        draw(); raf = requestAnimationFrame(frame);
+      }
+      function start() { if (!raf && visible) raf = requestAnimationFrame(frame); }
+      window.addEventListener('scroll', function () {
+        if (!visible || still) return;
+        acc += Math.abs(window.scrollY - lastY); lastY = window.scrollY;
+        while (acc > 70) { gen(); acc -= 70; }
+      }, { passive: true });
+      new IntersectionObserver(function (e) { visible = e[0].isIntersecting; start(); }).observe(section);
+      window.addEventListener('resize', function () { size(); });
+      size(); draw();
+    })();
+  </script>
+</section>
+
+<section id="s-form" class="slide grey" hidden>
+  <div class="wrap">
+    <p class="kicker">05.</p>
+    <h2 class="title">The review form</h2>
+    <p class="lede">The entry point to the camera. One place for rating, media and comment, with the reward for each one visible before the buyer starts.</p>
+    <div class="screens device">
+        <figure><img src="img/form/form-01-start.webp?v=2" alt="Review form: Rating, media and comment, each with its reward" loading="lazy" width="540" height="1174"><figcaption><b>Start</b>Rating, media and comment, each with its reward</figcaption></figure>
+        <figure><img src="img/form/form-02-guided.webp?v=2" alt="Review form: The tickets for the rest update on screen" loading="lazy" width="540" height="1174"><figcaption><b>Guided video added</b>The tickets for the rest update on screen</figcaption></figure>
+        <figure><img src="img/form/form-03-photo.webp?v=2" alt="Review form: Media can be mixed: video first, then a photo" loading="lazy" width="540" height="1174"><figcaption><b>Photo added</b>Media can be mixed: video first, then a photo</figcaption></figure>
+        <figure><img src="img/form/form-04-all-three.webp?v=2" alt="Review form: Guided video, video and photo in one review" loading="lazy" width="540" height="1174"><figcaption><b>Three pieces of media</b>Guided video, video and photo in one review</figcaption></figure>
+    </div>
+    <p class="scroll-hint">Visual redesign for this portfolio. Flow and content follow the shipped experience.</p>
+  </div>
+</section>
+
+<section id="s-camera" class="slide" hidden>
+  <div class="wrap">
+    <p class="kicker">05.</p>
+    <span class="release">Release 1 · Guided capture</span>
+    <div class="cam-head">
+      <h2 class="title">One camera, <em>three ways</em> to review</h2>
+    </div>
+    <div class="phones cam-stage">
+      <div>
+        <img class="phone-shot" src="img/camera/free-video.webp?v=12" alt="Camera in free video, ready to record" loading="lazy" width="540" height="1174">
+        <p class="cap">Free video</p>
+        <p>Record continuously or in parts, or upload from the gallery.</p>
+      </div>      <div>
+        <img class="phone-shot" src="img/camera/guided.webp?v=10" alt="Camera in guided video: take 1 of 3 with an on-screen prompt" loading="lazy" width="540" height="1174">
+        <p class="cap">Guided video</p>
+        <p>Three takes: the full product, the details, the product in use.</p>
+      </div>      <div>
+        <img class="phone-shot" src="img/camera/photo.webp?v=12" alt="Camera in photo mode" loading="lazy" width="540" height="1174">
+        <p class="cap">Photo</p>
+        <p>Take a photo, or pick one from the gallery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" hidden>
+  <div class="wrap split reverse">
+    <div class="media light"><div class="ph"><b>Image · Controls and gestures</b>Annotated camera screen: flash, timer, flip, tap to focus, pinch to zoom, framing guides while recording.</div></div>
+    <div>
+      <p class="kicker">05.</p>
+      <h2 class="title">Details that make it work</h2>
+      <p><strong>Focused recording.</strong> While recording, tabs and controls hide and framing guides appear.</p>
+      <p><strong>Flash on both cameras.</strong> The rear camera uses the torch; the front camera lights up the screen.</p>
+      <p><strong>Timer for hands-free takes.</strong> The camera locks during the countdown so a stray tap can’t break it.</p>
+      <p><strong>Settings that persist.</strong> Flash and front/rear camera stay the same across modes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" hidden>
+  <div class="wrap split">
+    <div>
+      <p class="kicker">05.</p>
+      <h2 class="title">What we did differently</h2>
+      <p class="lede">We took guided capture from the quality model, and kept the flow short for buyers in a hurry.</p>
+      <ol class="diff">
+        <li><span>1</span><p><strong>Our own camera inside the review flow.</strong> It replaced the phone’s default camera with one consistent experience on iOS and Android.</p></li>
+        <li><span>2</span><p><strong>A guided mode.</strong> Three short takes, each with an on-screen prompt: the full product, the details, the product in use.</p></li>
+        <li><span>3</span><p><strong>Three modes for three profiles.</strong> Guided video, free video and photo, in one camera.</p></li>
+        <li><span>4</span><p><strong>Automatic quality.</strong> Audio clean-up, stabilisation and framing, and auto trim apply on their own. Every video gets better with no extra step for the buyer.</p></li>
+        <li><span>5</span><p><strong>Stickers from real reviews.</strong> We analysed the comments buyers write most often and turned them into stickers, so they can say what matters in one tap.</p></li>
+        <li><span>6</span><p><strong>Ship in phases.</strong> A basic camera first, to learn fast. Then, release by release, quick helps that improve videos with no extra effort for the buyer.</p></li>
+      </ol>
+    </div>
+    <div class="media light">
+      <div class="ph"><b>Image · Benchmark board</b>2–3 competitor screens side by side, with your notes on guidance and capture.</div>
+    </div>
+  </div>
+</section>
+
+<section id="s-quick" class="slide" hidden>
+  <div class="wrap">
+    <span class="release two">Release 2 · Better videos, no extra effort · Full rollout</span>
+    <h2 class="title">Quick helps while recording</h2>
+    <p class="lede">The second release, planned from day one, helps buyers in the situations they run into most, with a hint in the moment.</p>
+    <div class="qs">
+      <div class="qs-shot">
+        <img class="phone-shot" src="img/camera/too-dark.webp?v=12" alt="Camera with the hint “Find a spot with more light” over a dark video" loading="lazy" width="540" height="1174">
+        <p class="cap">Feedback while recording</p>
+      </div>
+      <div class="qs-info">
+        <div class="card">
+          <h3>Camera</h3>
+          <ul>
+            <li><b>Quality feedback</b> when it’s too dark, the camera is static or the product isn’t visible</li>
+            <li><b>Autofocus</b><span class="auto">Auto</span></li>
+            <li><b>Manual portrait mode</b></li>
+          </ul>
+        </div>
+        <p class="qs-note">Too dark, static camera or product not visible: a quick hint in the moment, before the buyer sends the video.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s-preview" class="slide grey" hidden>
+  <div class="wrap">
+    <span class="release two">Release 2 · Better videos, no extra effort · Full rollout</span>
+    <h2 class="title">The preview: simple edits after</h2>
+    <p class="lede">Before posting, buyers can polish the video with a few tools, and the app improves it on its own.</p>
+    <div class="qs qs-three">
+      <div class="qs-shot">
+        <img class="phone-shot" src="img/camera/edit-preview.webp?v=9" alt="Preview with trim, text, stickers, mute and subtitles tools" loading="lazy" width="540" height="1174">
+        <p class="cap">Edit in preview</p>
+      </div>
+      <div class="qs-shot">
+        <div class="auto-panel">
+          <span class="auto-k">Applied automatically</span>
+          <ul>
+            <li><b>Audio enhancement</b><span>Reduces background noise and evens out the voice and volume.</span></li>
+            <li><b>Stabilisation and framing</b><span>Smooths shaky footage and keeps the product as the focus.</span></li>
+            <li><b>Auto trim</b><span>Cuts dead moments at the start or end, like silence or a covered lens.</span></li>
+          </ul>
+        </div>
+        <p class="cap">Automatic improvements</p>
+      </div>
+      <div class="qs-info">
+        <div class="card">
+          <h3>Preview</h3>
+          <ul>
+            <li><b>Trim</b>, <b>text</b> and <b>stickers</b></li>
+            <li><b>Mute</b> the video, or add <b>subtitles</b></li>
+            <li><b>Audio enhancement</b>, reduces background noise<span class="auto">Auto</span></li>
+            <li><b>Stabilisation and framing</b><span class="auto">Auto</span></li>
+            <li><b>Auto trim</b></li>
+          </ul>
+        </div>
+        <p class="qs-note">No extra steps for the buyer, and relevant content is never changed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · RESULTS + LEARNINGS -->
+<section class="chapter">
+  <div class="wrap">
+    <p class="num">06.</p>
+    <h2>Results &amp; learnings</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+        <div class="rs">
+      <div class="rs-c">
+        <h3 class="rs-h">More video in <span class="grad-text">every review</span></h3>
+        <p class="rs-p">In the A/B, the new camera moved more reviews to include a video, and buyers who recorded, recorded more. After launch, video kept growing. <span class="rs-hint">Hover a card for the detail.</span></p>
+      </div>
+      <div class="rs-t c1 m" tabindex="0" style="--h:295px"><div class="rs-in"><div class="rs-f"><span class="rs-k">Metric</span><b class="rs-v">16% → <span class="gr">19%</span></b><span class="rs-s">of published reviews now include a video.</span><span class="rs-src">A/B · Android</span></div><div class="rs-b"><div class="rs-r"><span class="rs-k">Metric</span><b class="rs-v">16% → <span class="gr">19%</span></b><span class="rs-s">of published reviews now include a video.</span></div><b>+2.6 pp</b>Control vs. new camera in the A/B. 144,179 vs 41,193 reviews. Android, 26 Aug – 6 Sep 2026.</div></div></div>
+      <div class="rs-t c2 i" tabindex="0" style="--h:360px"><div class="rs-in"><div class="rs-f"><span class="rs-k">Insight</span><b class="rs-v">Guidance gets more buyers to record</b><span class="rs-src">Guided mode</span></div><div class="rs-b"><div class="rs-r"><span class="rs-k">Insight</span><b class="rs-v">Guidance gets more buyers to record</b></div><b>98%</b>of guided sessions end in a posted video.</div></div></div>
+      <div class="rs-t c3 m top" tabindex="0" style="--h:257px"><div class="rs-in"><div class="rs-f"><span class="rs-k">Metric</span><b class="rs-v">+47%</b><span class="rs-s">more videos per review.</span><span class="rs-src">A/B · Android</span></div><div class="rs-b"><div class="rs-r"><span class="rs-k">Metric</span><b class="rs-v">+47%</b><span class="rs-s">more videos per review.</span></div><b>Relative increase</b>Videos per review went from 0.165 in the control to 0.242 with the new camera. Buyers who record, record more than one video.</div></div></div>
+      <div class="rs-t c4 i" tabindex="0" style="--h:317px"><div class="rs-in"><div class="rs-f"><span class="rs-k">Insight</span><b class="rs-v">Buyers who record, record more</b><span class="rs-src">A/B · Android</span></div><div class="rs-b"><div class="rs-r"><span class="rs-k">Insight</span><b class="rs-v">Buyers who record, record more</b></div><b>More than one clip</b>The same buyers who record also add more pieces of video to the review.</div></div></div>
+      <div class="rs-t c5 m top" tabindex="0" style="--h:295px"><div class="rs-in"><div class="rs-f"><span class="rs-k">Metric</span><b class="rs-v">81%</b><span class="rs-s">of buyers who upload a video go on to publish the review.</span><span class="rs-src">Funnel analysis</span></div><div class="rs-b"><div class="rs-r"><span class="rs-k">Metric</span><b class="rs-v">81%</b><span class="rs-s">of buyers who upload a video go on to publish the review.</span></div><b>Once the video is in</b>Funnel analysis of the buyers who uploaded a video, shared at the 25 Sep review of the A/B.</div></div></div>
+      <div class="rs-t c6 i" tabindex="0" style="--h:355px"><div class="rs-in"><div class="rs-f"><span class="rs-k">Insight</span><b class="rs-v">Helps come from real problems</b><span class="rs-src">3,000 videos</span></div><div class="rs-b"><div class="rs-r"><span class="rs-k">Insight</span><b class="rs-v">Helps come from real problems</b></div><b>From 3,000 videos</b>Static camera 9.7%, shaky footage 5.2%, too dark 4.2%, product not visible 1.7%. Release 2 adds a help for each.</div></div></div>
+      
+    </div>
+
+      <script>
+    /* Each card's open height hugs its content: measure the back face at the open width */
+    (function () {
+      function fit() {
+        var ts = document.querySelectorAll('.rs-t');
+        ts.forEach(function (t) {
+          t.classList.add('measure');
+          t.style.setProperty('--h', Math.ceil(t.querySelector('.rs-in').getBoundingClientRect().height) + 'px');
+          t.classList.remove('measure');
+        });
+      }
+      fit();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+      window.addEventListener('resize', fit);
+    })();
+  </script>
+    <div class="mt" hidden>
+      <div class="mt-intro"><p><strong>How to read this.</strong> We measured to answer two questions. Each card says what it measures, the change, and what it tells us. Each source uses its own cut and calculation, so figures from different sources are shown separately and not combined.</p></div>
+<div class="mt-group"><div class="mt-gh"><span class="mt-n">1</span><div><h3>Did video go up?</h3><p>The goal: more reviews with video. Control vs. the new camera.</p></div></div><div class="mt-grid "><div class="mt-card"><h4>Reviews with video</h4><span class="mt-d up">+2.6 pp</span><div class="pbs"><div class="pb-h"><span></span><span class="pb-k c">Control</span><span class="pb-k n">New camera</span></div><div class="pb"><span class="pb-r"><span class="pb-t c"><i style="width:45.7%"></i></span><b>16%</b></span><span class="pb-r"><span class="pb-t n"><i style="width:54.3%"></i></span><b>19%</b></span></div></div><p class="mt-tells"><b>What it tells us.</b> More published reviews include a video. This was the goal of the project.</p><p class="mt-src">A/B · Android · 26 Aug – 6 Sep 2026 · 144,179 vs 41,193 reviews</p></div><div class="mt-card"><h4>Videos per review</h4><div class="mt-val">+47%</div><span class="mt-d up">relative</span><p class="mt-tells"><b>What it tells us.</b> Buyers who record, record more than one video.</p><p class="mt-src">A/B · Android · 26 Aug – 6 Sep 2026</p></div><div class="mt-card"><h4>Reviews with any media</h4><span class="mt-d flat">+1 pp</span><div class="pbs"><div class="pb-h"><span></span><span class="pb-k c">Control</span><span class="pb-k n">New camera</span></div><div class="pb"><span class="pb-r"><span class="pb-t c"><i style="width:82.9%"></i></span><b>29%</b></span><span class="pb-r"><span class="pb-t n"><i style="width:85.7%"></i></span><b>30%</b></span></div></div><p class="mt-tells"><b>What it tells us.</b> Reviews with some kind of media grew slightly. The main change was in video.</p><p class="mt-src">A/B · Android · 26 Aug – 6 Sep 2026 · 256,684 vs 65,151 reviews</p></div></div></div><div class="mt-group" hidden><div class="mt-gh"><span class="mt-n">2</span><div><h3>How do buyers use the camera?</h3><p>Where they choose, where they finish and where they leave.</p></div></div><div class="mt-grid "><div class="mt-card wide"><h4>Which mode do buyers choose?</h4><div class="seg"><i class="sg0" style="width:39.04%" title="Photo"></i><i class="sg1" style="width:21.02%" title="Guided video"></i><i class="sg2" style="width:17.02%" title="Free video"></i><i class="sg3" style="width:21.02%" title="Left before choosing"></i><i class="sg4" style="width:1.90%" title="More than one mode"></i></div><ul class="seg-leg"><li><i class="sg0"></i><span>Photo</span><b>39% · 138,420</b></li><li><i class="sg1"></i><span>Guided video</span><b>21% · 74,071</b></li><li><i class="sg2"></i><span>Free video</span><b>17% · 60,136</b></li><li><i class="sg3"></i><span>Left before choosing</span><b>21% · 73,699</b></li><li><i class="sg4"></i><span>More than one mode</span><b>1.9% · 6,858</b></li></ul><p class="mt-tells"><b>What it tells us.</b> Photo is still the most chosen mode. Guided and free video together reach about four in ten sessions. One in five leaves before choosing.</p><p class="mt-src">353,184 camera sessions · new camera · 26 Aug – 6 Sep 2026 · 93,498 buyers used the camera (26% of those exposed)</p></div>
+<div class="mt-card wide"><h4>Guided video: where buyers drop</h4><div class="fn"><div class="fn-row"><span class="fn-l">Starts recording</span><span class="fn-track"><i style="width:100%"></i></span><span class="fn-v w">100% · 106,732</span></div><div class="fn-row hot"><span class="fn-l">Completes the three scenes</span><span class="fn-track"><i style="width:75%"></i></span><span class="fn-v w">75% · 80,440</span></div><div class="fn-row"><span class="fn-l">Between scenes and upload</span><span class="fn-track"><i style="width:69%"></i></span><span class="fn-v w">69% · 73,814</span></div><div class="fn-row"><span class="fn-l">Video uploaded</span><span class="fn-track"><i style="width:68%"></i></span><span class="fn-v w">68% · 72,719</span></div></div><p class="mt-tells"><b>What it tells us.</b> One in four sessions that start recording doesn’t complete the three scenes. After that, about nine in ten upload. The friction is in capturing, not in finishing.</p><p class="mt-src">106,732 guided sessions · same window</p></div><div class="mt-card"><h4>Guided uploaded when used alone</h4><div class="mt-val">98%</div><span class="mt-d up">72,533 of 74,071 sessions</span><p class="mt-tells"><b>What it tells us.</b> Buyers who stay in guided mode almost always finish.</p><p class="mt-src">Same window</p></div><div class="mt-card"><h4>Guided uploaded when mixed with another mode</h4><div class="mt-val">2.9%</div><span class="mt-d flat">186 of 6,369 sessions</span><p class="mt-tells"><b>What it tells us.</b> Buyers who try guided and then switch tend to post from photo or free video instead.</p><p class="mt-src">Same window</p></div><div class="mt-card"><h4>Time from opening the camera to uploading</h4><div class="mt-val">40 s</div><span class="mt-d flat">average</span><p class="mt-tells"><b>What it tells us.</b> The whole recording flow is short.</p><p class="mt-src">Same window. Closing without upload averages 44 s, but 96% of those close almost immediately.</p></div><div class="mt-card"><h4>Buyers who post after uploading a video</h4><div class="mt-val">81%</div><span class="mt-d up">publish the review</span><p class="mt-tells"><b>What it tells us.</b> Once the video is uploaded, buyers almost always post.</p><p class="mt-src">Funnel analysis · biweekly 25 Sep</p></div></div></div><div class="mt-group"><div class="mt-gh"><span class="mt-n">2</span><div><h3>What have we improved?</h3><p>Where we started, side by side with where we are now.</p></div></div>
+      <div class="cps"><div class="cp"><div class="cp-t"><h4>Reviews with video</h4><span class="mt-d up">Up</span></div><div class="cp-b"><span class="cp-k">Before · Share of reviews, before launch</span><span class="pb-t c"><i style="width:50.6%"></i></span><b>5.06%</b></div><div class="cp-a"><span class="cp-k n">Now · Share of reviews, August</span><span class="pb-t n"><i style="width:73.0%"></i></span><b>7.3%</b></div><p class="mt-src">Baseline (10 Jun – 6 Jul) vs. monthly penetration. Different cuts, shown side by side.</p></div><div class="cp"><div class="cp-t"><h4>Reviews with video · A/B</h4><span class="mt-d up">+2.6 pp</span></div><div class="cp-b"><span class="cp-k">Before · Control (previous flow)</span><span class="pb-t c"><i style="width:64.0%"></i></span><b>16%</b></div><div class="cp-a"><span class="cp-k n">Now · New camera</span><span class="pb-t n"><i style="width:76.0%"></i></span><b>19%</b></div><p class="mt-src">A/B · Android · 26 Aug – 6 Sep 2026</p></div><div class="cp"><div class="cp-t"><h4>Video penetration, month on month</h4><span class="mt-d up">+0.6 pp</span></div><div class="cp-b"><span class="cp-k">Before · July</span><span class="pb-t c"><i style="width:67.0%"></i></span><b>6.7%</b></div><div class="cp-a"><span class="cp-k n">Now · August</span><span class="pb-t n"><i style="width:73.0%"></i></span><b>7.3%</b></div><p class="mt-src">Penetration, Jul → Aug 2026</p></div><div class="cp"><div class="cp-t"><h4>Reviews with any media, month on month</h4><span class="mt-d up">+0.2 pp</span></div><div class="cp-b"><span class="cp-k">Before · July</span><span class="pb-t c"><i style="width:78.0%"></i></span><b>15.6%</b></div><div class="cp-a"><span class="cp-k n">Now · August</span><span class="pb-t n"><i style="width:79.0%"></i></span><b>15.8%</b></div><p class="mt-src">Penetration, Jul → Aug 2026</p></div><div class="cp"><div class="cp-t"><h4>Buyers who can use the new camera</h4><span class="mt-d flat">Everyone</span></div><div class="cp-b"><span class="cp-k">Before · During the A/B</span><span class="pb-t c"><i style="width:18.0%"></i></span><b>18%</b></div><div class="cp-a"><span class="cp-k n">Now · Since 23 Sep</span><span class="pb-t n"><i style="width:100.0%"></i></span><b>100%</b></div><p class="mt-src">Cumulative split 82 / 18 in the A/B; 100% from 23 Sep, other countries from 28 Sep</p></div></div>
+      <div class="mt-card wide pfx"><h4>Problems we found in published videos, and what we built for each</h4><div class="pfs"><div class="pf"><div class="pf-p"><b>Static camera</b><span>9.7% of sampled videos</span></div><span class="pf-a">→</span><div class="pf-f">Hint while recording: “Move the camera a little”</div></div><div class="pf"><div class="pf-p"><b>Shaky footage</b><span>5.2% of sampled videos</span></div><span class="pf-a">→</span><div class="pf-f">Automatic stabilisation and framing</div></div><div class="pf"><div class="pf-p"><b>Too dark</b><span>4.2% of sampled videos</span></div><span class="pf-a">→</span><div class="pf-f">Hint while recording: “Find a spot with more light”</div></div><div class="pf"><div class="pf-p"><b>Product not visible</b><span>1.7% of sampled videos</span></div><span class="pf-a">→</span><div class="pf-f">Hint while recording: “The product isn’t visible”</div></div></div><p class="mt-tells"><b>What it tells us.</b> We designed the quick helps around the most common problems, a still or shaky camera first.</p><p class="mt-src">Sample of 3,000 videos before launch. A video can have more than one situation.</p></div></div>
+    </div>
+
+    <p class="label" style="margin-top:72px" hidden>What we learned, and what comes next</p>
+    <div class="los" hidden><div class="lo"><div class="lo-l"><span class="lo-k">We learned</span><h3>Easy video gets recorded</h3><p>When the camera tells buyers what to show, more of them record, and they record more: videos per review went up 47%.</p></div><div class="lo-a" aria-hidden="true">→</div><div class="lo-n"><span class="opp-p now">Next</span><h3>Photo and video in one review</h3><p>A photo shows what the product looks like; a video shows how it works. Make adding both just as easy.</p></div></div><div class="lo"><div class="lo-l"><span class="lo-k">We learned</span><h3>Guided video gets posted</h3><p>Buyers who stay in guided mode almost always finish: it is posted in 98% of the sessions that use only that mode.</p></div><div class="lo-a" aria-hidden="true">→</div><div class="lo-n"><span class="opp-p now">Next</span><h3>Inside the guided flow</h3><p>One in four sessions that start recording doesn’t complete the three takes. That is where to look first.</p></div></div><div class="lo"><div class="lo-l"><span class="lo-k">We learned</span><h3>Ship basic, then help</h3><p>A simple first release gave us real videos to learn from, and a clear base for the quick helps.</p></div><div class="lo-a" aria-hidden="true">→</div><div class="lo-n"><span class="opp-p soon">Soon</span><h3>Measure where buyers drop</h3><p>Instrument the form from day one, so we see where they leave and not only what got published.</p></div></div><div class="lo"><div class="lo-l"><span class="lo-k">We learned</span><h3>The A/B measured the whole package</h3><p>We proved the new camera works, but we couldn’t isolate the effect of each piece.</p></div><div class="lo-a" aria-hidden="true">→</div><div class="lo-n"><span class="opp-p soon">Soon</span><h3>Test the pieces separately</h3><p>Isolating guided video from free video will show what drives the result.</p></div></div></div>
+
+    <p class="label" style="margin-top:80px" hidden>What we learned as a team</p>
+    <div class="tm" hidden>
+      <div class="tm-col"><h3 class="tm-h">What worked</h3><div class="tm-card"><span class="tm-n">01</span><h3>Ship basic, then help</h3><p>A simple first release gave us real videos to learn from, and a clear base for the quick helps.</p></div><div class="tm-card"><span class="tm-n">02</span><h3>Learn from real videos</h3><p>After launch, we reviewed a sample of published videos to see what buyers run into most: a static camera, shaky footage or low light. The second release adds quick, automatic helps for those moments. <span class="tbc">TBC: confirm the analysis helped prioritise the helps</span></p><aside class="ai" style="margin-top:16px"><span class="ai-chip">✦ AI-native</span><p><strong>Video review with AI.</strong> AI helped us classify the sample of published videos by situation, so we could see patterns at scale. <span class="tbc">TBC</span></p></aside></div><div class="tm-card"><span class="tm-n">03</span><h3>Listen to what buyers already say</h3><p>We took the comments buyers had already left and analysed them with AI to find what they mention most. That became the stickers of the second release.</p></div></div>
+      <div class="tm-col"><h3 class="tm-h">What we would do next</h3><div class="tm-card"><span class="tm-n">04</span><h3>Measure where buyers drop</h3><p>Instrument the form from day one, so we see where they leave and not only what got published.</p></div><div class="tm-card"><span class="tm-n">05</span><h3>Test the pieces separately</h3><p>The A/B measured the whole package. Isolating guided video from free video will show what drives the result.</p></div><div class="tm-card"><span class="tm-n">06</span><h3>Look inside the guided flow</h3><p>Most drop-off now happens before buyers finish the three takes. That is where we would look next.</p></div><div class="tm-card"><span class="tm-n">07</span><h3>Photo and video in one review</h3><p>A photo shows what the product looks like; a video shows how it works. Make adding both just as easy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="end">
+  <div class="end-grid" aria-hidden="true"></div>
+  <div class="wrap end-in">
+    <div class="end-top" hidden>
+      <span class="end-pill"><i class="end-ic" aria-hidden="true">✦</i><b>María Paula León López · Product Designer</b></span>
+      <a class="end-pill end-mail" href="mailto:marialeon.lop@gmail.com"><i class="end-ic" aria-hidden="true">✉</i><b>marialeon.lop@gmail.com</b></a>
+    </div>
+    <h2>Thanks for<br><span class="grad-text">scrolling.</span></h2>
+    <a class="next" href="lives.html"><i class="end-arrow" aria-hidden="true">→</i><span>Next case · Live shopping</span></a>
+    <a class="pbtn pbtn-l" href="../prototype/index.html">Try the prototype<i aria-hidden="true">→</i></a>
+    <p class="end-sub">Let’s talk about the next one.</p>
+  </div>
+  <div class="end-phones" aria-hidden="true">
+    <img class="ep ep1" src="img/story/s9-form-all.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+    <img class="ep ep2" src="img/story/s9-preview-all.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.chapter h2').forEach(function(h){var t=h.textContent.trim().split(' ');if(t.length<2)return;var l=t.pop();h.innerHTML=t.join(' ').replace(/&/g,'&amp;')+' <span class="grad-text">'+l+'</span>';});
+</script>
+</body>
+</html>

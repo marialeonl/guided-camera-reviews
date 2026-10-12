@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color Palette · Portfolio</title>
+<style>
+/* Self-contained palette page: every token is defined here (mirrors tokens.css). */
+:root{
+  --c-ink:#151515; --c-ink-soft:#5e5e5e; --c-ink-muted:#767676;
+  --c-line:#e8e8e8; --c-line-strong:#8f8f8f; --c-surface-2:#f5f5f6; --c-surface:#ffffff;
+  --c-night:#0c0c0c; --c-night-2:#1c1c1c; --c-night-3:#2a2a2a; --c-glass:rgba(255,255,255,.14);
+  --c-on-dark:#ffffff; --c-on-dark-soft:rgba(255,255,255,.72);
+  --c-accent:#f2994a; --c-accent-strong:#ad5a1a; --c-accent-tint:#fef0e4;
+  --c-coral:#f0566a; --c-coral-strong:#c9304a; --c-coral-tint:#fde8eb;
+  --c-purple:#c33bd8; --c-purple-strong:#b02fc4; --c-purple-tint:#f8e9fb;
+  --c-orange:#f2994a; --c-orange-strong:#ad5a1a; --c-orange-tint:#fef0e4;
+  --c-grad:linear-gradient(90deg,#c33bd8,#f0566a 55%,#f2994a);
+  --c-blue:#6ea1c5; --c-blue-strong:#3a729c; --c-blue-tint:#eaf2f8;
+  --c-green:#b9e28c; --c-green-strong:#3f7a1c; --c-green-tint:#f2faea;
+  --c-success:#3f7a1c; --c-warning:#f5c043; --c-error:#d63a40;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--c-surface);color:var(--c-ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:56px 24px 80px}
+h1{margin:0;font-size:clamp(34px,5vw,52px);letter-spacing:-.035em;line-height:1.05}
+h1 span{background:var(--c-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:62ch;color:var(--c-ink-soft);margin:14px 0 0}
+h2{margin:56px 0 6px;font-size:24px;letter-spacing:-.02em}
+h2 + p{margin:0 0 20px;color:var(--c-ink-soft)}
+h3.sub{margin:28px 0 12px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--c-ink-muted)}
+.ladder{display:grid;gap:10px;margin-top:28px}
+.rung{display:grid;grid-template-columns:44px 230px 1fr;gap:16px;align-items:center;padding:14px 16px;border:1px solid var(--c-line);border-radius:16px}
+.rung .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--c-surface-2)}
+.rung b{font-size:15px}
+.rung > span:last-child{color:var(--c-ink-soft);font-size:14.5px}
+.rung i{display:inline-block;width:18px;height:18px;border-radius:6px;vertical-align:-4px;margin-right:8px;border:1px solid var(--c-line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.sw{border:1px solid var(--c-line);border-radius:16px;overflow:hidden;background:var(--c-surface)}
+.sw .chip{height:96px;display:flex;align-items:flex-end;padding:10px 12px;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace}
+.sw .meta{padding:12px}
+.sw .meta b{display:block;font-size:14px}
+.sw .meta code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--c-ink-soft)}
+.sw .meta p{margin:6px 0 0;font-size:13px;color:var(--c-ink-soft);line-height:1.4}
+.ratio{display:inline-block;margin-top:6px;font:600 11px ui-monospace,Menlo,monospace;padding:2px 7px;border-radius:999px;background:var(--c-surface-2);color:var(--c-ink-soft)}
+.family{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--c-line);border-radius:16px;overflow:hidden}
+.family div{padding:12px;min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;font-size:12.5px}
+.family div b{font-size:13.5px}
+.family code{font:11.5px ui-monospace,Menlo,monospace;opacity:.85}
+.famwrap{display:grid;gap:8px}
+.famwrap p{margin:0;font-size:13.5px;color:var(--c-ink-soft)}
+.famgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.gradbar{height:72px;border-radius:16px;background:var(--c-grad);position:relative;margin-bottom:12px}
+.gradbar span{position:absolute;bottom:-22px;font:600 11px ui-monospace,Menlo,monospace;color:var(--c-ink-soft)}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{border-radius:20px;padding:22px;border:1px solid var(--c-line)}
+.panel.dark{background:var(--c-night);color:var(--c-on-dark);border-color:var(--c-night)}
+.panel h3{margin:0 0 14px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--c-ink-muted)}
+.panel.dark h3{color:var(--c-on-dark-soft)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.btn{height:46px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;font-weight:600;font-size:15px}
+.btn.primary{background:var(--c-ink);color:#fff}
+.btn.secondary{background:var(--c-surface-2);color:var(--c-ink)}
+.dark .btn.primary{background:#fff;color:var(--c-ink)}
+.dark .btn.secondary{background:var(--c-glass);color:#fff}
+.pill{font-weight:600;font-size:12px;line-height:1;padding:6px 10px;border-radius:999px;background:var(--c-surface-2);color:var(--c-ink-soft)}
+.pill.hl{background:var(--c-grad);color:#fff}
+.pill.info{background:var(--c-blue-tint);color:var(--c-blue-strong)}
+.pill.ok{background:var(--c-green-tint);color:var(--c-green-strong)}
+.tabs{display:flex;gap:18px;font-weight:600;font-size:14px}
+.tabs span{padding-bottom:6px;color:var(--c-ink-muted)}
+.tabs .on{color:var(--c-ink);box-shadow:inset 0 -2px 0 var(--c-accent-strong)}
+.dark .tabs span{color:var(--c-on-dark-soft)}.dark .tabs .on{color:#fff;box-shadow:inset 0 -2px 0 var(--c-accent)}
+.steps{display:flex;gap:8px}
+.step{width:56px;height:56px;border-radius:14px;background:var(--c-night-3);position:relative;border:2px solid transparent}
+.step.on{border-color:#fff}
+.step em{position:absolute;left:4px;top:4px;width:18px;height:18px;border-radius:6px;background:rgba(255,255,255,.2);font-weight:700;font-size:11px;line-height:18px;font-style:normal;text-align:center;color:#fff}
+.step.on em{background:#fff;color:var(--c-ink)}
+.shutter{width:54px;height:54px;border-radius:50%;border:4px solid #fff;display:grid;place-items:center}
+.shutter i{width:40px;height:40px;border-radius:50%;background:var(--c-coral)}
+.next{width:40px;height:40px;border-radius:50%;background:var(--c-accent);display:grid;place-items:center;color:var(--c-ink);font-weight:700}
+.msg{padding:10px 14px;border-radius:12px;font-size:14px;font-weight:500}
+.msg.info{background:var(--c-blue);color:var(--c-ink)}.msg.ok{background:var(--c-success);color:#fff}.msg.warn{background:var(--c-warning);color:var(--c-ink)}.msg.err{background:var(--c-error);color:#fff}
+.word{font-weight:700;background:var(--c-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.link{color:var(--c-blue-strong);text-decoration:underline;text-underline-offset:3px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rule{border-radius:16px;padding:16px 18px;border:1px solid var(--c-line)}
+.rule b{display:block;margin-bottom:6px}
+.rule.do b{color:var(--c-green-strong)}.rule.dont b{color:var(--c-error)}
+.rule ul{margin:0;padding-left:18px;color:var(--c-ink-soft);font-size:14.5px}
+@media (max-width:760px){.rung{grid-template-columns:36px 1fr}.rung > span:last-child{grid-column:2}.demo,.rules{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Color palette &amp; <span>hierarchy</span></h1>
+  <p class="lede">One palette for the portfolio site and the prototypes. Neutrals do most of the work, orange marks what is selected or in progress, coral is for recording, blue and green support information and confirmation, and the gradient is saved for the few things worth celebrating. Every text pair meets WCAG AA.</p>
+
+  <h2>Hierarchy</h2>
+  <p>From most to least emphasis. If two things compete, the higher rung wins.</p>
+  <div class="ladder">
+    <div class="rung"><span class="n">1</span><b><i style="background:var(--c-ink)"></i>Primary action</b><span>Ink pill on light screens, white pill on dark ones. One per screen.</span></div>
+    <div class="rung"><span class="n">2</span><b><i style="background:var(--c-accent)"></i>Selection &amp; progress</b><span>Orange: active tab, selected step, progress, confirm. On white, thin indicators use orange strong. Recording uses coral. Never decorative.</span></div>
+    <div class="rung"><span class="n">3</span><b><i style="background:var(--c-grad)"></i>Highlight</b><span>Gradient for rewards, a key word, “New” and AI callouts. Max 1–2 per screen, never on controls.</span></div>
+    <div class="rung"><span class="n">4</span><b><i style="background:var(--c-blue)"></i>Information</b><span>Blue for tips, info messages, links in long text and secondary data.</span></div>
+    <div class="rung"><span class="n">5</span><b><i style="background:var(--c-green)"></i>Confirmation</b><span>Green for completed, saved and published states.</span></div>
+    <div class="rung"><span class="n">6</span><b><i style="background:var(--c-ink-soft)"></i>Text</b><span>Ink for headings, ink-soft for body, ink-muted for meta and hints.</span></div>
+    <div class="rung"><span class="n">7</span><b><i style="background:var(--c-surface-2)"></i>Structure</b><span>Lines, grey surfaces and white cards. Quiet by design.</span></div>
+    <div class="rung"><span class="n">8</span><b><i style="background:var(--c-error)"></i>Warning &amp; error</b><span>Only for system messages that need attention.</span></div>
+  </div>
+
+  <h2>Neutrals · light</h2>
+  <p>The base of every screen.</p>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:var(--c-ink);color:#fff">#151515</div><div class="meta"><b>Ink</b><code>--c-ink</code><p>Headings, key text, primary buttons.</p><span class="ratio">18.3:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-ink-soft);color:#fff">#5E5E5E</div><div class="meta"><b>Ink soft</b><code>--c-ink-soft</code><p>Body text and labels.</p><span class="ratio">6.5:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-ink-muted);color:#fff">#767676</div><div class="meta"><b>Ink muted</b><code>--c-ink-muted</code><p>Meta, hints, placeholders.</p><span class="ratio">4.5:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-line-strong);color:#fff">#8F8F8F</div><div class="meta"><b>Line strong</b><code>--c-line-strong</code><p>Input and control borders.</p><span class="ratio">3.2:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-line)">#E8E8E8</div><div class="meta"><b>Line</b><code>--c-line</code><p>Dividers and card borders.</p><span class="ratio">decorative</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-surface-2)">#F5F5F6</div><div class="meta"><b>Surface 2</b><code>--c-surface-2</code><p>Chips, secondary buttons, grey sections.</p></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-surface);box-shadow:inset 0 -1px 0 var(--c-line)">#FFFFFF</div><div class="meta"><b>Surface</b><code>--c-surface</code><p>Canvas and cards.</p></div></div>
+  </div>
+
+  <h2>Neutrals · dark</h2>
+  <p>Camera screens and chapter dividers.</p>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:var(--c-night);color:#fff">#0C0C0C</div><div class="meta"><b>Night</b><code>--c-night</code><p>Camera background, dark sections.</p></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-night-2);color:#fff">#1C1C1C</div><div class="meta"><b>Night 2</b><code>--c-night-2</code><p>Sheets and bars on dark.</p></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-night-3);color:#fff">#2A2A2A</div><div class="meta"><b>Night 3</b><code>--c-night-3</code><p>Thumbnails, inactive steps.</p></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-night);color:#fff"><span style="background:var(--c-glass);padding:6px 10px;border-radius:999px">Glass · 14%</span></div><div class="meta"><b>Glass</b><code>--c-glass</code><p>Chips and controls over video.</p></div></div>
+  </div>
+
+  <h2>Brand colors</h2>
+  <p>Each color has a base, a strong shade for text and small badges with white text, and a tint for backgrounds.</p>
+  <div class="famgrid">
+    <div class="famwrap">
+      <div class="family">
+        <div style="background:var(--c-purple);color:#fff"><b>Purple</b><code>#C33BD8</code></div>
+        <div style="background:var(--c-purple-strong);color:#fff"><b>Strong</b><code>#B02FC4 · 5.2:1</code></div>
+        <div style="background:var(--c-purple-tint)"><b>Tint</b><code>#F8E9FB</code></div>
+      </div>
+      <p><b>Purple · gradient 1.</b> Start of the gradient. On its own: AI-related tags.</p>
+    </div>
+    <div class="famwrap">
+      <div class="family">
+        <div style="background:var(--c-coral);color:var(--c-ink)"><b>Coral</b><code>#F0566A</code></div>
+        <div style="background:var(--c-coral-strong);color:#fff"><b>Strong</b><code>#C9304A · 5.2:1</code></div>
+        <div style="background:var(--c-coral-tint)"><b>Tint</b><code>#FDE8EB</code></div>
+      </div>
+      <p><b>Coral · gradient 2 · secondary.</b> Recording (shutter, live timer) and the middle of the gradient.</p>
+    </div>
+    <div class="famwrap">
+      <div class="family">
+        <div style="background:var(--c-orange);color:var(--c-ink)"><b>Orange</b><code>#F2994A</code></div>
+        <div style="background:var(--c-orange-strong);color:#fff"><b>Strong</b><code>#AD5A1A · 4.9:1</code></div>
+        <div style="background:var(--c-orange-tint)"><b>Tint</b><code>#FEF0E4</code></div>
+      </div>
+      <p><b>Orange · gradient 3 · primary accent.</b> Selection, active state, progress, confirm. Ink text on the base (8.2:1); on white, thin indicators and text use the strong shade.</p>
+    </div>
+    <div class="famwrap">
+      <div class="family">
+        <div style="background:var(--c-blue);color:var(--c-ink)"><b>Steel blue</b><code>#6EA1C5 · 6.6:1 ink</code></div>
+        <div style="background:var(--c-blue-strong);color:#fff"><b>Strong</b><code>#3A729C · 5.2:1</code></div>
+        <div style="background:var(--c-blue-tint)"><b>Tint</b><code>#EAF2F8</code></div>
+      </div>
+      <p><b>Steel blue · information.</b> Tips, info messages, secondary data, and the active take number on the camera. Ink text on the base (6.6:1); white text and links use the strong shade.</p>
+    </div>
+    <div class="famwrap">
+      <div class="family">
+        <div style="background:var(--c-green);color:var(--c-ink)"><b>Lime green</b><code>#B9E28C · 12.5:1 ink</code></div>
+        <div style="background:var(--c-green-strong);color:#fff"><b>Strong</b><code>#3F7A1C · 5.2:1</code></div>
+        <div style="background:var(--c-green-tint)"><b>Tint</b><code>#F2FAEA</code></div>
+      </div>
+      <p><b>Lime green · confirmation.</b> Completed, saved, published. Ink text on the base; the strong shade doubles as success.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Brand gradient · built from purple, coral and orange</h3>
+  <div class="gradbar"><span style="left:0">#C33BD8 · 0%</span><span style="left:52%">#F0566A · 55%</span><span style="right:0">#F2994A · 100%</span></div>
+  <p style="margin:34px 0 0;color:var(--c-ink-soft);font-size:14px">Highlight only: rewards, one key word in a title, “New” badges, AI callouts. Never on buttons, steps or borders.</p>
+
+  <h2>Feedback</h2>
+  <p>System messages only. Never as decoration.</p>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:var(--c-blue);color:var(--c-ink)">#6EA1C5</div><div class="meta"><b>Info</b><code>--c-blue</code><p>Tips and neutral information. Ink text on top.</p><span class="ratio">6.6:1 ink</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-success);color:#fff">#3F7A1C</div><div class="meta"><b>Success</b><code>--c-success</code><p>Saved, uploaded, published.</p><span class="ratio">5.2:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-warning);color:var(--c-ink)">#F5C043</div><div class="meta"><b>Warning</b><code>--c-warning</code><p>Quality tips. Amber, so it never reads as the orange accent. Ink text on top.</p><span class="ratio">10.87:1 ink</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--c-error);color:#fff">#D63A40</div><div class="meta"><b>Error</b><code>--c-error</code><p>Validation errors, failed upload.</p><span class="ratio">4.6:1</span></div></div>
+  </div>
+
+  <h2>In use</h2>
+  <p>The same hierarchy on a light form and on the dark camera.</p>
+  <div class="demo">
+    <div class="panel">
+      <h3>Light · review form</h3>
+      <div class="row"><span class="btn primary">Post review</span><span class="btn secondary">Save draft</span></div>
+      <div class="row"><span class="pill">+10 pts</span><span class="pill hl">+90 pts guided video</span><span class="pill info">Tip</span><span class="pill ok">Saved</span></div>
+      <div class="row"><div class="tabs"><span class="on">Guided video</span><span>Video</span><span>Photo</span></div></div>
+      <p style="margin:0">How are your <span class="word">new jeans?</span> Read the <span class="link">review policy</span>.</p>
+    </div>
+    <div class="panel dark">
+      <h3>Dark · camera</h3>
+      <div class="row"><span class="pill" style="background:var(--c-blue);color:var(--c-ink)">Tip · hold the phone vertically</span><span class="pill" style="background:var(--c-green);color:var(--c-ink)">Take 1 saved</span></div>
+      <div class="row"><div class="steps"><div class="step on"><em>1</em></div><div class="step"><em>2</em></div><div class="step"><em>3</em></div></div><span class="next">✓</span></div>
+      <div class="row"><span class="shutter"><i></i></span><span class="btn primary">Continue</span><span class="btn secondary">Retake</span></div>
+      <div class="row"><div class="tabs"><span class="on">Guided video</span><span>Video</span><span>Photo</span></div></div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:16px"><span class="msg info">Tip: hold the phone vertically</span><span class="msg ok">Video saved</span><span class="msg warn">Find a spot with more light</span><span class="msg err">Upload failed. Try again.</span></div>
+
+  <h2>Rules</h2>
+  <p>Quick checks before adding colour to a screen.</p>
+  <div class="rules">
+    <div class="rule do"><b>Do</b><ul><li>Keep one primary action per screen.</li><li>Use orange only for state: selected, active, progress, confirm. Coral only for recording.</li><li>On white, use orange strong for thin indicators like tab underlines.</li><li>Use blue to inform and green to confirm.</li><li>Use the gradient for one highlight, two at most.</li><li>Use the strong shade when a color carries white text.</li></ul></div>
+    <div class="rule dont"><b>Don’t</b><ul><li>Use the gradient on buttons, steps or borders.</li><li>Put white text on plain coral, orange, lime green or steel blue (below 4.5:1).</li><li>Use blue or green as decoration.</li><li>Use ink muted for important information.</li></ul></div>
+  </div>
+</main>
+</body>
+</html>
