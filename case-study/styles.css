@@ -1265,3 +1265,6 @@ footer.end .next:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 0
 .pbtn-l { margin: 28px 0 0; background: linear-gradient(#151515, #151515) padding-box, var(--grad) border-box; color: #fff; align-self: flex-start; }
 .hero .pbtn { margin-top: 0; }
 nav a[href*="prototype"] { font-weight: 600; }
+.hero .pill, .hero .pbtn { vertical-align: middle; box-sizing: border-box; height: 48px; display: inline-flex; align-items: center; margin-top: 0; margin-bottom: 0; }
+.hero .pbtn { margin-left: 12px; }
+.hero .pill, .hero .pbtn { margin-top: 30px; }
