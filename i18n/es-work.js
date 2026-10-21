@@ -1,0 +1,40 @@
+/* Spanish for work · keys are hashes of the English blocks (see engine.js). Add ?i18n=debug to list what is missing. */
+window.I18N_ES = window.I18N_ES || {};
+Object.assign(window.I18N_ES, {
+"1jele5i": "Saltar al contenido",
+"1rdwqt3": "<strong>María Paula León<\/strong>",
+"1oz7yps": "Proyectos",
+"w3fq2r": "Contacto",
+"ebz4pc": "Hola, soy <span class=\"grad-text nb\">María Paula<\/span>",
+"1lv3vtr": "Diseñadora UX / Product Designer.",
+"qclov2": "Diseño experiencias de e-commerce, video social y compras en vivo, con foco en accesibilidad, sistemas de diseño y prototipado asistido por IA.",
+"1uxdzjy": "Ver mis proyectos<i aria-hidden=\"true\">↓<\/i>",
+"p1r8nd": "Proyectos destacados",
+"h96xq1": "Prototipo",
+"1jwrzvh": "01 · Comercio social",
+"xmagwt": "<a href=\"case-study/reviews.html\">Cámara guiada para <span class=\"grad-text\">opiniones en video<\/span><\/a>",
+"rkxdtq": "Una cámara nativa dentro de la app que guía a los compradores para grabar videos útiles del producto en sus opiniones.",
+"jwrvb": "Diseñadora de producto · Co-líder",
+"1mzngto": "0→1 · Móvil nativo",
+"1iffcac": "Lanzado en Brasil · 2026",
+"16zbrr4": "<span class=\"wk-go\" aria-hidden=\"true\">Leer el caso de estudio<i>→<\/i><\/span> <a class=\"pbtn\" href=\"prototype/index.html\">Probar el prototipo<i aria-hidden=\"true\">→<\/i><\/a>",
+"ss8b30": "<span class=\"wk-tag\">Prototipo<\/span>",
+"15s4so5": "02 · Compras en vivo <span class=\"wk-wip\">WIP<\/span>",
+"6wmpg": "Lives",
+"1m5l7z9": "Una experiencia de compras en vivo diseñada desde cero, del concepto al lanzamiento.",
+"abkwdd": "Co-diseño · 0→1",
+"6ggwcw": "Disponible en Brasil",
+"wiizkt": "Caso de estudio y prototipo en progreso.",
+"kmxofk": "03 · Accesibilidad <span class=\"wk-wip\">WIP<\/span>",
+"1xc987y": "Feed de video <span class=\"grad-text\">accesible<\/span>",
+"6z3lor": "Un feed de video social que funciona con lectores de pantalla, adoptado como modelo reutilizable.",
+"10tizdr": "Accesibilidad",
+"1u50s9n": "VoiceOver · TalkBack",
+"1jbtzr1": "<i aria-hidden=\"true\">↑<\/i>Volver arriba",
+"mlh3jc": "Principal",
+"q3puh4": "Detalles del proyecto",
+"1rel2zc": "Proyectos de María Paula León, diseñadora UX / Product Designer: casos de estudio con un prototipo interactivo en cada uno.",
+"wbxj5s": "Proyectos · María Paula León"
+});
+/* Screenshots with interface text that have a Spanish copy in img/es/ (same file name) */
+window.I18N_IMG = ["story/p1-trim.webp", "story/p2-text.webp", "story/p3-stickers.webp", "story/p4-sound.webp", "story/p5-subs.webp", "story/s0-form.webp", "story/s1-camera.webp", "story/s2-modes.webp", "story/s3-guided-1.webp", "story/s4-guided-2.webp", "story/s5-guided-done.webp", "story/s5-guided-done-round.webp", "story/s6-hints.webp", "story/s6-noprod.webp", "story/s6-static.webp", "story/s7-preview.webp", "story/s8-form-back.webp", "story/s9-form-all.webp", "story/s9-preview-all.webp", "camera/edit-preview.webp", "camera/free-video.webp", "camera/guided.webp", "camera/photo.webp", "camera/too-dark.webp", "form/form-01-start.webp", "form/form-02-guided.webp", "form/form-03-photo.webp", "form/form-04-all-three.webp", "drops/form.png", "drops/recording.png", "drops/validation.png"];

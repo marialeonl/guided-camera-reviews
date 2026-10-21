@@ -3,7 +3,8 @@
    the Subtitles button shows for any video, the lines are editable in the existing sheet, and the on-video
    caption follows the video's own playback. Sample lines stand in for the transcript. */
 (function () {
-  var SAMPLE = 'Clean, deep sound. Comfortable for hours.';
+  var ES = window.PROTO_LANG === 'es';
+  var SAMPLE = ES ? 'Sonido nítido y profundo. Cómodos por horas.' : 'Clean, deep sound. Comfortable for hours.';
 
   function g(name) { return window[name]; }
   function video() { return document.getElementById('prev-gallery-video'); }
@@ -79,7 +80,7 @@
         var time = document.createElement('span'); time.className = 'cc-line-time'; time.textContent = '0:' + String(line.time).padStart(2, '0');
         var input = document.createElement('input'); input.className = 'cc-line-input'; input.type = 'text'; input.value = line.text;
         input.autocomplete = 'off'; input.spellcheck = true; input.setAttribute('enterkeyhint', 'done');
-        input.setAttribute('aria-label', 'Edit subtitle starting at 0:' + String(line.time).padStart(2, '0'));
+        input.setAttribute('aria-label', (ES ? 'Editar el subtítulo que empieza en 0:' : 'Edit subtitle starting at 0:') + String(line.time).padStart(2, '0'));
         input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); input.blur(); } });
         input.addEventListener('focus', function () {
           window.ccSelectedLineIndex = index; window.ccKeyboardInput = input;

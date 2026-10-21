@@ -2,6 +2,7 @@
    Replaces visible text, placeholders and aria-labels, including text the
    prototype injects later (voice dictation, toasts, camera feedback, sheets). */
 (function () {
+  if (window.PROTO_LANG === 'es') return;   // Spanish is the product's own language: nothing to replace
   // Whole-text matches (safe for short labels)
   var EXACT = {
     // Preview

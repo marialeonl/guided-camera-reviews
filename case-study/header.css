@@ -1,0 +1,112 @@
+/* Site header · María Paula León  (UNIVERSAL: every page of the portfolio, the case study and the prototype, uses this file)
+   The markup is built by header.js. To change how the header looks, edit only this file. Do not add header rules to page stylesheets.
+
+   - Fixed at the top, transparent. Once you scroll, a soft veil that fades out downward keeps it readable;
+     over dark sections the text turns white on a dark veil (.on-dark, set by header.js).
+   - Pill on the right: Work (opens the projects card on hover or tap) / Contact / EN | ES.
+   - Pages can only change its stacking order with --header-z. */
+
+.topbar {
+  --hdr-ink: var(--c-ink, #151515);
+  --hdr-soft: var(--c-ink-soft, #5e5e5e);
+  --hdr-focus: var(--c-accent-strong, #ad5a1a);
+  position: fixed; inset: 0 0 auto 0; z-index: var(--header-z, 60); isolation: isolate;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px var(--gutter, clamp(16px, 5vw, 72px));
+  font: 400 14px/1.4 "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  color: var(--hdr-ink); transition: color .3s;
+  pointer-events: none;                       /* the bar itself never blocks the page under it; its links and pill do */
+  /* Own text rendering, so it does not depend on the page it sits in (the prototype pages differ from the site pages here) */
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; font-kerning: auto;
+  font-synthesis: weight style small-caps; letter-spacing: normal; text-transform: none; text-align: left; -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+.topbar *, .topbar *::before, .topbar *::after { box-sizing: border-box; }
+.topbar a { color: inherit; text-decoration: none; pointer-events: auto; }
+.topbar a[aria-current] { font-weight: 700; }
+.topbar a:focus-visible, .topbar button:focus-visible { outline: 3px solid var(--hdr-focus); outline-offset: 3px; border-radius: 6px; }
+
+/* Veil that fades out downward (only after you scroll) */
+.topbar::before {
+  content: ""; position: absolute; inset: 0 0 -30px 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .35s ease;
+  background: linear-gradient(to bottom, rgba(255,255,255,.9) 0%, rgba(255,255,255,.5) 55%, rgba(255,255,255,0) 100%);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+}
+.topbar.is-floating::before { opacity: 1; }
+
+/* Pill: Work · Contact · EN|ES */
+.topbar nav {
+  display: flex; align-items: center; gap: 24px; padding: 6px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+.topbar nav a, .topbar .lang button { line-height: 1.3; }
+
+/* Language switch (EN / ES) */
+.topbar .lang { display: inline-flex; align-items: center; gap: 2px; margin-left: 2px; padding: 3px; border-radius: 999px; background: rgba(21,21,21,.09); }
+.topbar .lang button { appearance: none; border: 0; background: none; margin: 0; padding: 4px 11px; border-radius: 999px; font: inherit; font-weight: 600; letter-spacing: .03em; color: var(--hdr-soft); cursor: pointer; transition: color .2s, background .2s; }
+.topbar .lang button:hover { color: var(--hdr-ink); }
+.topbar .lang button[aria-pressed="true"] { background: var(--hdr-ink); color: #fff; font-weight: 700; }
+.topbar .lang button:focus-visible { outline-offset: 2px; border-radius: 999px; }
+
+/* Over a dark section */
+.topbar.on-dark { color: #fff; }
+.topbar.on-dark::before { background: linear-gradient(to bottom, rgba(12,12,12,.82) 0%, rgba(12,12,12,.45) 55%, rgba(12,12,12,0) 100%); }
+.topbar.on-dark nav { background: rgba(28,28,30,.66); }
+.topbar.on-dark .lang { background: rgba(255,255,255,.14); }
+.topbar.on-dark .lang button { color: rgba(255,255,255,.78); }
+.topbar.on-dark .lang button:hover { color: #fff; }
+.topbar.on-dark .lang button[aria-pressed="true"] { background: #fff; color: #151515; }
+
+/* Small screens */
+@media (max-width: 860px) { .topbar nav { gap: 16px; } }
+@media (max-width: 520px) {
+  .topbar { padding: 14px 16px; font-size: 12.5px; }
+  .topbar > a { white-space: nowrap; }
+  .topbar nav { gap: 8px; padding: 6px 10px; }
+  .topbar .lang { margin-left: 0; padding: 2px; }
+  .topbar .lang button { padding: 3px 8px; }
+}
+@media (max-width: 340px) { .topbar { flex-wrap: wrap; row-gap: 8px; } }
+
+/* ---------- "Work" dropdown: card with the projects ---------- */
+.has-wm { cursor: pointer; }
+.has-wm::after {
+  content: ""; display: inline-block; width: 5px; height: 5px; margin: 0 1px 3px 7px;
+  border: solid currentColor; border-width: 0 1.6px 1.6px 0; transform: rotate(45deg);
+  transition: transform .25s cubic-bezier(.32,.72,0,1);
+}
+.has-wm[aria-expanded="true"]::after { transform: rotate(-135deg) translate(-1px, -1px); }
+
+/* Always a white card, so it reads the same over light and dark sections */
+.wm {
+  position: absolute; z-index: 5; top: 64px; right: 16px; width: min(380px, calc(100vw - 32px)); box-sizing: border-box;
+  padding: 8px; border-radius: 24px; background: #fff; color: #151515;
+  border: 1px solid rgba(21,21,21,.08); box-shadow: 0 28px 64px rgba(21,21,21,.2), 0 2px 8px rgba(21,21,21,.06);
+  font-size: 14px; line-height: 1.4; text-align: left;
+  opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-8px) scale(.98); transform-origin: top right;
+  transition: opacity .18s ease, transform .26s cubic-bezier(.32,.72,0,1), visibility 0s linear .26s;
+}
+/* Invisible bridge over the gap between the pill and the card, so the pointer can travel from one to the other while hovering */
+.wm::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.wm.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+.wm .grad-text { background: linear-gradient(90deg, #c33bd8 0%, #f0566a 55%, #f2994a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+
+.wm-h { margin: 0; padding: 12px 14px 6px; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; }
+.wm-list { margin: 0; padding: 0; list-style: none; }
+.wm-item { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 16px; transition: background .2s; }
+.wm-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.wm-s { font-size: 12.5px; line-height: 1.3; color: #6b6b6b; }
+.wm-t { font-size: 16px; line-height: 1.25; font-weight: 600; letter-spacing: -.012em; }
+.wm-go { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #151515; color: #fff; font-style: normal; font-size: 15px; line-height: 1; transition: transform .25s cubic-bezier(.32,.72,0,1); }
+a.wm-item:hover, a.wm-item:focus-visible { background: rgba(21,21,21,.06); }
+a.wm-item:hover .wm-go, a.wm-item:focus-visible .wm-go { transform: translateX(2px); }
+.wm-item.is-wip { cursor: default; }
+.wm-item.is-wip .wm-txt { opacity: .6; }
+.wm-wip { flex: none; padding: 3px 9px; border-radius: 999px; border: 1px solid rgba(21,21,21,.2); font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .06em; color: #6b6b6b; }
+.wm-all { display: flex; align-items: center; justify-content: space-between; margin: 6px 6px 2px; padding: 13px 8px 11px; border-top: 1px solid rgba(21,21,21,.09); font-size: 14px; font-weight: 600; border-radius: 0 0 14px 14px; }
+.wm-all i { font-style: normal; transition: transform .25s cubic-bezier(.32,.72,0,1); }
+.wm-all:hover i, .wm-all:focus-visible i { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) { .topbar, .wm, .has-wm::after, .wm-go, .wm-all i { transition: none; } }

@@ -21,6 +21,12 @@ body, button, input, textarea, select, .cam-gallery-overlay, .cam-gallery-overla
 /* Title block (top-left, above the side panel cards) */
 .proto-sidebar { left: 48px !important; top: 40px !important; bottom: 32px !important; width: 340px !important; gap: 14px !important; }
 .proto-intro { padding: 0 0 6px; }
+/* The site menu is the universal header (../case-study/header.css + header.js); here it only needs to sit above the prototype layers */
+:root { --header-z: 9500; }
+/* Room for the menu: panel, restart button and phone all start below it */
+.proto-sidebar { top: 84px !important; }
+#proto-reset-btn { top: 76px !important; right: 24px !important; }
+.devices-wrap { padding-top: 64px !important; box-sizing: border-box !important; }
 .proto-intro .eyebrow { margin: 0 0 12px; font: 600 12px/1 var(--andes-font); letter-spacing: .08em; text-transform: uppercase; color: var(--c-ink-muted); }
 .proto-intro h1 { margin: 0 0 14px; font: 800 38px/1.02 var(--andes-font); letter-spacing: -.04em; color: var(--c-ink); }
 .proto-intro h1 .grad-text { background: var(--c-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }

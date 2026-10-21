@@ -42,16 +42,10 @@ p { margin: 0 0 14px; }
 
 .wrap { width: min(var(--max), 100%); margin: 0 auto; padding: 0 var(--gutter); }
 
-/* ---------- Top bar ---------- */
-.topbar {
-  position: absolute; inset: 0 0 auto 0; z-index: 10;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 18px var(--gutter);
-  color: var(--ink);
-  font-size: 14px;
-}
-.topbar a { color: inherit; text-decoration: none; }
-.topbar nav { display: flex; gap: 24px; }
+/* The header (.topbar) lives in header.css / header.js */
+html.i18n-pending body { visibility: hidden; }
+.skip { position: absolute; left: 16px; top: -56px; z-index: 30; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 14px; }
 
 /* ---------- Hero (deck cover) ---------- */
 .hero {
@@ -239,7 +233,6 @@ footer.end .small { margin-top: 80px; font-size: 13px; opacity: .7; }
   .cards { grid-template-columns: 1fr; }
   .options { grid-template-columns: 1fr; }
   .decision { grid-template-columns: 1fr; gap: 10px; }
-  .topbar nav { gap: 16px; }
 }
 
 /* ---------- Journey map ---------- */
@@ -412,6 +405,13 @@ footer.end .small { margin-top: 80px; font-size: 13px; opacity: .7; }
 .dp-stage { position: relative; width: min(100%, 270px); aspect-ratio: 560 / 1213; justify-self: center; }
 .dp-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: translateY(8px) scale(.98); transition: opacity .35s ease, transform .35s ease; filter: drop-shadow(0 18px 36px rgba(21,21,21,.18)); }
 .dp-stage img.on { opacity: 1; transform: none; }
+/* WIP placeholder for the drop-off images (same dashed look as the WIP cards on the Work home) */
+.dp-ph { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; border-radius: 36px; background: var(--grey, #f1f1f1); opacity: 0; transform: translateY(8px) scale(.98); transition: opacity .35s ease, transform .35s ease; }
+.dp-ph.on { opacity: 1; transform: none; }
+.dp-ph::before { content: ""; position: absolute; inset: 10px; border: 2px dashed rgba(21,21,21,.18); border-radius: 28px; }
+.dp-ph b { font-size: 64px; line-height: 1; font-weight: 700; letter-spacing: -.04em; color: rgba(21,21,21,.14); }
+.dp-wip { display: inline-flex; align-items: center; gap: 7px; padding: 5px 13px 5px 11px; border-radius: 999px; background: var(--c-accent-tint, #fdeedd); color: var(--c-accent-strong, #ad5a1a); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.dp-wip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c-accent, #f2994a); }
 .dp-list { display: flex; flex-direction: column; gap: 14px; }
 .dp-card { text-align: left; font: inherit; color: inherit; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 22px 26px; transition: border-color .25s, box-shadow .25s, transform .25s, background .25s; }
 .dp-card .n { display: block; font-size: 13px; font-weight: 700; color: var(--accent-strong, #ad5a1a); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 8px; }
@@ -595,15 +595,15 @@ footer.end .small { margin-top: 80px; font-size: 13px; opacity: .7; }
   .hl-person { height: 58%; right: -12%; opacity: .9; }
 }
 
-/* Nav stays readable over the hero photo */
-.topbar nav { background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-radius: 999px; padding: 6px 14px; }
-
 @media (max-width: 900px) {
   .hl-person { height: 60%; right: -28%; }
 }
 @media (max-width: 700px) {
   .hl-person { display: none; }
   .hl-bg { opacity: .35; }
+  /* Shorter hero on phones: the photo alone looked odd under a full-screen hero, so the hero now only is as tall as its content */
+  .hero { min-height: 0; justify-content: flex-start; padding: 116px 0 40px; }
+  .hero-foot { position: relative; left: auto; bottom: auto; margin: 36px 0 0; padding: 0 var(--gutter); }
 }
 
 /* Prioritisation: features from the endgame, by release */
@@ -1268,3 +1268,64 @@ nav a[href*="prototype"] { font-weight: 600; }
 .hero .pill, .hero .pbtn { vertical-align: middle; box-sizing: border-box; height: 48px; display: inline-flex; align-items: center; margin-top: 0; margin-bottom: 0; }
 .hero .pbtn { margin-left: 12px; }
 .hero .pill, .hero .pbtn { margin-top: 30px; }
+
+/* ---------- Back to top (the header veil lives in header.css) ---------- */
+.to-top, .story-toggle {
+  position: fixed; bottom: 20px; z-index: 50; display: inline-flex; align-items: center; gap: 10px;
+  margin: 0; border: 1px solid rgba(21,21,21,.1); border-radius: 999px; cursor: pointer;
+  background: rgba(255,255,255,.74); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 0 10px 30px rgba(21,21,21,.14); color: var(--ink); font: 600 14px/1 inherit; font-family: inherit;
+  opacity: 0; transform: translateY(12px); pointer-events: none;
+  transition: opacity .3s ease, transform .35s cubic-bezier(.32,.72,0,1);
+}
+.to-top { right: 20px; padding: 12px 18px 12px 15px; background: var(--ink); color: #fff; border-color: rgba(255,255,255,.22); box-shadow: 0 14px 34px rgba(21,21,21,.38); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.to-top i { font-style: normal; font-size: 16px; line-height: 1; }
+.to-top.is-on, .story-toggle.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:focus-visible, .story-toggle:focus-visible { outline: 3px solid var(--c-accent-strong); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .to-top, .story-toggle { transition: none; } }
+
+/* On/off switch for the step-by-step story: floats at the bottom-left while that section is on screen */
+.story-toggle { left: 20px; padding: 11px 14px 11px 20px; gap: 12px; font-size: 14.5px; background: var(--ink); color: #fff; border-color: rgba(255,255,255,.22); box-shadow: 0 14px 34px rgba(21,21,21,.38); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.story-toggle .st-label { letter-spacing: .01em; }
+.story-toggle .st-switch { position: relative; width: 42px; height: 24px; border-radius: 999px; background: #6f6f76; transition: background .25s; flex: none; }
+.story-toggle .st-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.28); transition: transform .25s cubic-bezier(.32,.72,0,1); }
+.story-toggle[aria-pressed="true"] .st-switch { background: var(--grad); }
+.story-toggle[aria-pressed="true"] .st-switch::after { transform: translateX(18px); }
+
+/* Story with the animation off: a plain scrollable list, image on the left and text on the right.
+   (Phones already get this layout; here it is the same idea at desktop widths.) */
+#s-story.is-static .story-bg, #s-story.is-static .story-stage, #s-story.is-static .story-hpanel { display: none; }
+#s-story.is-static .story { grid-template-columns: 1fr; gap: 0; margin-top: 24px; }
+#s-story.is-static .story-step,
+#s-story.is-static .story-step:first-child,
+#s-story.is-static .story-step:last-child,
+#s-story.is-static .story-hspacers > .story-spacer {
+  min-height: 0; opacity: 1; max-width: none; padding: 44px 0; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: minmax(150px, 230px) minmax(0, 580px); column-gap: clamp(28px, 5vw, 72px); align-content: center; align-items: center;
+}
+#s-story.is-static .story-step > * { grid-column: 2; }
+#s-story.is-static .story-step > .story-inline { grid-column: 1; grid-row: 1 / span 12; display: block; width: 100%; height: auto; margin: 0; filter: drop-shadow(0 18px 28px rgba(40,50,80,.2)); }
+#s-story.is-static .story-step > .story-inline-three { grid-column: 1; grid-row: 1 / span 12; display: flex; gap: 8px; justify-content: center; margin: 0; width: 100%; }
+#s-story.is-static .story-step > .story-inline-three img { width: 31%; height: auto; filter: drop-shadow(0 12px 18px rgba(40,50,80,.2)); }
+#s-story.is-static .story-spacer > * { visibility: visible; }
+#s-story.is-static .story-hgroup { list-style: none; }
+
+/* Arrow / dot taps in the story: text and phone change almost at once (the class is set by the story script for a moment) */
+#s-story.is-quick .story-step, #s-story.is-quick .story-hp, #s-story.is-quick .story-hhead, #s-story.is-quick .story-hdots i,
+#s-story.is-quick .story-phone img, #s-story.is-quick .story-phone > .story-cycle, #s-story.is-quick .story-lupa .lz { transition-duration: .12s !important; transition-delay: 0s !important; }
+
+/* ---------- Banner: "Don't leave without trying the prototype" (after the step-by-step story) ---------- */
+.proto-banner { background: var(--grey, #f5f5f5); padding: 0 0 clamp(48px, 7vw, 96px); }
+.pb-card {
+  position: relative; overflow: hidden; isolation: isolate; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 40px;
+  padding: clamp(36px, 6vw, 72px); border-radius: clamp(24px, 3vw, 36px); background: #0d0d0d; color: #fff;
+}
+.pb-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 90% at 92% 15%, rgba(195,59,216,.38) 0%, rgba(195,59,216,0) 70%),
+    radial-gradient(ellipse 36% 80% at 78% 105%, rgba(242,153,74,.30) 0%, rgba(242,153,74,0) 70%);
+}
+.pb-card h2 { margin: 0; font-size: clamp(32px, 5vw, 64px); line-height: 1.02; font-weight: 700; letter-spacing: -.035em; }
+.pb-card .pbtn { margin: 0; flex: none; }
+@media (max-width: 640px) { .pb-card .pbtn { align-self: stretch; justify-content: center; } }

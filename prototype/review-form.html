@@ -1753,7 +1753,8 @@ body {
 }
 </style>
   <link rel="stylesheet" href="luma-theme.css?v=56">
-<link rel="stylesheet" href="proto-shell.css?v=21">
+<link rel="stylesheet" href="proto-shell.css?v=28">
+<link rel="stylesheet" href="../case-study/header.css">
 </head>
 <script>
 /* Usa el documento publicado actual, no el id que Grid dejó al exportar. */
@@ -1792,6 +1793,7 @@ body {
 })();
 </script>
 <body style="background:#EBEBEB;">
+<script src="../case-study/header.js"></script>
 
 <div class="prototype-stage">
 
@@ -3048,7 +3050,7 @@ body {
       var earned = (guidedVideoCount ? MEDIA_POINTS['video-guiado'] : 0) + (freeVideoCount ? MEDIA_POINTS.video : 0) + (photoCount ? MEDIA_POINTS.photo : 0);
       var remaining = TOTAL - earned;
       var txt = headerPill.querySelector('.rf-points-pill-text');
-      if (txt) txt.textContent = '+' + remaining + ' tickets';
+      if (txt) txt.textContent = '+' + remaining + (window.PROTO_LANG === 'es' ? ' puntos' : ' tickets');
       headerPill.style.display = remaining > 0 ? '' : 'none';
     }
   }
@@ -3271,10 +3273,10 @@ body {
 </script>
 
 
-<div style="all: initial !important"></div><script src="i18n-en.js?v=12"></script>
-<script src="fit-device.js?v=4"></script>
-<script src="portfolio-clean.js?v=4"></script>
-<script src="proto-shell.js?v=9"></script>
+<div style="all: initial !important"></div><script src="lang.js?v=1"></script><script src="i18n-en.js?v=13"></script>
+<script src="fit-device.js?v=5"></script>
+<script src="portfolio-clean.js?v=5"></script>
+<script src="proto-shell.js?v=14"></script>
 <script src="form-state.js?v=2"></script>
-<script src="proto-notes.js?v=24"></script>
+<script src="proto-notes.js?v=25"></script>
 </body></html>

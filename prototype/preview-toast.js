@@ -11,7 +11,8 @@
     var t = document.createElement('div');
     t.className = 'prev-earn-toast';
     t.setAttribute('role', 'status');
-    t.innerHTML = '<span class="prev-earn-toast__coin" aria-hidden="true"></span><span>You earned <b>' + points + ' tickets</b></span>';
+    var es = window.PROTO_LANG === 'es';
+    t.innerHTML = '<span class="prev-earn-toast__coin" aria-hidden="true"></span><span>' + (es ? 'Ganaste <b>' + points + ' puntos</b>' : 'You earned <b>' + points + ' tickets</b>') + '</span>';
     phone.appendChild(t);
     requestAnimationFrame(function () { requestAnimationFrame(function () { t.classList.add('is-in'); }); });
     setTimeout(function () { t.classList.remove('is-in'); }, 3200);

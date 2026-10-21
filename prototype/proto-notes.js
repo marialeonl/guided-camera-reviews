@@ -2,6 +2,35 @@
    of the screen (added on top, nothing else changes). */
 (function () {
   var page = (location.pathname.split('/').pop() || '').replace('.html', '');
+  /* Spanish copy for the notes (English is written inline below). tx() returns the Spanish text when the site language is Spanish. */
+  var ES_TX = window.PROTO_LANG === 'es' ? {
+    'Review form': 'Formulario de opinión',
+    'Rate the product, comment and add a video or photo.': 'Califica el producto, comenta y agrega un video o una foto.',
+    'Video preview': 'Vista previa del video',
+    'Check the video and polish it before saving.': 'Revisa el video y púlelo antes de guardar.',
+    '<b>Uploader</b> Where the buyer adds a guided video, a video or a photo.': '<b>Carga de contenido</b> Donde el comprador agrega un video guiado, un video o una foto.',
+    'Try these tools!': '¡Prueba estas herramientas!',
+    '<b>Trim</b> Pick where the video starts and ends. Drag the selected part to move it.': '<b>Recortar</b> Elige dónde empieza y termina el video. Arrastra la parte seleccionada para moverla.',
+    '<b>Text</b> Write on the video. Change the font, color and alignment.': '<b>Texto</b> Escribe sobre el video. Cambia la tipografía, el color y la alineación.',
+    '<b>Stickers</b> Add stickers and emojis. Some are suggested from your review.': '<b>Stickers</b> Agrega stickers y emojis. Algunos se sugieren a partir de tu opinión.',
+    '<b>Mute</b> Turn the sound off or back on.': '<b>Silenciar</b> Apaga el sonido o vuelve a activarlo.',
+    '<b>Subtitles</b> Show captions and edit each line.': '<b>Subtítulos</b> Muestra los subtítulos y edita cada línea.',
+    'Everything you upload shows here. Tap one to preview it.': 'Todo lo que subes aparece aquí. Toca uno para verlo.',
+    'Add more photos or videos': 'Agregar más fotos o videos',
+    'Guided video': 'Video guiado',
+    'Record 3 short takes of 4 seconds. A prompt guides each one: the product, a close-up and how it is used.': 'Graba 3 tomas cortas de 4 segundos. Una indicación guía cada una: el producto, un primer plano y cómo se usa.',
+    'Camera tools': 'Herramientas de la cámara',
+    '3 guided parts for a more complete review': '3 partes guiadas para una opinión más completa',
+    'One tap records each 4 s part': 'Un toque graba cada parte de 4 s',
+    'Video': 'Video',
+    'Record one free video of up to 90 seconds. You can pause and keep going.': 'Graba un video libre de hasta 90 segundos. Puedes pausar y seguir.',
+    'Tap to record, tap again to pause': 'Toca para grabar, toca de nuevo para pausar',
+    'Gallery. Add videos or photos you already have.': 'Galería. Agrega videos o fotos que ya tienes.',
+    'Photo': 'Foto',
+    'Take photos of the product. You can add up to 8.': 'Toma fotos del producto. Puedes agregar hasta 8.',
+    'One tap takes a photo': 'Un toque toma una foto'
+  } : null;
+  function tx(t) { return (ES_TX && ES_TX[t]) || t; }
   var COPY = {
     'review-form': { title: 'Review form', goal: 'Rate the product, comment and add a video or photo.', top: true },
     'camara-video-guiado': { align: '.cam-tabs-track', side: 'right' },
@@ -79,9 +108,9 @@
     var extras = [];
     function render() {
       var k = content();
-      main.innerHTML = '<div class="pn-title">' + k.title + '</div><div class="pn-text">' + k.goal + '</div>';
+      main.innerHTML = '<div class="pn-title">' + tx(k.title) + '</div><div class="pn-text">' + tx(k.goal) + '</div>';
       extras.forEach(function (d) { d.remove(); notes.splice(notes.indexOf(d), 1); });
-      extras = (isCam ? k.extras : EXTRA[page] || []).map(function (e) { var d = el('pn-extra ' + (e.side === 'left' ? 'pn-left' : 'pn-right') + (e.heading ? ' pn-heading' : '') + (e.wide ? ' pn-wide' : ''), '<div class="pn-text">' + e.text + '</div>'); d._e = e; return d; });
+      extras = (isCam ? k.extras : EXTRA[page] || []).map(function (e) { var d = el('pn-extra ' + (e.side === 'left' ? 'pn-left' : 'pn-right') + (e.heading ? ' pn-heading' : '') + (e.wide ? ' pn-wide' : ''), '<div class="pn-text">' + tx(e.text) + '</div>'); d._e = e; return d; });
     }
     render();
 

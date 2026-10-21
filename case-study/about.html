@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>try{var l=(/[?&]lang=(en|es)\b/.exec(location.search)||[])[1]||localStorage.getItem('mpl-lang');if(l==='es'){document.documentElement.classList.add('i18n-pending');setTimeout(function(){document.documentElement.classList.remove('i18n-pending')},2500)}}catch(e){}</script>
+  <title>About · María Paula León</title>
+  <meta name="description" content="María Paula León is a UX / Product Designer. E-commerce, social video and live shopping, with a focus on accessibility, design systems and AI-assisted prototyping.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/maria-paula.webp" type="image/webp">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css?v=185">
+<link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="about.css?v=9">
+</head>
+<body>
+
+<!-- TBC: English CV. The "Download CV" button in the intro serves the Spanish CV in both languages for now. When assets/MariaPaulaLeon_CV_EN.pdf exists, point its data-href-en to it. "Let's talk" at the bottom has only email and LinkedIn (no CV) on purpose. -->
+
+<a class="skip" href="#main">Skip to content</a>
+
+<script src="header.js"></script>
+
+<main id="main">
+
+<!-- 1 · INTRO -->
+<section class="ab-intro" aria-labelledby="ab-hi">
+  <div class="wrap ab-intro-grid">
+    <div class="ab-intro-text">
+      <h1 class="ab-h1" id="ab-hi">Hi, I’m <span class="grad-text">María Paula</span></h1>
+      <p class="ab-role">UX / Product Designer.</p>
+      <p class="ab-lede">I design e-commerce, social video and live shopping experiences, with a focus on accessibility, design systems and AI-assisted prototyping.</p>
+      <ul class="ab-langs" aria-label="Languages">
+        <li>Spanish (native)</li>
+        <li>English (B2)</li>
+      </ul>
+      <div class="ab-actions">
+        <a class="pbtn pbtn-l" href="assets/MariaPaulaLeon_CV_ES.pdf" data-href-en="assets/MariaPaulaLeon_CV_ES.pdf" data-href-es="assets/MariaPaulaLeon_CV_ES.pdf" download>Download CV<i aria-hidden="true">↓</i></a>
+        <a class="pbtn" href="https://www.linkedin.com/in/mariapaula-leon" target="_blank" rel="noopener">LinkedIn<i aria-hidden="true">↗</i></a>
+      </div>
+    </div>
+    <figure class="ab-photo">
+      <img src="img/maria-paula.webp" width="960" height="1200" alt="Portrait of María Paula León, smiling, seated on wooden steps." fetchpriority="high" decoding="async">
+    </figure>
+  </div>
+</section>
+
+<!-- 2 · EXPERIENCE -->
+<section class="ab-exp" aria-labelledby="ab-exp-h">
+  <div class="wrap">
+    <h2 class="ab-h2" id="ab-exp-h">Experience</h2>
+
+    <div class="ab-roles">
+      <article class="ab-row is-current">
+        <header class="ab-row-head">
+          <h3 class="ab-co">Mercado Libre</h3>
+          <p class="ab-title">UX Designer</p>
+          <p class="ab-date"><time datetime="2024-02">Feb 2024</time> – Present</p>
+        </header>
+        <ul class="ab-list">
+          <li>Co-designed Lives, a live shopping experience built from scratch, and co-led a native in-app camera for product reviews (<a href="reviews.html">case study</a>). Both are live in Brazil.</li>
+          <li>Designed an accessible video feed for screen reader users (VoiceOver, TalkBack) and co-led the componentization of Figma libraries for clearer handoffs.</li>
+          <li>Work with an AI-assisted process: benchmarking and functional prototypes with Claude and Codex, validated with Product and Engineering before development.</li>
+        </ul>
+      </article>
+
+      <article class="ab-row">
+        <header class="ab-row-head">
+          <h3 class="ab-co">Endava</h3>
+          <p class="ab-title">UX/UI &amp; Visual Designer (Communications Specialist)</p>
+          <p class="ab-date"><time datetime="2021-07">Jul 2021</time> – <time datetime="2024-02">Feb 2024</time></p>
+        </header>
+        <ul class="ab-list">
+          <li>Designed UX/UI for a US financial inclusion non-profit: user interviews, accessibility testing and design QA with developers.</li>
+          <li>Structured the information architecture of Endava LATAM’s SharePoint, and produced video, motion and visual design for internal and external communications.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 3 · LET'S TALK -->
+<footer class="end ab-end" id="talk">
+  <div class="end-grid" aria-hidden="true"></div>
+  <div class="wrap ab-end-in">
+    <h2>Let’s <span class="grad-text">talk.</span></h2>
+    <p class="end-sub">For opportunities or questions, write to me by email or on LinkedIn.</p>
+    <div class="ab-links">
+      <a class="pbtn pbtn-l" href="mailto:marialeon.lop@gmail.com">marialeon.lop@gmail.com<i aria-hidden="true">→</i></a>
+      <a class="end-pill" href="https://www.linkedin.com/in/mariapaula-leon" rel="noopener"><i class="end-ic" aria-hidden="true">in</i><b>LinkedIn</b></a>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
+<script src="site.js?v=6"></script>
+<script src="../i18n/es-about.js?v=6"></script>
+<script src="../i18n/engine.js?v=6"></script>
+</body>
+</html>

@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>try{var l=(/[?&]lang=(en|es)\b/.exec(location.search)||[])[1]||localStorage.getItem('mpl-lang');if(l==='es'){document.documentElement.classList.add('i18n-pending');setTimeout(function(){document.documentElement.classList.remove('i18n-pending')},2500)}}catch(e){}</script>
   <title>Guided Review Camera · María Paula León</title>
   <meta name="description" content="Case study: a native in-app camera that guides buyers to record useful video reviews. Shipped in Brazil, 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="styles.css?v=165">
+  <link rel="stylesheet" href="styles.css?v=185">
+<link rel="stylesheet" href="header.css">
 </head>
 <body>
 
 <!-- DRAFT · Items marked TBC are pending confirmation. Remove them before publishing. -->
 
-<header class="topbar">
-  <a href="index.html"><strong>María Paula León</strong></a>
-  <nav>
-    <a href="index.html#work">Work</a>
-    <a href="index.html#about">About</a>
-    <a href="../prototype/index.html">Prototype</a>
-    <a href="mailto:marialeon.lop@gmail.com">Contact</a>
-  </nav>
-</header>
+<script src="header.js"></script>
 
 <!-- 1 · HERO -->
 <section class="hero">
@@ -235,10 +229,13 @@
   <div class="wrap">
     <h2 class="title" style="font-size:clamp(28px,3.4vw,40px)">Three critical drop-off points</h2>
     <div class="dp">
+      <!-- WIP: the three images are placeholders until she swaps them. To restore the old screens, replace the three .dp-ph with:
+           <img class="on" data-i="0" src="img/drops/form.png" alt=""> / <img data-i="1" src="img/drops/recording.png" alt=""> / <img data-i="2" src="img/drops/validation.png" alt="">
+           (Spanish versions live in img/es/drops/, swapped by the engine.) -->
       <div class="dp-stage" aria-hidden="true">
-        <img class="on" data-i="0" src="img/drops/form.png" alt="">
-        <img data-i="1" src="img/drops/recording.png" alt="">
-        <img data-i="2" src="img/drops/validation.png" alt="">
+        <div class="dp-ph on" data-i="0"><span class="dp-wip">WIP</span><b>1</b></div>
+        <div class="dp-ph" data-i="1"><span class="dp-wip">WIP</span><b>2</b></div>
+        <div class="dp-ph" data-i="2"><span class="dp-wip">WIP</span><b>3</b></div>
       </div>
       <div class="dp-list">
         <button type="button" class="dp-card on" data-i="0"><span class="n">Drop-off 1 · Review form</span><h3>Nothing says what to record</h3><p>The form shows an empty text field and a video button. With no hint of what to show, or what it earns, the buyer skips the video.</p></button>
@@ -248,7 +245,7 @@
     </div>
     <script>
       document.querySelectorAll('.dp').forEach(function (dp) {
-        var cards = dp.querySelectorAll('.dp-card'), imgs = dp.querySelectorAll('.dp-stage img');
+        var cards = dp.querySelectorAll('.dp-card'), imgs = dp.querySelectorAll('.dp-stage [data-i]');
         function show(i) {
           cards.forEach(function (c) { c.classList.toggle('on', c.dataset.i === i); });
           imgs.forEach(function (m) { m.classList.toggle('on', m.dataset.i === i); });
@@ -345,35 +342,35 @@
     </div>
     <p class="scroll-hint">Scroll sideways →</p>
     <div class="screens">
-        <figure><img src="img/reviews/lofi-01-a-formulario-vacio-3.webp?v=3" alt="Low-fidelity screen: Review form: rating, photo or video, text" loading="lazy" width="480" height="1020"><figcaption><b>Entry</b>Review form: rating, photo or video, text</figcaption></figure>
+        <figure><img src="img/reviews/lofi-01-a-formulario-vacio-3.webp?v=4" alt="Low-fidelity screen: Review form: rating, photo or video, text" loading="lazy" width="480" height="1020"><figcaption><b>Entry</b>Review form: rating, photo or video, text</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-02-b-formulario-con-video-5-ai-revisando.webp?v=3" alt="Low-fidelity screen: The video returns to the form" loading="lazy" width="480" height="1020"><figcaption><b>Media added</b>The video returns to the form</figcaption></figure>
+        <figure><img src="img/reviews/lofi-02-b-formulario-con-video-5-ai-revisando.webp?v=4" alt="Low-fidelity screen: The video returns to the form" loading="lazy" width="480" height="1020"><figcaption><b>Media added</b>The video returns to the form</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-03-1-modal-de-calidad.webp?v=3" alt="Low-fidelity screen: What makes a good review: length, product, voice" loading="lazy" width="480" height="1020"><figcaption><b>Before recording</b>What makes a good review: length, product, voice</figcaption></figure>
+        <figure><img src="img/reviews/lofi-03-1-modal-de-calidad.webp?v=4" alt="Low-fidelity screen: What makes a good review: length, product, voice" loading="lazy" width="480" height="1020"><figcaption><b>Before recording</b>What makes a good review: length, product, voice</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-04-2-default-sin-grabar.webp?v=3" alt="Low-fidelity screen: Ready to record, with framing guide" loading="lazy" width="480" height="1020"><figcaption><b>Camera</b>Ready to record, with framing guide</figcaption></figure>
+        <figure><img src="img/reviews/lofi-04-2-default-sin-grabar.webp?v=4" alt="Low-fidelity screen: Ready to record, with framing guide" loading="lazy" width="480" height="1020"><figcaption><b>Camera</b>Ready to record, with framing guide</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-08-4-consejos-empaque-s1.webp?v=3" alt="Low-fidelity screen: Show how the package arrived" loading="lazy" width="480" height="1020"><figcaption><b>Take 1 tip</b>Show how the package arrived</figcaption></figure>
+        <figure><img src="img/reviews/lofi-08-4-consejos-empaque-s1.webp?v=4" alt="Low-fidelity screen: Show how the package arrived" loading="lazy" width="480" height="1020"><figcaption><b>Take 1 tip</b>Show how the package arrived</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-12-6-grabando-s1-clip-1-activo.webp?v=3" alt="Low-fidelity screen: Take 1 in progress" loading="lazy" width="480" height="1020"><figcaption><b>Recording</b>Take 1 in progress</figcaption></figure>
+        <figure><img src="img/reviews/lofi-12-6-grabando-s1-clip-1-activo.webp?v=4" alt="Low-fidelity screen: Take 1 in progress" loading="lazy" width="480" height="1020"><figcaption><b>Recording</b>Take 1 in progress</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-13-7-grabando-s2-s1-completado.webp?v=3" alt="Low-fidelity screen: Take 1 saved, next prompt" loading="lazy" width="480" height="1020"><figcaption><b>Take 2</b>Take 1 saved, next prompt</figcaption></figure>
+        <figure><img src="img/reviews/lofi-13-7-grabando-s2-s1-completado.webp?v=4" alt="Low-fidelity screen: Take 1 saved, next prompt" loading="lazy" width="480" height="1020"><figcaption><b>Take 2</b>Take 1 saved, next prompt</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-14-8-preview-de-clip-regrabar-opcion.webp?v=3" alt="Low-fidelity screen: Review the takes before continuing" loading="lazy" width="480" height="1020"><figcaption><b>Preview</b>Review the takes before continuing</figcaption></figure>
+        <figure><img src="img/reviews/lofi-14-8-preview-de-clip-regrabar-opcion.webp?v=4" alt="Low-fidelity screen: Review the takes before continuing" loading="lazy" width="480" height="1020"><figcaption><b>Preview</b>Review the takes before continuing</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-15-14-audio-con-sin-deteccion-de-voz.webp?v=3" alt="Low-fidelity screen: Audio on or off, basic edits" loading="lazy" width="480" height="1020"><figcaption><b>Edit</b>Audio on or off, basic edits</figcaption></figure>
+        <figure><img src="img/reviews/lofi-15-14-audio-con-sin-deteccion-de-voz.webp?v=4" alt="Low-fidelity screen: Audio on or off, basic edits" loading="lazy" width="480" height="1020"><figcaption><b>Edit</b>Audio on or off, basic edits</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-16-15-resena-publicada-volver-a-mis-opinion.webp?v=3" alt="Low-fidelity screen: Review published, reward earned" loading="lazy" width="480" height="1020"><figcaption><b>Done</b>Review published, reward earned</figcaption></figure>
+        <figure><img src="img/reviews/lofi-16-15-resena-publicada-volver-a-mis-opinion.webp?v=4" alt="Low-fidelity screen: Review published, reward earned" loading="lazy" width="480" height="1020"><figcaption><b>Done</b>Review published, reward earned</figcaption></figure>
     </div>
     <div class="flow-head"><h3>Also explored</h3><span>Ideas tested in low fidelity; not all made it to the first releases</span></div>
     <div class="screens explored">
-        <figure><img src="img/reviews/lofi-05-3-efectos-stickers-fondos-filtros.webp?v=3" alt="Low-fidelity screen: Stickers on the viewfinder" loading="lazy" width="480" height="1020"><figcaption><b>Effects</b>Stickers on the viewfinder</figcaption></figure>
+        <figure><img src="img/reviews/lofi-05-3-efectos-stickers-fondos-filtros.webp?v=4" alt="Low-fidelity screen: Stickers on the viewfinder" loading="lazy" width="480" height="1020"><figcaption><b>Effects</b>Stickers on the viewfinder</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-06-3b-efectos-tab-fondos.webp?v=3" alt="Low-fidelity screen: Virtual backgrounds" loading="lazy" width="480" height="1020"><figcaption><b>Backgrounds</b>Virtual backgrounds</figcaption></figure>
+        <figure><img src="img/reviews/lofi-06-3b-efectos-tab-fondos.webp?v=4" alt="Low-fidelity screen: Virtual backgrounds" loading="lazy" width="480" height="1020"><figcaption><b>Backgrounds</b>Virtual backgrounds</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-07-3c-efectos-tab-filtros.webp?v=3" alt="Low-fidelity screen: Colour filters with intensity" loading="lazy" width="480" height="1020"><figcaption><b>Filters</b>Colour filters with intensity</figcaption></figure>
+        <figure><img src="img/reviews/lofi-07-3c-efectos-tab-filtros.webp?v=4" alt="Low-fidelity screen: Colour filters with intensity" loading="lazy" width="480" height="1020"><figcaption><b>Filters</b>Colour filters with intensity</figcaption></figure>
         <span class="sep" aria-hidden="true">→</span>
-        <figure><img src="img/reviews/lofi-11-5-guias-ar-donde-poner-el-producto.webp?v=3" alt="Low-fidelity screen: Where to place the product" loading="lazy" width="480" height="1020"><figcaption><b>AR guide</b>Where to place the product</figcaption></figure>
+        <figure><img src="img/reviews/lofi-11-5-guias-ar-donde-poner-el-producto.webp?v=4" alt="Low-fidelity screen: Where to place the product" loading="lazy" width="480" height="1020"><figcaption><b>AR guide</b>Where to place the product</figcaption></figure>
     </div>
     <aside class="ai"><span class="ai-chip">✦ AI-native</span><p><strong>An endgame first, built in code.</strong> With AI, we mapped every solution from the benchmark against what buyers needed. From that map we built a low-fidelity endgame: the complete version, designed without thinking about team capacity. We built it as working HTML with Claude and Codex, so we could test the flow on a real phone and use the full picture to prioritise which features go first.</p></aside>
   </div>
@@ -594,6 +591,7 @@
 </section>
 
 <section id="s-story" class="slide grey">
+  <button type="button" class="story-toggle" id="story-toggle" aria-pressed="true" aria-controls="s-story" title="Turn the step-by-step animation on or off"><span class="st-label">Animation</span><span class="st-switch" aria-hidden="true"></span></button>
   <canvas class="story-bg" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="kicker">05.</p>
@@ -818,57 +816,55 @@
         now.textContent = ('0' + (a + 1)).slice(-2);
       }
       show(0);
-      var current = 0, ticking = false, lockUntil = 0, anim = 0;
+      var current = 0, ticking = false, gliding = false, glideRaf = 0;
+      var sec = document.getElementById('s-story'), btn = document.getElementById('story-toggle'), root = document.documentElement;
+      var calm = matchMedia('(prefers-reduced-motion: reduce)').matches, KEY = 'mpl-story';
+      function off() { return sec.classList.contains('is-static'); }
       function mid(i) { var r = steps[i].getBoundingClientRect(); return r.top + window.scrollY + r.height / 2 - window.innerHeight / 2; }
+      function jump(y) { root.style.scrollBehavior = 'auto'; window.scrollTo(0, y); root.style.scrollBehavior = ''; }
       function sync() {
         ticking = false;
-        if (anim) return;
+        if (off() || gliding) return;
         var c = window.innerHeight / 2, idx = -1;
         for (var i = 0; i < steps.length; i++) { var r = steps[i].getBoundingClientRect(); if (r.top <= c && r.bottom > c) { idx = i; break; } }
         if (idx > -1 && idx !== current) { current = idx; show(idx); }
       }
-      var calm = matchMedia('(prefers-reduced-motion: reduce)').matches, snapTimer = 0, lastY = window.scrollY, dir = 0;
-      function stop() { if (anim) { cancelAnimationFrame(anim); anim = 0; } }
-      /* One gentle, eased glide for every automatic move (snap, arrows, taps, sideways swipe) */
+      /* Scrolling is the browser's own: the story only follows it. Automatic moves (arrows, taps on the dots, the on/off switch)
+         are one short eased glide that always lands exactly on its target; the page's smooth-scroll setting is paused while it runs,
+         and the visitor's own scrolling (wheel, touch, keys) cancels it. */
+      function stopGlide() { if (glideRaf) { cancelAnimationFrame(glideRaf); glideRaf = 0; } gliding = false; root.style.scrollBehavior = ''; }
       function glide(y) {
-        stop();
+        stopGlide();
         var from = window.scrollY, dist = y - from;
         if (Math.abs(dist) < 3) return;
-        if (calm) { window.scrollTo(0, y); return; }
-        var dur = Math.max(520, Math.min(900, Math.abs(dist) * 0.5 + 380)), t0 = 0;
-        lockUntil = performance.now() + dur + 40;
+        if (calm) { jump(y); return; }
+        gliding = true; root.style.scrollBehavior = 'auto';
+        var dur = Math.max(220, Math.min(340, Math.abs(dist) * 0.2 + 170)), t0 = 0;
         function tick(t) {
           if (!t0) t0 = t;
-          var p = Math.min(1, (t - t0) / dur), k = 1 - Math.pow(1 - p, 4);
+          var p = Math.min(1, (t - t0) / dur), k = 1 - Math.pow(1 - p, 3);
           window.scrollTo(0, from + dist * k);
-          if (p < 1) anim = requestAnimationFrame(tick); else { anim = 0; dir = 0; lastY = window.scrollY; }
+          if (p < 1) glideRaf = requestAnimationFrame(tick);
+          else { glideRaf = 0; gliding = false; root.style.scrollBehavior = ''; sync(); }
         }
-        anim = requestAnimationFrame(tick);
+        glideRaf = requestAnimationFrame(tick);
       }
-      ['touchstart', 'mousedown', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function () { if (anim && performance.now() > 0) { stop(); lockUntil = 0; } }, { passive: true }); });
-      /* When the scrolling pauses, settle on the nearest step so the text always lands in place */
-      function snap() {
-        if (anim || performance.now() < lockUntil) return;
-        var c = window.innerHeight / 2, i = -1, f = 0;
-        for (var k = 0; k < steps.length; k++) { var r = steps[k].getBoundingClientRect(); if (r.top <= c && r.bottom > c) { i = k; f = (c - r.top) / r.height; break; } }
-        if (i < 0 || dir === 0) return;
-        if (Math.abs(window.scrollY - mid(i)) < 14) { dir = 0; return; }
-        var t = i;
-        if (dir > 0 && f > 0.2 && i + 1 < steps.length) t = i + 1;
-        else if (dir < 0 && f < 0.8 && i > 0) t = i - 1;
-        dir = 0;
-        glide(mid(t));
-      }
-      window.addEventListener('scroll', function () {
-        var y = window.scrollY;
-        if (!anim) { if (y !== lastY) dir = y > lastY ? 1 : -1; clearTimeout(snapTimer); snapTimer = setTimeout(snap, 220); }
-        lastY = y;
-        if (!ticking) { ticking = true; requestAnimationFrame(sync); }
-      }, { passive: true });
+      ['touchstart', 'wheel', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function () { if (gliding) stopGlide(); }, { passive: true }); });
+      window.addEventListener('scroll', function () { if (!ticking && !off()) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
       window.addEventListener('resize', sync);
       sync();
-      function goTo(i) { if (i >= 0 && i < steps.length) { current = i; show(i); glide(mid(i)); } }
-      document.querySelector('.sn-prev').addEventListener('click', function () { goTo(current - 1); });
+      /* Arrow and dot taps are meant to feel instant: while one is in flight the section runs with near-zero transitions (is-quick) */
+      var quickTimer = 0;
+      function quick() { sec.classList.add('is-quick'); clearTimeout(quickTimer); quickTimer = setTimeout(function () { sec.classList.remove('is-quick'); }, 600); }
+      function goTo(i) { if (i >= 0 && i < steps.length) { quick(); current = i; show(i); glide(mid(i)); } }
+      /* Up arrow: the step before; from the first step it goes up to the section's title */
+      function toTitle() {
+        var t = sec.querySelector('.kicker') || sec.querySelector('h2');
+        if (!t) return;
+        quick();
+        glide(t.getBoundingClientRect().top + window.scrollY - 110);
+      }
+      document.querySelector('.sn-prev').addEventListener('click', function () { if (current <= 0) toTitle(); else goTo(current - 1); });
       document.querySelector('.sn-next').addEventListener('click', function () { goTo(current + 1); });
       /* Tap a segment at the top of a group to jump to that step */
       document.querySelectorAll('.story-hpanel').forEach(function (pn) {
@@ -880,34 +876,42 @@
           d.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
         });
       });
-      /* Vertical wheel / trackpad inside the story: one step per gesture, however hard or long the swipe */
-      var wheelGate = false, wheelTimer = 0, sec = document.getElementById('s-story');
+      /* A sideways swipe or horizontal wheel moves one step inside a group (vertical wheel is left alone) */
       window.addEventListener('wheel', function (e) {
-        if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || Math.abs(e.deltaY) < 1) return;
-        var sr = sec.getBoundingClientRect(), mid0 = window.innerHeight / 2;
-        if (sr.top > mid0 || sr.bottom < mid0) return;
-        var d = e.deltaY > 0 ? 1 : -1, next = current + d;
-        if (next < 0 || next >= steps.length) { return; }
-        var atEdge = Math.abs(window.scrollY - mid(current)) > window.innerHeight * 0.6;
-        if (atEdge) return;
-        e.preventDefault();
-        clearTimeout(wheelTimer);
-        wheelTimer = setTimeout(function () { wheelGate = false; }, 160);
-        if (wheelGate || anim || performance.now() < lockUntil) return;
-        wheelGate = true;
-        dir = 0;
-        goTo(next);
-      }, { passive: false });
-      /* A sideways swipe or horizontal wheel moves one step inside a group */
-      window.addEventListener('wheel', function (e) {
-        if (Math.abs(e.deltaX) < Math.abs(e.deltaY) * 1.2 || Math.abs(e.deltaX) < 8) return;
+        if (off() || Math.abs(e.deltaX) < Math.abs(e.deltaY) * 1.2 || Math.abs(e.deltaX) < 8) return;
         if (flow[current] === 'v') return;
         e.preventDefault();
-        if (anim || performance.now() < lockUntil) return;
+        if (gliding) return;
         var next = current + (e.deltaX > 0 ? 1 : -1);
         if (next < 0 || next >= steps.length || flow[next] !== flow[current]) return;
         goTo(next);
       }, { passive: false });
+
+      /* On/off switch (floats while this section is on screen). Off = a plain scrollable list, no sticky phone, no step-by-step motion. */
+      function nearest() {
+        var c = window.innerHeight / 2, best = 0, bd = 1e9;
+        steps.forEach(function (st, k) { var r = st.getBoundingClientRect(), d = Math.abs((r.top + r.bottom) / 2 - c); if (d < bd) { bd = d; best = k; } });
+        return best;
+      }
+      function setMode(on, byUser) {
+        var idx = on ? nearest() : current;            // read where the visitor is while the current layout is still in place
+        sec.classList.toggle('is-static', !on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (byUser) { try { localStorage.setItem(KEY, on ? 'on' : 'off'); } catch (e) { /* private mode */ } }
+        stopGlide();
+        if (on) { current = idx; show(idx); jump(mid(idx)); }
+        else {
+          clearInterval(cycleTimer); cycleTimer = 0;
+          var r = steps[idx].getBoundingClientRect(); jump(r.top + window.scrollY - Math.max(96, window.innerHeight * 0.18));
+        }
+        try { window.dispatchEvent(new CustomEvent('storymode', { detail: on })); } catch (e) { /* old browser */ }
+      }
+      var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { /* private mode */ }
+      var startOn = saved ? saved === 'on' : !calm;      // people who ask for less motion start with it off
+      sec.classList.toggle('is-static', !startOn);
+      btn.setAttribute('aria-pressed', startOn ? 'true' : 'false');
+      btn.addEventListener('click', function () { setMode(off(), true); });
+      new IntersectionObserver(function (e) { btn.classList.toggle('is-visible', e[0].isIntersecting); }).observe(sec);
     })();
   </script>
   <script>
@@ -915,7 +919,7 @@
     (function () {
       var section = document.getElementById('s-story'), cv = section.querySelector('.story-bg');
       var ctx = cv.getContext('2d'), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var GAP = 14, cols = 0, rows = 0, w = 0, h = 0, dpr = 1, cur, nxt, glow, visible = false, raf = 0, lastGen = 0, acc = 0, lastY = window.scrollY;
+      var GAP = 14, cols = 0, rows = 0, w = 0, h = 0, dpr = 1, cur, nxt, glow, visible = false, raf = 0, lastGen = 0, lastDraw = 0, acc = 0, lastY = window.scrollY;
       function size() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
         w = cv.clientWidth; h = cv.clientHeight; cv.width = w * dpr; cv.height = h * dpr;
@@ -951,21 +955,35 @@
         }
       }
       function frame(t) {
-        raf = 0; if (!visible) return;
+        raf = 0; if (!visible || section.classList.contains('is-static')) return;
+        if (t - lastDraw < 30) { raf = requestAnimationFrame(frame); return; }
+        lastDraw = t;
         if (!still && t - lastGen > 520) { gen(); lastGen = t; }
         draw(); raf = requestAnimationFrame(frame);
       }
       function start() { if (!raf && visible) raf = requestAnimationFrame(frame); }
       window.addEventListener('scroll', function () {
-        if (!visible || still) return;
+        if (!visible || still || section.classList.contains('is-static')) return;
         acc += Math.abs(window.scrollY - lastY); lastY = window.scrollY;
-        while (acc > 70) { gen(); acc -= 70; }
+        var n = 0; while (acc > 70 && n++ < 2) { gen(); acc -= 70; }
+        if (acc > 70) acc = 0;
       }, { passive: true });
       new IntersectionObserver(function (e) { visible = e[0].isIntersecting; start(); }).observe(section);
       window.addEventListener('resize', function () { size(); });
+      window.addEventListener('storymode', function () { start(); });
       size(); draw();
     })();
   </script>
+</section>
+
+<!-- Banner after the step-by-step story: invites to try the prototype before the results -->
+<section class="proto-banner" aria-labelledby="pb-h">
+  <div class="wrap">
+    <div class="pb-card">
+      <h2 id="pb-h">Don’t leave without<br><span class="grad-text">trying the prototype.</span></h2>
+      <a class="pbtn pbtn-l" href="../prototype/index.html">Try the prototype<i aria-hidden="true">→</i></a>
+    </div>
+  </div>
 </section>
 
 <section id="s-form" class="slide grey" hidden>
@@ -1187,5 +1205,9 @@
 <script>
 document.querySelectorAll('.chapter h2').forEach(function(h){var t=h.textContent.trim().split(' ');if(t.length<2)return;var l=t.pop();h.innerHTML=t.join(' ').replace(/&/g,'&amp;')+' <span class="grad-text">'+l+'</span>';});
 </script>
+<button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
+<script src="site.js?v=6"></script>
+<script src="../i18n/es-case.js?v=9"></script>
+<script src="../i18n/engine.js?v=6"></script>
 </body>
 </html>

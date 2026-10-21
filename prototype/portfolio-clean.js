@@ -16,7 +16,7 @@
     if (!sb.querySelector('.proto-sidebar-intro')) {
       var intro = document.createElement('p');
       intro.className = 'proto-sidebar-intro';
-      intro.textContent = 'Automatic video adjustments';
+      intro.textContent = window.PROTO_LANG === 'es' ? 'Ajustes automáticos del video' : 'Automatic video adjustments';
       sb.insertBefore(intro, sb.firstChild);
     }
   }

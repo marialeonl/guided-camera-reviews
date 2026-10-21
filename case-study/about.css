@@ -1,0 +1,108 @@
+/* About page · María Paula León
+   Loads after tokens.css and styles.css (reuses .topbar, .grad-text, .pbtn, footer.end).
+   Same Luma-like look as the case study: white canvas, ink text, gradient only as a highlight. */
+
+/* ---------- Accessibility ---------- */
+.ab-list a:focus-visible { outline: 3px solid var(--c-accent-strong); outline-offset: 3px; border-radius: 6px; }
+.ab-end a:focus-visible { outline: 3px solid var(--c-accent); outline-offset: 4px; }
+.ab-links [hidden] { display: none !important; }
+
+/* ---------- 1 · Intro ---------- */
+.ab-intro {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  min-height: min(100vh, 900px);
+  padding: 120px 0 72px;
+  background: #fff;
+}
+/* Soft glows live on their own layer so they can fade out before the section edge (no visible seam) */
+.ab-intro::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 38% 45% at 82% 30%, rgba(242,153,74,.26) 0%, rgba(242,153,74,0) 70%),
+    radial-gradient(ellipse 40% 50% at 92% 72%, rgba(195,59,216,.2) 0%, rgba(195,59,216,0) 70%),
+    radial-gradient(ellipse 45% 40% at 8% 100%, rgba(240,86,106,.12) 0%, rgba(240,86,106,0) 70%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+}
+.ab-intro .wrap { position: relative; z-index: 1; width: min(var(--max), 100%); }
+.ab-intro-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+
+.ab-h1 { font-size: clamp(46px, 7.4vw, 104px); line-height: .98; font-weight: 700; letter-spacing: -.04em; margin: 0 0 clamp(22px, 3vw, 34px); }
+.ab-role { margin: 0 0 14px; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.25; font-weight: 600; letter-spacing: -.015em; color: var(--ink); }
+.ab-lede { margin: 0 0 28px; max-width: 36ch; font-size: clamp(17px, 1.7vw, 21px); line-height: 1.55; color: var(--ink-soft); }
+.ab-langs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.ab-langs li { padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.85); border: 1px solid var(--line); font-size: 13.5px; font-weight: 600; color: var(--ink-soft); }
+
+.ab-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.ab-actions .pbtn { margin: 0; }
+.ab-actions a:focus-visible { outline: 3px solid var(--c-accent-strong); outline-offset: 4px; }
+
+.ab-photo { position: relative; justify-self: end; width: min(100%, 440px); margin: 0; }
+.ab-photo::before {
+  content: ""; position: absolute; z-index: 0; inset: -5% -9% -3% 12%;
+  border-radius: 44px; background: var(--grad); opacity: .3; filter: blur(46px);
+}
+.ab-photo img {
+  position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: var(--radius-lg); background: var(--grey);
+  box-shadow: 0 30px 70px rgba(21,21,21,.16);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ab-intro-text > * { animation: ab-in .7s cubic-bezier(.32,.72,0,1) both; }
+  .ab-intro-text > :nth-child(2) { animation-delay: .08s; }
+  .ab-intro-text > :nth-child(3) { animation-delay: .16s; }
+  .ab-intro-text > :nth-child(4) { animation-delay: .24s; }
+  .ab-photo { animation: ab-in .9s .1s cubic-bezier(.32,.72,0,1) both; }
+}
+@keyframes ab-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ---------- 2 · Experience ---------- */
+.ab-exp { padding: clamp(72px, 10vw, 128px) 0 clamp(64px, 9vw, 112px); background: #fff; }
+.ab-h2 { margin: 0 0 clamp(32px, 5vw, 56px); font-size: clamp(36px, 5vw, 60px); line-height: 1.04; font-weight: 700; letter-spacing: -.03em; }
+
+.ab-roles { border-bottom: 1px solid var(--line); }
+.ab-row {
+  position: relative; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(20px, 5vw, 72px); padding: 34px 0 46px; border-top: 1px solid var(--line);
+}
+.ab-row.is-current::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: var(--grad); }
+
+.ab-co { margin: 0 0 8px; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.12; font-weight: 700; letter-spacing: -.025em; }
+.ab-title { margin: 0 0 4px; max-width: 28ch; font-size: 16px; line-height: 1.45; color: var(--ink-soft); }
+.ab-date { margin: 0; font-size: 14px; font-weight: 500; color: var(--muted); }
+
+.ab-list { margin: 0; padding: 0; list-style: none; max-width: 62ch; }
+.ab-list li { position: relative; margin: 0 0 16px; padding-left: 22px; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+.ab-list li:last-child { margin-bottom: 0; }
+.ab-list li::before { content: ""; position: absolute; left: 0; top: .72em; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
+.ab-list a { font-weight: 600; }
+
+/* ---------- 3 · Let's talk ---------- */
+footer.end.ab-end { min-height: 0; display: block; padding: clamp(80px, 12vw, 150px) 0 clamp(56px, 8vw, 96px); }
+.ab-end-in { position: relative; z-index: 2; }
+footer.end.ab-end h2 { font-size: clamp(64px, 12vw, 168px); line-height: .96; }
+.ab-end .end-sub { margin: clamp(22px, 3vw, 34px) 0 0; max-width: 30ch; }
+.ab-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: clamp(32px, 4vw, 48px); }
+.ab-links .pbtn { margin: 0; }
+.ab-links .end-pill { transition: background .25s, transform .25s cubic-bezier(.32,.72,0,1); }
+.ab-links .end-pill:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .ab-intro { min-height: 0; padding: 104px 0 56px; }
+  .ab-intro-grid { grid-template-columns: 1fr; gap: 36px; }
+  .ab-photo { order: -1; justify-self: start; width: min(64%, 280px); }
+  .ab-lede { max-width: 42ch; }
+}
+@media (max-width: 760px) {
+  .ab-row { grid-template-columns: 1fr; gap: 18px; padding: 28px 0 36px; }
+  .ab-title { max-width: none; }
+  .ab-list li { font-size: 16px; }
+}
+@media (max-width: 520px) {
+  .ab-links { flex-direction: column; align-items: stretch; }
+  .ab-links .pbtn, .ab-links .end-pill { justify-content: center; }
+  .ab-links .pbtn { align-self: stretch; word-break: break-all; }
+}

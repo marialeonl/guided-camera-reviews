@@ -1,4 +1,162 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>Guided camera for video reviews · María Paula León</title>
-<meta http-equiv="refresh" content="0; url=case-study/reviews.html"><link rel="canonical" href="case-study/reviews.html"></head>
-<body><a href="case-study/reviews.html">Open the case study</a></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>try{var l=(/[?&]lang=(en|es)\b/.exec(location.search)||[])[1]||localStorage.getItem('mpl-lang');if(l==='es'){document.documentElement.classList.add('i18n-pending');setTimeout(function(){document.documentElement.classList.remove('i18n-pending')},2500)}}catch(e){}</script>
+  <title>Work · María Paula León</title>
+  <meta name="description" content="Work by María Paula León, UX / Product Designer: case studies with an interactive prototype for each.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case-study/tokens.css">
+  <link rel="stylesheet" href="case-study/styles.css?v=185">
+<link rel="stylesheet" href="case-study/header.css">
+  <link rel="stylesheet" href="case-study/work.css?v=27">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<script src="case-study/header.js"></script>
+
+<main id="main">
+
+<!-- 1 · INTRO -->
+<section class="wk-intro" aria-labelledby="wk-h">
+  <!-- Parallax layers: data-px="mouseX, mouseY, scroll" (px per unit of mouse offset, px per px scrolled) -->
+  <div class="wk-glow" aria-hidden="true" data-px="-18,-14,.1"></div>
+  <div class="wk-orbs" aria-hidden="true">
+    <span class="wk-layer" data-px="44,30,-.2"><span class="wk-orb wk-orb-a"></span></span>
+    <span class="wk-layer" data-px="28,20,-.12"><span class="wk-orb wk-orb-b"></span></span>
+    <span class="wk-layer" data-px="62,42,-.3"><span class="wk-orb wk-orb-c"></span></span>
+  </div>
+  <div class="wk-intro-in" data-px="8,5,.14">
+    <h1 class="wk-h1" id="wk-h">Hi, I’m <span class="grad-text nb">María Paula</span></h1>
+    <div class="wk-lines">
+      <p class="wk-role">UX / Product Designer.</p>
+      <p class="wk-sub">I design e-commerce, social video and live shopping experiences, with a focus on accessibility, design systems and AI-assisted prototyping.</p>
+    </div>
+    <a class="wk-see" href="#work">See my work<i aria-hidden="true">↓</i></a>
+  </div>
+  <script>
+    (function () {
+      var hero = document.currentScript.closest('.wk-intro');
+      if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var layers = [].slice.call(hero.querySelectorAll('[data-px]')).map(function (el) {
+        var d = el.getAttribute('data-px').split(',').map(Number);
+        el.style.willChange = 'transform';
+        return { el: el, mx: d[0], my: d[1], sc: d[2] };
+      });
+      var tx = 0, ty = 0, x = 0, y = 0, sy = 0, raf = 0;
+      function tick() {
+        x += (tx - x) * .08; y += (ty - y) * .08;
+        layers.forEach(function (l) {
+          l.el.style.transform = 'translate3d(' + (x * l.mx).toFixed(2) + 'px,' + (y * l.my + sy * l.sc).toFixed(2) + 'px,0)';
+        });
+        raf = (Math.abs(tx - x) > .001 || Math.abs(ty - y) > .001) ? requestAnimationFrame(tick) : 0;
+      }
+      function go() { if (!raf) raf = requestAnimationFrame(tick); }
+      hero.addEventListener('mousemove', function (e) {
+        var r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width * 2 - 1; ty = (e.clientY - r.top) / r.height * 2 - 1; go();
+      });
+      hero.addEventListener('mouseleave', function () { tx = 0; ty = 0; go(); });
+      window.addEventListener('scroll', function () { sy = Math.min(window.scrollY, hero.offsetHeight); go(); }, { passive: true });
+    })();
+  </script>
+</section>
+
+<!-- 2 · SELECTED WORK -->
+<section class="wk-list" id="work" aria-labelledby="wk-work-h">
+  <div class="wrap">
+    <h2 class="wk-h2" id="wk-work-h">Selected work</h2>
+    <ol class="wk-items">
+
+      <!-- To add a project: copy this <li>, then change the text, links and the prototype image.
+           Mobile prototype (default): three phone screens, shown whole, in a wide box. Web prototype: add class "wk-item-web" to the <li>, keep ONE <img> and it fills the box. -->
+      <li class="wk-item">
+        <div class="wk-thumbs">
+          <a class="wk-thumb wk-thumb-proto" href="prototype/index.html" tabindex="-1" aria-hidden="true">
+            <img class="ph-l" src="case-study/img/story/s0-form.webp?v=3" width="540" height="1174" alt="" decoding="async">
+            <img class="ph-r" src="case-study/img/story/s5-guided-done-round.webp" width="540" height="1174" alt="" decoding="async">
+            <img class="ph-c" src="case-study/img/story/s3-guided-1.webp?v=3" width="540" height="1174" alt="" decoding="async">
+            <span class="wk-tag">Prototype</span>
+          </a>
+        </div>
+
+        <div class="wk-text">
+          <div class="wk-head">
+            <p class="wk-eyebrow">01 · Social commerce</p>
+            <h3 class="wk-title"><a href="case-study/reviews.html">Guided camera for <span class="grad-text">video reviews</span></a></h3>
+          </div>
+          <div class="wk-body">
+            <p class="wk-desc">A native in-app camera that guides buyers to record useful product videos for their reviews.</p>
+            <ul class="wk-meta" aria-label="Project details">
+              <li>Product Designer · Co-lead</li>
+              <li>0→1 · Native mobile</li>
+              <li>Shipped in Brazil · 2026</li>
+            </ul>
+            <div class="wk-cta">
+              <span class="wk-go" aria-hidden="true">Read the case study<i>→</i></span>
+              <a class="pbtn" href="prototype/index.html">Try the prototype<i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- WIP cards: no links and no images yet. When a case is ready, copy the first <li> above and replace the WIP card with it. -->
+      <li class="wk-item wk-item-wip">
+        <div class="wk-thumbs" aria-hidden="true">
+          <div class="wk-thumb wk-thumb-proto wk-ph"><span class="wk-tag">Prototype</span></div>
+        </div>
+
+        <div class="wk-text">
+          <div class="wk-head">
+            <p class="wk-eyebrow">02 · Live shopping <span class="wk-wip">WIP</span></p>
+            <h3 class="wk-title">Lives</h3>
+          </div>
+          <div class="wk-body">
+            <p class="wk-desc">A live shopping experience designed from scratch, from concept to launch.</p>
+            <ul class="wk-meta" aria-label="Project details">
+              <li>Co-designed · 0→1</li>
+              <li>Live in Brazil</li>
+            </ul>
+            <p class="wk-wip-note">Case study and prototype in progress.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="wk-item wk-item-wip">
+        <div class="wk-thumbs" aria-hidden="true">
+          <div class="wk-thumb wk-thumb-proto wk-ph"><span class="wk-tag">Prototype</span></div>
+        </div>
+
+        <div class="wk-text">
+          <div class="wk-head">
+            <p class="wk-eyebrow">03 · Accessibility <span class="wk-wip">WIP</span></p>
+            <h3 class="wk-title">Accessible <span class="grad-text">video feed</span></h3>
+          </div>
+          <div class="wk-body">
+            <p class="wk-desc">A social video feed that works with screen readers, adopted as a reusable model.</p>
+            <ul class="wk-meta" aria-label="Project details">
+              <li>Accessibility</li>
+              <li>VoiceOver · TalkBack</li>
+            </ul>
+            <p class="wk-wip-note">Case study and prototype in progress.</p>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
+<script src="case-study/site.js?v=6"></script>
+<script src="i18n/es-work.js?v=6"></script>
+<script src="i18n/engine.js?v=6"></script>
+</body>
+</html>
