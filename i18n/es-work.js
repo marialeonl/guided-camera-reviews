@@ -34,7 +34,14 @@ Object.assign(window.I18N_ES, {
 "mlh3jc": "Principal",
 "q3puh4": "Detalles del proyecto",
 "1rel2zc": "Proyectos de María Paula León, diseñadora UX / Product Designer: casos de estudio con un prototipo interactivo en cada uno.",
-"wbxj5s": "Proyectos · María Paula León"
+"wbxj5s": "Proyectos · María Paula León",
+"1kx240v": "María Paula León · Diseñadora UX / Product Designer",
+"1xoit7g": "Caso de estudio",
+"gg3bub": "<a href=\"case-study/accessibility.html\">Feed de video <span class=\"grad-text\">accesible</span></a>",
+"13uj87d": "Diseñadora UX",
+"1blggm0": "iOS y Android",
+"svxdyq": "<span class=\"wk-go\" aria-hidden=\"true\">Leer el caso de estudio<i>→</i></span>",
+"k8g8e2": "02 · Accesibilidad",
 });
 /* Screenshots with interface text that have a Spanish copy in img/es/ (same file name) */
-window.I18N_IMG = ["story/p1-trim.webp", "story/p2-text.webp", "story/p3-stickers.webp", "story/p4-sound.webp", "story/p5-subs.webp", "story/s0-form.webp", "story/s1-camera.webp", "story/s2-modes.webp", "story/s3-guided-1.webp", "story/s4-guided-2.webp", "story/s5-guided-done.webp", "story/s5-guided-done-round.webp", "story/s6-hints.webp", "story/s6-noprod.webp", "story/s6-static.webp", "story/s7-preview.webp", "story/s8-form-back.webp", "story/s9-form-all.webp", "story/s9-preview-all.webp", "camera/edit-preview.webp", "camera/free-video.webp", "camera/guided.webp", "camera/photo.webp", "camera/too-dark.webp", "form/form-01-start.webp", "form/form-02-guided.webp", "form/form-03-photo.webp", "form/form-04-all-three.webp", "drops/form.png", "drops/recording.png", "drops/validation.png"];
+window.I18N_IMG = ["story/p1-trim.webp", "story/p2-text.webp", "story/p3-stickers.webp", "story/p4-sound.webp", "story/p5-subs.webp", "story/s0-form.webp", "story/s1-camera.webp", "story/s2-modes.webp", "story/s3-guided-1.webp", "story/s4-guided-2.webp", "story/s5-guided-done.webp", "story/s5-guided-done-round.webp", "story/s6-hints.webp", "story/s6-noprod.webp", "story/s6-static.webp", "story/s7-preview.webp", "story/s8-form-back.webp", "story/s9-form-all.webp", "story/s9-preview-all.webp", "camera/edit-preview.webp", "camera/free-video.webp", "camera/guided.webp", "camera/photo.webp", "camera/too-dark.webp", "form/form-01-start.webp", "form/form-02-guided.webp", "form/form-03-photo.webp", "form/form-04-all-three.webp", "drops/form.png", "drops/recording.png", "drops/validation.png", "up/card.webp"];

@@ -2,7 +2,7 @@
    Builds the header in place of its own <script> tag, so put the tag where the header should go (first thing in <body>, after the skip link).
    Pair it with header.css in <head>. To change the header (links, labels, projects, behaviour), edit only header.js and header.css.
 
-   - Brand + pill (Work · Contact · EN|ES). Work opens a card with the projects on hover or tap; a tap on a project opens its case study.
+   - Brand + pill (Work · About · EN|ES). Work opens a card with the projects on hover or tap; a tap on a project opens its case study.
    - Fixed at the top; once you scroll, a soft veil appears (is-floating); over dark sections the text turns white (on-dark).
    - Texts and language switch live here, in both languages, so no page dictionary has to know about the header (it carries data-no-i18n).
    - To add a project to the card: add one entry to PROJECTS (set wip:false and href when its case study exists). */
@@ -11,22 +11,19 @@
   if (!script || !script.src || !script.parentNode || document.querySelector('header.topbar')) return;
   var base = new URL('.', script.src);                                 /* .../case-study/ */
   function url(p) { return new URL(p, base).href; }
-  var HOME = url('../index.html'), CONTACT = url('about.html');
+  var HOME = url('../index.html'), ABOUT = url('about.html');
 
   var COPY = {
-    en: { work: 'Work', contact: 'Contact', head: 'Selected work', wip: 'WIP', all: 'All work', projects: 'Projects' },
-    es: { work: 'Proyectos', contact: 'Contacto', head: 'Proyectos destacados', wip: 'WIP', all: 'Ver todos', projects: 'Proyectos' }
+    en: { work: 'Work', about: 'About', head: 'Selected work', wip: 'WIP', all: 'All work', projects: 'Projects' },
+    es: { work: 'Proyectos', about: 'Sobre mí', head: 'Proyectos destacados', wip: 'WIP', all: 'Ver todos', projects: 'Proyectos' }
   };
   var PROJECTS = [
     { href: 'reviews.html',
       en: { s: '01 · Social commerce', t: 'Guided camera for <span class="grad-text">video reviews</span>' },
       es: { s: '01 · Comercio social', t: 'Cámara guiada para <span class="grad-text">opiniones en video</span>' } },
-    { wip: true,
-      en: { s: '02 · Live shopping', t: 'Lives' },
-      es: { s: '02 · Compras en vivo', t: 'Lives' } },
-    { wip: true,
-      en: { s: '03 · Accessibility', t: 'Accessible <span class="grad-text">video feed</span>' },
-      es: { s: '03 · Accesibilidad', t: 'Feed de video <span class="grad-text">accesible</span>' } }
+    { href: 'accessibility.html',
+      en: { s: '02 · Accessibility', t: 'Accessible <span class="grad-text">video feed</span>' },
+      es: { s: '02 · Accesibilidad', t: 'Feed de video <span class="grad-text">accesible</span>' } }
   ];
 
   /* Same choice as the rest of the site: ?lang= > localStorage "mpl-lang" (the page engines read the same sources) */
@@ -44,14 +41,14 @@
   }
 
   /* ---------- Markup ---------- */
-  var onContact = /about\.html$/.test(location.pathname), L = lang();
+  var onAbout = /about\.html$/.test(location.pathname), L = lang();
   var bar = document.createElement('header');
   bar.className = 'topbar'; bar.setAttribute('data-no-i18n', '');
   bar.innerHTML =
     '<a href="' + HOME + '"><strong>María Paula León</strong></a>' +
     '<nav aria-label="Main">' +
-      '<a href="' + HOME + '" data-nav="work"' + (onContact ? '' : ' aria-current="page"') + '>' + COPY[L].work + '</a>' +
-      '<a href="' + CONTACT + '" data-nav="contact"' + (onContact ? ' aria-current="page"' : '') + '>' + COPY[L].contact + '</a>' +
+      '<a href="' + HOME + '" data-nav="work"' + (onAbout ? '' : ' aria-current="page"') + '>' + COPY[L].work + '</a>' +
+      '<a href="' + ABOUT + '" data-nav="about"' + (onAbout ? ' aria-current="page"' : '') + '>' + COPY[L].about + '</a>' +
       '<span class="lang" role="group" aria-label="Language / Idioma">' +
         '<button type="button" data-l="en" lang="en" title="English" aria-pressed="' + (L === 'en') + '">EN</button>' +
         '<button type="button" data-l="es" lang="es" title="Español" aria-pressed="' + (L === 'es') + '">ES</button>' +
@@ -59,7 +56,7 @@
     '</nav>';
   script.parentNode.insertBefore(bar, script);
 
-  var nav = bar.querySelector('nav'), trigger = nav.querySelector('[data-nav="work"]'), contact = nav.querySelector('[data-nav="contact"]');
+  var nav = bar.querySelector('nav'), trigger = nav.querySelector('[data-nav="work"]'), about = nav.querySelector('[data-nav="about"]');
 
   /* ---------- Language ---------- */
   bar.querySelector('.lang').addEventListener('click', function (e) {
@@ -72,7 +69,7 @@
   });
   function sync() {
     var l = lang(), c = COPY[l];
-    trigger.textContent = c.work; contact.textContent = c.contact;
+    trigger.textContent = c.work; about.textContent = c.about;
     [].forEach.call(bar.querySelectorAll('button[data-l]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-l') === l ? 'true' : 'false'); });
     if (panel.classList.contains('is-open')) renderPanel();
   }

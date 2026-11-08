@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marialeonl.github.io/guided-camera-reviews/sitemap.xml

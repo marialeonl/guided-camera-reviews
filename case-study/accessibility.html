@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>try{var l=(/[?&]lang=(en|es)\b/.exec(location.search)||[])[1]||localStorage.getItem('mpl-lang');if(l==='es'){document.documentElement.classList.add('i18n-pending');setTimeout(function(){document.documentElement.classList.remove('i18n-pending')},2500)}}catch(e){}</script>
+  <title>Accessible video feed · María Paula León</title>
+  <meta name="description" content="Case study: making a social video feed work with VoiceOver and TalkBack. A control bar, reading order, labels and states, edge cases and guidelines for iOS and Android.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://marialeonl.github.io/guided-camera-reviews/case-study/accessibility.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="María Paula León">
+  <meta property="og:title" content="Accessible video feed · María Paula León">
+  <meta property="og:description" content="Case study: making a social video feed work with VoiceOver and TalkBack. A control bar, reading order, labels and states, edge cases and guidelines for iOS and Android.">
+  <meta property="og:url" content="https://marialeonl.github.io/guided-camera-reviews/case-study/accessibility.html">
+  <meta property="og:image" content="https://marialeonl.github.io/guided-camera-reviews/case-study/img/og-accessibility.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Accessible video feed: a video screen before and after, with a control bar for VoiceOver and TalkBack">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accessible video feed · María Paula León">
+  <meta name="twitter:description" content="Case study: making a social video feed work with VoiceOver and TalkBack. A control bar, reading order, labels and states, edge cases and guidelines for iOS and Android.">
+  <meta name="twitter:image" content="https://marialeonl.github.io/guided-camera-reviews/case-study/img/og-accessibility.jpg">
+  <meta name="twitter:image:alt" content="Accessible video feed: a video screen before and after, with a control bar for VoiceOver and TalkBack">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css?v=185">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="a11y.css?v=4">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<script src="header.js?v=5"></script>
+
+<main id="main">
+
+<!-- 1 · HERO -->
+<section class="hero" aria-labelledby="a1-h1">
+  <div class="hero-layers" aria-hidden="true"><div class="hl hl-bg"></div></div>
+  <div class="a1-hero-phones" aria-hidden="true">
+    <img class="p1" src="img/a11y/frame-before.webp?v=2" alt="" width="540" height="938" decoding="async">
+    <img class="p2" src="img/a11y/frame-after.webp?v=2" alt="" width="540" height="938" decoding="async">
+  </div>
+  <div class="wrap">
+    <p class="eyebrow">Case study 02 · Accessibility</p>
+    <h1 id="a1-h1">Accessible <span class="grad-text">video feed</span></h1>
+    <span class="pill">UX Designer</span>
+    <a class="pbtn" href="#a1-spec">See the specs<i aria-hidden="true">↓</i></a>
+  </div>
+  <p class="hero-foot">Accessibility · Native mobile · iOS &amp; Android · VoiceOver &amp; TalkBack</p>
+</section>
+
+<!-- 2 · SUMMARY -->
+<section class="slide" aria-label="Summary">
+  <div class="wrap summary">
+    <div>
+      <h3>Mission</h3>
+      <p>Make the video feed work with a screen reader, and document it so other teams can reuse the model.</p>
+
+      <h3>What I designed</h3>
+      <ul>
+        <li>A control bar for VoiceOver and TalkBack, fixed in place while the feed scrolls</li>
+        <li>The reading order, labels, roles and states of every element on the video screen</li>
+        <li>Announcements and edge cases: empty feed, loading, errors and no connection</li>
+        <li>Specs and guidelines for iOS and Android, so the pattern can be reused</li>
+        <li>Labels, status messages and descriptions, written with the Content team</li>
+      </ul>
+
+      <h3>Results</h3>
+      <ul>
+        <li>An accessible, scalable model for the video feed</li>
+        <li>Validated with accessibility experts, and tested with VoiceOver and TalkBack</li>
+      </ul>
+    </div>
+    <dl class="facts">
+      <dt>Role</dt><dd>UX Designer</dd>
+      <dt>Platform</dt><dd>Native app · iOS &amp; Android</dd>
+      <dt>Assistive tech</dt><dd>VoiceOver · TalkBack</dd>
+      <dt>Deliverables</dt><dd>Flowchart, use cases, accessibility spec, guidelines</dd>
+      <dt>Skills</dt>
+      <dd class="tags">
+        <span class="tag">Accessibility</span><span class="tag">Interaction design</span><span class="tag">Specs &amp; handoff</span><span class="tag">Design systems</span>
+      </dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 3 · STARTING POINT -->
+<section class="chapter" aria-labelledby="a1-ch1">
+  <div class="wrap">
+    <p class="num">01.</p>
+    <h2 id="a1-ch1">The starting point</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide" aria-labelledby="a1-start">
+  <div class="wrap">
+    <p class="kicker">01.</p>
+    <h2 class="title" id="a1-start">One tap target, and little else</h2>
+    <p class="lede">A warning arrived about accessibility failures in the video feed. With VoiceOver or TalkBack, people got trapped in a video and couldn’t move on. There were no controls to pause, mute or skip a video: only a “Botón de pausa” target on the centre of the video.</p>
+
+    <div class="a1-ba">
+      <figure>
+        <img class="a1-shot" src="img/a11y/before.webp?v=2" width="560" height="996" alt="The video screen before: the video, the sound prompt and the buttons on the right, with no playback controls" loading="lazy">
+        <figcaption class="a1-cap"><b>Before</b>Nothing to navigate the feed with.</figcaption>
+      </figure>
+      <figure>
+        <img class="a1-shot" src="img/a11y/after.webp?v=2" width="560" height="996" alt="The video screen after: a bar with sound, previous, pause and next buttons appears at the top" loading="lazy">
+        <figcaption class="a1-cap"><b>After</b>A control bar appears when a screen reader is on.</figcaption>
+      </figure>
+    </div>
+
+    <ol class="a1-ab">
+      <li><span class="k" aria-hidden="true">A</span><p><strong>Controls.</strong> With VoiceOver or TalkBack on, controls appear to navigate the feed.</p></li>
+      <li><span class="k" aria-hidden="true">B</span><p><strong>Reading.</strong> Reworded labels and a defined reading order for every element.</p></li>
+    </ol>
+
+    <div class="a1-table-wrap">
+      <table>
+        <caption class="a1-sr">What the screen reader said before, and what it says now</caption>
+        <thead><tr><th scope="col">Element</th><th scope="col">Before</th><th scope="col">Now</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Pause</th><td class="old"><code lang="es">“Botón de pausa”</code> (centre of the video)</td><td>Controls: <code lang="es">“Pausar video”</code> and <code lang="es">“Reproducir video”</code></td></tr>
+          <tr><th scope="row">Open the coupon</th><td class="old"><code lang="es">“Abrir modal cupón descuentos videos”</code></td><td><code lang="es">“Comparte videos y gana $9.000”</code>, written for each market</td></tr>
+          <tr><th scope="row">Close the coupon</th><td class="old"><code lang="es">“Cerrar modal cupón descuentos clips”</code></td><td><code lang="es">“Cerrar”</code></td></tr>
+          <tr><th scope="row">Views and seller</th><td class="old">Two separate buttons: views and seller name</td><td>A label, <code lang="es">“Vendedor {nombre}”</code>, and a Follow button with its own state</td></tr>
+          <tr><th scope="row">More options</th><td class="old"><code lang="es">“Menú desplegable diálogo”</code></td><td><code lang="es">“Más opciones”</code></td></tr>
+          <tr><th scope="row">Product card</th><td class="old">Link named after the product</td><td>Link: <code lang="es">“Información del producto”</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="a1-note">Labels are shown in Spanish, as the screen reader reads them in Latin America.</p>
+  </div>
+</section>
+
+<section class="slide grey" aria-labelledby="a1-hard">
+  <div class="wrap">
+    <p class="kicker">01.</p>
+    <h2 class="title" id="a1-hard">What made it hard</h2>
+    <ul class="a1-dec">
+      <li><span class="n" aria-hidden="true">1</span><h3>Key problems</h3><p>Missing or wrong labels, an inconsistent reading order and badly designed focus.</p></li>
+      <li><span class="n" aria-hidden="true">2</span><h3>Limitations</h3><p>Little time, a small team and little experience with video accessibility.</p></li>
+      <li><span class="n" aria-hidden="true">3</span><h3>What we had to learn</h3><p>Video accessibility, fast, while delivering a scalable solution consistent with the design system.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4 · HOW IT WORKS -->
+<section class="chapter" aria-labelledby="a1-ch2">
+  <div class="wrap">
+    <p class="num">02.</p>
+    <h2 id="a1-ch2">How it works</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide grey" aria-labelledby="a1-flow">
+  <div class="wrap">
+    <p class="kicker">02.</p>
+    <h2 class="title" id="a1-flow">The flow</h2>
+    <p class="lede">The video starts muted. One tap turns the sound on, and the controls stay put as the feed moves.</p>
+
+    <ol class="a1-flow">
+      <li data-then="On tap">
+        <figure>
+          <span class="step">Sound off</span>
+          <img class="a1-shot" src="img/a11y/flow-1.webp?v=2" width="560" height="1244" alt="First video, muted, with the prompt “Toca para activar el sonido” and the control bar at the top" loading="lazy">
+        </figure>
+      </li>
+      <li data-then="Scroll">
+        <figure>
+          <span class="step">Sound on</span>
+          <img class="a1-shot" src="img/a11y/flow-2.webp?v=2" width="560" height="1244" alt="The same video with the prompt gone and the sound on" loading="lazy">
+        </figure>
+      </li>
+      <li data-then="">
+        <figure>
+          <span class="step">Scrolling</span>
+          <img class="a1-shot" src="img/a11y/flow-3.webp?v=2" width="560" height="1244" alt="Halfway between two videos, with the control bar still at the top" loading="lazy">
+        </figure>
+      </li>
+      <li data-then="">
+        <figure>
+          <span class="step">Next video</span>
+          <img class="a1-shot" src="img/a11y/flow-4.webp?v=2" width="560" height="1244" alt="The next video, with the control bar in the same place" loading="lazy">
+        </figure>
+      </li>
+    </ol>
+    <p class="a1-flow-note">The navigation controls don’t move when the video scrolls.</p>
+  </div>
+</section>
+
+<section class="slide" aria-labelledby="a1-dec">
+  <div class="wrap">
+    <p class="kicker">02.</p>
+    <h2 class="title" id="a1-dec">Decisions behind it</h2>
+    <ul class="a1-dec">
+      <li><span class="n" aria-hidden="true">1</span><h3>Controls only when a screen reader is on</h3><p>The bar appears with VoiceOver or TalkBack, and replaces the old centre tap.</p></li>
+      <li><span class="n" aria-hidden="true">2</span><h3>Sound stays in the user’s hands</h3><p>The first video starts muted. A sound button lets people turn audio on or off so the video never talks over the screen reader’s voice.</p></li>
+      <li><span class="n" aria-hidden="true">3</span><h3>Always in the same place</h3><p>The bar doesn’t move when the video scrolls, so the controls are where the user left them.</p></li>
+      <li><span class="n" aria-hidden="true">4</span><h3>Play wins over sound</h3><p>If someone pauses the first video before turning the sound on, play takes priority and the sound control hides. Coming back restores the previous state.</p></li>
+      <li><span class="n" aria-hidden="true">5</span><h3>No dead ends</h3><p>On the first video there is nothing behind it, so the previous button shows as disabled.</p></li>
+      <li><span class="n" aria-hidden="true">6</span><h3>A safe way out</h3><p>The player always has a safe exit, so nobody gets trapped in a video again.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide grey" aria-labelledby="a1-uc">
+  <div class="wrap">
+    <p class="kicker">02.</p>
+    <h2 class="title" id="a1-uc">Use cases</h2>
+    <p class="lede">Each behaviour, one screen at a time.</p>
+
+    <div class="a1-uc-grid">
+      <article class="a1-uc">
+        <h3>First video</h3>
+        <div class="a1-uc-shots one"><figure><img class="a1-shot" src="img/a11y/use-first.webp?v=2" width="560" height="1038" alt="First video with markers A on the sound button and B on the previous button" loading="lazy"></figure></div>
+        <ul>
+          <li><strong>A.</strong> It plays without sound. A tap turns the sound on.</li>
+          <li><strong>B.</strong> With no video behind it, the previous button appears disabled.</li>
+        </ul>
+      </article>
+
+      <article class="a1-uc">
+        <h3>Sound on and off</h3>
+        <div class="a1-uc-shots">
+          <figure><img class="a1-shot" src="img/a11y/use-sound-on.webp?v=2" width="560" height="1038" alt="Sound on: the sound button shows its on icon" loading="lazy"><figcaption class="a1-cap">Sound on · a tap mutes</figcaption></figure>
+          <figure><img class="a1-shot" src="img/a11y/use-sound-off.webp?v=2" width="560" height="1038" alt="Sound off: the sound button shows its muted icon" loading="lazy"><figcaption class="a1-cap">Muted · a tap turns it on</figcaption></figure>
+        </div>
+        <p>A tap switches the sound, so people can keep the video from talking over their screen reader.</p>
+      </article>
+
+      <article class="a1-uc">
+        <h3>Play and pause</h3>
+        <div class="a1-uc-shots">
+          <figure><img class="a1-shot" src="img/a11y/use-pause.webp?v=2" width="560" height="1244" alt="The video playing, with the pause button in the bar" loading="lazy"><figcaption class="a1-cap">Playing</figcaption></figure>
+          <figure><img class="a1-shot" src="img/a11y/use-play.webp?v=2" width="560" height="1244" alt="The video paused, with the play button in the bar and a large play icon over it" loading="lazy"><figcaption class="a1-cap">Paused</figcaption></figure>
+        </div>
+        <p>A tap pauses the video, and the button changes to play.</p>
+      </article>
+
+      <article class="a1-uc">
+        <h3>Coupon</h3>
+        <div class="a1-uc-shots one"><figure><img class="a1-shot" src="img/a11y/use-coupon.webp?v=2" width="560" height="1244" alt="Video with the coupon badge on the left under the control bar" loading="lazy"></figure></div>
+        <p>The coupon has two nested actions: open its modal, or close the widget.</p>
+      </article>
+
+      <article class="a1-uc wide">
+        <h3>If the sound was never turned on</h3>
+        <div class="a1-uc-shots one"><figure><img class="a1-shot" src="img/a11y/use-nosound.webp?v=2" width="1100" height="871" alt="Two screens side by side: the first video muted and playing, then the same video paused, with the sound prompt hidden" loading="lazy" style="box-shadow:none;border:0;background:transparent"></figure></div>
+        <p>On the first video, if the user pauses without having turned the sound on, play takes priority and the sound prompt hides. When they come back, the previous state returns.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · SPEC -->
+<section class="chapter" aria-labelledby="a1-ch3">
+  <div class="wrap">
+    <p class="num">03.</p>
+    <h2 id="a1-ch3">Accessibility spec</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide" id="a1-spec" aria-labelledby="a1-order">
+  <div class="wrap">
+    <p class="kicker">03.</p>
+    <h2 class="title" id="a1-order">Reading order and labels</h2>
+    <p class="lede a1-lead">The reading order goes video, controls, description, product card. Every element has a role, a label and, when it changes, a state. Hover a row to find it on the screen.</p>
+
+    <div class="a1-annot">
+      <div class="a1-screen" id="a1-screen">
+        <img class="a1-shot" src="img/a11y/use-coupon.webp?v=2" width="560" height="1244" alt="The new video screen with eight numbered markers, matching the list next to it" loading="lazy">
+        <span class="a1-pin" data-k="1" style="left:93%;top:10.5%" aria-hidden="true">1</span>
+        <span class="a1-pin" data-k="2" style="left:9%;top:9.5%" aria-hidden="true">2</span>
+        <span class="a1-pin" data-k="3" style="left:85%;top:16.2%" aria-hidden="true">3</span>
+        <span class="a1-pin" data-k="4" style="left:35%;top:25%" aria-hidden="true">4</span>
+        <span class="a1-pin" data-k="5" style="left:47%;top:76.2%" aria-hidden="true">5</span>
+        <span class="a1-pin" data-k="6" style="left:49%;top:82.2%" aria-hidden="true">6</span>
+        <span class="a1-pin" data-k="7" style="left:92%;top:87%" aria-hidden="true">7</span>
+        <span class="a1-pin" data-k="8" style="left:75%;top:55%" aria-hidden="true">8</span>
+      </div>
+
+      <ol class="a1-legend" id="a1-legend">
+        <li data-k="1"><span class="k" aria-hidden="true">1</span><div><h3>Video <span class="role">Label</span></h3><p><code class="a1-label" lang="es">“Video de {nombre del producto}”</code></p></div></li>
+        <li data-k="2"><span class="k" aria-hidden="true">2</span><div><h3>Back <span class="role">Button</span></h3><p><code class="a1-label" lang="es">“Volver”</code></p></div></li>
+        <li data-k="3"><span class="k" aria-hidden="true">3</span><div><h3>Video controls <span class="role">Group</span></h3><p><code class="a1-label" lang="es">“Controles del video”</code>, with four buttons:</p><p><code class="a1-label" lang="es">“Silenciar”</code> / <code class="a1-label" lang="es">“Activar sonido”</code> · <code class="a1-label" lang="es">“Video anterior”</code> (disabled on the first video) · <code class="a1-label" lang="es">“Pausar video”</code> / <code class="a1-label" lang="es">“Reproducir video”</code> · <code class="a1-label" lang="es">“Video siguiente”</code></p></div></li>
+        <li data-k="4"><span class="k" aria-hidden="true">4</span><div><h3>Coupon <span class="role">Button</span></h3><p><code class="a1-label" lang="es">“Comparte videos y gana $9.000”</code>, worded for each market (see below)</p></div></li>
+        <li data-k="5"><span class="k" aria-hidden="true">5</span><div><h3>Seller <span class="role">Label</span></h3><p><code class="a1-label" lang="es">“Vendedor {nombre del vendedor}”</code></p></div></li>
+        <li data-k="6"><span class="k" aria-hidden="true">6</span><div><h3>Follow <span class="role">Button</span></h3><p><code class="a1-label" lang="es">“Seguir”</code>, with selected and not-selected states. It announces <code class="a1-label" lang="es">“Seguiste a {vendedor}”</code></p></div></li>
+        <li data-k="7"><span class="k" aria-hidden="true">7</span><div><h3>Product card <span class="role">Link</span></h3><p><code class="a1-label" lang="es">“Información del producto”</code></p></div></li>
+        <li data-k="8"><span class="k" aria-hidden="true">8</span><div><h3>Side actions <span class="role">Buttons</span></h3><p><code class="a1-label" lang="es">“Ir a la página del vendedor”</code> · <code class="a1-label" lang="es">“Agregar a favoritos”</code> (marked and not marked; the marked state reads <code class="a1-label" lang="es">“Quitar de favoritos”</code>) · <code class="a1-label" lang="es">“Compartir”</code> · <code class="a1-label" lang="es">“Más opciones”</code></p></div></li>
+      </ol>
+    </div>
+
+    <div class="a1-shipped">
+      <figure>
+        <img src="img/a11y/shipped.webp?v=3" width="900" height="970" alt="The shipped video feed with its labels marked: Volver, Silenciar, Video anterior, Pausar video, Video siguiente, the seller, the side actions and the product link" loading="lazy">
+      </figure>
+      <div>
+        <p class="a1-mini">In the app</p>
+        <h3>The shipped feed</h3>
+        <p>In production the controls name what they act on: <code class="a1-label" lang="es">“Pausar video”</code>, <code class="a1-label" lang="es">“Video anterior”</code> and <code class="a1-label" lang="es">“Video siguiente”</code>.</p>
+        <p>Labels, status messages and descriptions were written with the Content team for a consistent, inclusive tone. Then they were validated with accessibility experts and tested with VoiceOver and TalkBack in critical scenarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" aria-labelledby="a1-markets">
+  <div class="wrap">
+    <p class="kicker">03.</p>
+    <h2 class="title" id="a1-markets">One coupon, eight markets</h2>
+    <p class="lede a1-lead">The coupon label says what it is worth in each country’s currency, or as a discount. <code class="a1-label">{0}</code> is the amount.</p>
+    <div class="a1-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Market</th><th scope="col">Label</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Argentina</th><td><code lang="es">“Compartí videos y ganá {0} pesos”</code></td></tr>
+          <tr><th scope="row">Brazil</th><td><code lang="pt">“Compartilhe vídeos e ganhe {0} reais”</code></td></tr>
+          <tr><th scope="row">Mexico · Colombia · Uruguay</th><td><code lang="es">“Comparte videos y gana {0} pesos”</code></td></tr>
+          <tr><th scope="row">Ecuador</th><td><code lang="es">“Comparte videos y gana {0} dólares”</code></td></tr>
+          <tr><th scope="row">Peru</th><td><code lang="es">“Comparte videos y gana {0} soles”</code></td></tr>
+          <tr><th scope="row">Chile</th><td><code lang="es">“Comparte videos y gana {0}% de descuento”</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · EDGE CASES -->
+<section class="chapter" aria-labelledby="a1-ch4">
+  <div class="wrap">
+    <p class="num">04.</p>
+    <h2 id="a1-ch4">Edge cases</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide" aria-labelledby="a1-edge">
+  <div class="wrap">
+    <p class="kicker">04.</p>
+    <h2 class="title" id="a1-edge">When the feed doesn’t play</h2>
+    <p class="lede a1-lead">Loading, errors and an empty feed each say what is happening and, when there is somewhere to go, offer it.</p>
+
+    <p class="scroll-hint">Scroll sideways →</p>
+    <div class="a1-scroll" tabindex="0" role="region" aria-label="Edge case screens: loading, error, connection error and feed not responding">
+      <img src="img/a11y/edge-four.webp?v=2" width="1988" height="833" alt="Four Android screens: loading, an error message, a connection error with no image, and the feed not responding" loading="lazy">
+    </div>
+
+    <div class="a1-table-wrap">
+      <table>
+        <thead><tr><th scope="col">State</th><th scope="col">What the user hears or reads</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Empty feed</th><td><code lang="es">“Pronto verás videos nuevos”</code> and a button, <code lang="es">“Ir a ofertas”</code></td></tr>
+          <tr><th scope="row">Loading</th><td>Label: <code lang="es">“Cargando video”</code></td></tr>
+          <tr><th scope="row">Error</th><td>Announcement: <code lang="es">“Se produjo un error. Inténtalo más tarde.”</code></td></tr>
+          <tr><th scope="row">No connection</th><td>Announcement: <code lang="es">“No tienes conexión a internet. Inténtalo más tarde.”</code></td></tr>
+          <tr><th scope="row">Feed not responding</th><td><code lang="es">“Algo pasó con ‘Videos’”</code> and a button, <code lang="es">“Ir a ofertas”</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · GUIDELINES -->
+<section class="chapter" aria-labelledby="a1-ch5">
+  <div class="wrap">
+    <p class="num">05.</p>
+    <h2 id="a1-ch5">Specs &amp; guidelines</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide grey" aria-labelledby="a1-guide">
+  <div class="wrap">
+    <p class="kicker">05.</p>
+    <h2 class="title" id="a1-guide">Made to be reused</h2>
+    <p class="lede a1-lead">The handoff includes placement and spacing, the current and new screens side by side, and both platforms.</p>
+
+    <div class="a1-g">
+      <figure style="margin:0">
+        <img class="a1-shot" style="border-radius:20px" src="img/a11y/g-compare.webp?v=2" width="1295" height="1218" alt="The current screen and the new screen side by side, with the spacing of the control bar marked" loading="lazy">
+        <figcaption class="a1-cap"><b>Current and new</b>Where the control bar sits, and how much space it takes.</figcaption>
+      </figure>
+      <div>
+        <p class="a1-mini">iOS and Android</p>
+        <div class="a1-g-phones">
+          <figure><img class="a1-shot" src="img/a11y/g-ios.webp?v=2" width="560" height="1244" alt="The new screen on iOS" loading="lazy"><figcaption class="a1-cap">iOS</figcaption></figure>
+          <figure><img class="a1-shot" src="img/a11y/g-android.webp?v=2" width="560" height="1244" alt="The new screen on Android" loading="lazy"><figcaption class="a1-cap">Android</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="a1-g-icons">
+      <div>
+        <p class="a1-mini">Components</p>
+        <h3 style="font-size:22px;margin:0 0 8px">The control icons</h3>
+        <p>Sound on and muted, previous, play, next and pause, each with an enabled and a disabled state.</p>
+      </div>
+      <img src="img/a11y/g-icons.webp?v=2" width="1100" height="342" alt="The six control icons in two rows: enabled on top, disabled below" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- 8 · OUTCOME -->
+<section class="chapter" aria-labelledby="a1-ch6">
+  <div class="wrap">
+    <p class="num">06.</p>
+    <h2 id="a1-ch6">The outcome</h2>
+    <div class="rule-wrap"><div class="rule"></div></div>
+  </div>
+</section>
+
+<section class="slide" aria-labelledby="a1-out">
+  <div class="wrap">
+    <p class="kicker">06.</p>
+    <h2 class="title" id="a1-out">What it achieved</h2>
+    <ul class="a1-outcome">
+      <li><b>Unblocked</b><p>People using VoiceOver or TalkBack can pause, mute and move through the feed instead of getting trapped in a video.</p></li>
+      <li><b>A model</b><p>An accessible, scalable model for the video feed, consistent with the design system and ready to reuse.</p></li>
+      <li><b>Validated</b><p>Checked with accessibility experts and tested with VoiceOver and TalkBack.</p></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="end">
+  <div class="end-grid" aria-hidden="true"></div>
+  <div class="wrap end-in">
+    <h2>Thanks for<br><span class="grad-text">scrolling.</span></h2>
+    <a class="pbtn pbtn-l" href="../index.html#work">All work<i aria-hidden="true">→</i></a>
+    <p class="end-sub">Let’s talk about the next one.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.chapter h2').forEach(function(h){var t=h.textContent.trim().split(' ');if(t.length<2)return;var l=t.pop();h.innerHTML=t.join(' ').replace(/&/g,'&amp;')+' <span class="grad-text">'+l+'</span>';});
+/* Hover or focus a row of the list: its marker grows on the screen */
+(function () {
+  var screen = document.getElementById('a1-screen'), legend = document.getElementById('a1-legend');
+  if (!screen || !legend) return;
+  function mark(k, on) { var p = screen.querySelector('.a1-pin[data-k="' + k + '"]'); if (p) p.classList.toggle('on', on); var li = legend.querySelector('li[data-k="' + k + '"]'); if (li) li.classList.toggle('on', on); }
+  [].forEach.call(legend.querySelectorAll('li'), function (li) {
+    var k = li.getAttribute('data-k');
+    li.addEventListener('mouseenter', function () { mark(k, true); });
+    li.addEventListener('mouseleave', function () { mark(k, false); });
+  });
+})();
+</script>
+<button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
+<script src="site.js?v=6"></script>
+<script src="../i18n/es-accessibility.js?v=8"></script>
+<script src="../i18n/engine.js?v=6"></script>
+</body>
+</html>

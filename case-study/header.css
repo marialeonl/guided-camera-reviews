@@ -3,7 +3,7 @@
 
    - Fixed at the top, transparent. Once you scroll, a soft veil that fades out downward keeps it readable;
      over dark sections the text turns white on a dark veil (.on-dark, set by header.js).
-   - Pill on the right: Work (opens the projects card on hover or tap) / Contact / EN | ES.
+   - Pill on the right: Work (opens the projects card on hover or tap) / About / EN | ES.
    - Pages can only change its stacking order with --header-z. */
 
 .topbar {
@@ -35,7 +35,7 @@
 }
 .topbar.is-floating::before { opacity: 1; }
 
-/* Pill: Work · Contact · EN|ES */
+/* Pill: Work · About · EN|ES */
 .topbar nav {
   display: flex; align-items: center; gap: 24px; padding: 6px 14px; border-radius: 999px;
   background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);

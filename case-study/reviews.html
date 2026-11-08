@@ -4,23 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>try{var l=(/[?&]lang=(en|es)\b/.exec(location.search)||[])[1]||localStorage.getItem('mpl-lang');if(l==='es'){document.documentElement.classList.add('i18n-pending');setTimeout(function(){document.documentElement.classList.remove('i18n-pending')},2500)}}catch(e){}</script>
-  <title>Guided Review Camera · María Paula León</title>
+  <title>Guided camera for video reviews · María Paula León</title>
   <meta name="description" content="Case study: a native in-app camera that guides buyers to record useful video reviews. Shipped in Brazil, 2026.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://marialeonl.github.io/guided-camera-reviews/case-study/reviews.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="María Paula León">
+  <meta property="og:title" content="Guided camera for video reviews · María Paula León">
+  <meta property="og:description" content="Case study: a native in-app camera that guides buyers to record useful video reviews. Shipped in Brazil, 2026.">
+  <meta property="og:url" content="https://marialeonl.github.io/guided-camera-reviews/case-study/reviews.html">
+  <meta property="og:image" content="https://marialeonl.github.io/guided-camera-reviews/case-study/img/og-reviews.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Guided camera for video reviews: three phone screens from the review form and the guided camera">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guided camera for video reviews · María Paula León">
+  <meta name="twitter:description" content="Case study: a native in-app camera that guides buyers to record useful video reviews. Shipped in Brazil, 2026.">
+  <meta name="twitter:image" content="https://marialeonl.github.io/guided-camera-reviews/case-study/img/og-reviews.jpg">
+  <meta name="twitter:image:alt" content="Guided camera for video reviews: three phone screens from the review form and the guided camera">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="styles.css?v=185">
+  <link rel="stylesheet" href="styles.css?v=190">
 <link rel="stylesheet" href="header.css">
 </head>
 <body>
 
 <!-- DRAFT · Items marked TBC are pending confirmation. Remove them before publishing. -->
 
-<script src="header.js"></script>
+<a class="skip" href="#main">Skip to content</a>
+
+<script src="header.js?v=5"></script>
+
+<main id="main">
 
 <!-- 1 · HERO -->
-<section class="hero">
+<section class="hero" aria-labelledby="sh-guided-camera-for-video-reviews">
   <div class="hero-layers" aria-hidden="true">
     <div class="hl hl-bg"></div>
     <img class="hl hl-person" src="img/hero-person.webp?v=2" alt="" width="1171" height="1244">
@@ -47,7 +73,7 @@
   </script>
   <div class="wrap">
     <p class="eyebrow">Case study 01 · Social commerce</p>
-    <h1>Guided camera for <span class="grad-text">video reviews</span></h1>
+    <h1 id="sh-guided-camera-for-video-reviews">Guided camera for <span class="grad-text">video reviews</span></h1>
     <span class="pill">Product Designer · Co-lead</span>
     <a class="pbtn" href="../prototype/index.html">Try the prototype<i aria-hidden="true">→</i></a>
   </div>
@@ -55,7 +81,7 @@
 </section>
 
 <!-- 2 · SUMMARY -->
-<section class="slide">
+<section class="slide" aria-label="Summary">
   <div class="wrap summary">
     <div>
       <h3>Mission</h3>
@@ -96,10 +122,10 @@
 </section>
 
 <!-- TIMELINE -->
-<section class="slide dark" hidden>
+<section class="slide dark" hidden aria-labelledby="sh-from-research-to-rollout-in-three-months">
   <div class="wrap">
     <p class="kicker">Timeline</p>
-    <h2 class="title">From research to rollout in three months</h2>
+    <h2 id="sh-from-research-to-rollout-in-three-months" class="title">From research to rollout in three months</h2>
     <ol class="timeline">
       <li><time>Jul</time><b>Research</b><span>Journey map of the current flow, Q&amp;A with the Reviews team, product requirements.</span></li>
       <li><time>Aug</time><b>Explore &amp; prototype</b><span>Camera feature benchmark (79 features, 4 apps). Low- and mid-fidelity prototypes.</span></li>
@@ -112,19 +138,19 @@
 </section>
 
 <!-- 3 · PROBLEM -->
-<section class="chapter">
+<section class="chapter" aria-labelledby="sh-the-problem">
   <div class="wrap">
     <p class="num">01.</p>
-    <h2>The problem</h2>
+    <h2 id="sh-the-problem">The problem</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
-<section class="slide">
+<section class="slide" aria-labelledby="sh-from-having-video-to-having-good-video">
   <div class="wrap split">
     <div>
       <p class="kicker">01.</p>
-      <h2 class="title">From “having video” to “having good video”</h2>
+      <h2 id="sh-from-having-video-to-having-good-video" class="title">From “having video” to “having good video”</h2>
       <p class="lede">Buyers could already add a video to a review, but only through a very basic camera that gave no help.</p>
 
       <p class="label">Context</p>
@@ -134,13 +160,18 @@
       <p><strong>For buyers:</strong> “I don’t know what to record.” Videos missed the product details that matter, or buyers gave up.</p>
       <p><strong>For the business:</strong> review videos were a valuable but underused asset that could feed product pages and short-video content.</p>
     </div>
-    <div class="media">
-      <div class="ph"><b>Image · Previous experience</b>The review form + the phone’s default camera, annotated with pain points (deck style, blue callouts).</div>
+    <div class="prev">
+      <p class="label">Before: the phone’s own camera</p>
+      <div class="prev-flow">
+        <figure><img src="img/reviews/prev-camera-1.webp?v=1" alt="The phone’s own camera in video mode, ready to record: flash, exposure and flip controls, a grid and a red record button" loading="lazy" width="480" height="1040"><figcaption><b>Ready</b>A grid and a record button, with no guidance.</figcaption></figure>
+        <figure><img src="img/reviews/prev-camera-2.webp?v=1" alt="The same camera while recording, with a 00:08 timer and a stop button" loading="lazy" width="480" height="1040"><figcaption><b>Recording</b>A timer and a stop button.</figcaption></figure>
+        <figure><img src="img/reviews/prev-camera-3.webp?v=1" alt="The review screen after recording: a trim strip, Retake, play and Use Video" loading="lazy" width="480" height="1040"><figcaption><b>Review</b>Trim, retake or use the video.</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="slide grey" hidden>
+<section class="slide grey" hidden aria-label="Buyer profiles">
   <div class="wrap">
     <p hidden><span class="ask">How might we help buyers record a useful product video with little effort, without lowering review completion?</span></p>
     <div class="cards">
@@ -164,18 +195,18 @@
 </section>
 
 <!-- 4 · RESEARCH & BENCHMARK -->
-<section class="chapter">
+<section class="chapter" aria-labelledby="sh-research-benchmark">
   <div class="wrap">
     <p class="num">02.</p>
-    <h2>Research &amp; benchmark</h2>
+    <h2 id="sh-research-benchmark">Research &amp; benchmark</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
-<section class="slide grey">
+<section class="slide grey" aria-labelledby="sh-journey-map-the-current-flow">
   <div class="wrap">
     <p class="kicker">02.</p>
-    <h2 class="title">Journey map: the current flow</h2>
+    <h2 id="sh-journey-map-the-current-flow" class="title">Journey map: the current flow</h2>
     <p class="lede">We started with the problem, not the solution: mapping the existing review flow, step by step, to find where buyers drop off.</p>
     <p><span class="ask">Where does the current flow lose buyers who want to record a video?</span></p>
     <div class="journey-wrap">
@@ -225,17 +256,14 @@
   </div>
 </section>
 
-<section class="slide">
+<section class="slide" aria-labelledby="sh-three-critical-drop-off-points">
   <div class="wrap">
-    <h2 class="title" style="font-size:clamp(28px,3.4vw,40px)">Three critical drop-off points</h2>
+    <h2 id="sh-three-critical-drop-off-points" class="title" style="font-size:clamp(28px,3.4vw,40px)">Three critical drop-off points</h2>
     <div class="dp">
-      <!-- WIP: the three images are placeholders until she swaps them. To restore the old screens, replace the three .dp-ph with:
-           <img class="on" data-i="0" src="img/drops/form.png" alt=""> / <img data-i="1" src="img/drops/recording.png" alt=""> / <img data-i="2" src="img/drops/validation.png" alt="">
-           (Spanish versions live in img/es/drops/, swapped by the engine.) -->
       <div class="dp-stage" aria-hidden="true">
-        <div class="dp-ph on" data-i="0"><span class="dp-wip">WIP</span><b>1</b></div>
-        <div class="dp-ph" data-i="1"><span class="dp-wip">WIP</span><b>2</b></div>
-        <div class="dp-ph" data-i="2"><span class="dp-wip">WIP</span><b>3</b></div>
+        <div class="dp-fig on" data-i="0"><img src="img/reviews/drop-1.webp?v=3" alt="" width="1000" height="1100" decoding="async"></div>
+        <div class="dp-fig" data-i="1"><img src="img/reviews/drop-2.webp?v=3" alt="" width="1000" height="1100" loading="lazy" decoding="async"></div>
+        <div class="dp-fig" data-i="2"><img src="img/reviews/drop-3.webp?v=3" alt="" width="1000" height="1100" loading="lazy" decoding="async"></div>
       </div>
       <div class="dp-list">
         <button type="button" class="dp-card on" data-i="0"><span class="n">Drop-off 1 · Review form</span><h3>Nothing says what to record</h3><p>The form shows an empty text field and a video button. With no hint of what to show, or what it earns, the buyer skips the video.</p></button>
@@ -260,10 +288,10 @@
   </div>
 </section>
 
-<section class="slide grey">
+<section class="slide grey" aria-labelledby="sh-competitive-solutions-by-problem">
   <div class="wrap">
     <p class="kicker">02.</p>
-    <h2 class="title">Competitive solutions by problem</h2>
+    <h2 id="sh-competitive-solutions-by-problem" class="title">Competitive solutions by problem</h2>
     <p class="lede">With the problems defined, we looked at how other players solve each one, instead of comparing feature lists.</p>
     <p><span class="ask">Who solves each problem, and how?</span></p>
     <div class="bt" role="tablist" aria-label="Benchmark view">
@@ -316,18 +344,18 @@
 </section>
 
 <!-- 5 · EXPLORING THE FLOW -->
-<section class="chapter">
+<section class="chapter" aria-labelledby="sh-exploring-the-flow">
   <div class="wrap">
     <p class="num">03.</p>
-    <h2>Exploring the flow</h2>
+    <h2 id="sh-exploring-the-flow">Exploring the flow</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
-<section class="slide grey">
+<section class="slide grey" aria-labelledby="sh-user-flow-the-buyers-goal-at-each-step">
   <div class="wrap">
     <p hidden><span class="ask">Where does the camera live, and how does the content get back to the review?</span></p>
-    <div class="uf-head"><h3>User flow · the buyer’s goal at each step</h3></div>
+    <div class="uf-head"><h3 id="sh-user-flow-the-buyers-goal-at-each-step">User flow · the buyer’s goal at each step</h3></div>
     <div class="ug">
       <div class="ug-step"><span class="ug-n">01</span><span class="ug-e">🔔</span><h4>Get the request</h4><p>“My order arrived. Is it worth my time?”</p></div>
       <div class="ug-step"><span class="ug-n">02</span><span class="ug-e">⭐</span><h4>Rate the product</h4><p>“Let me say quickly what I think.”</p></div>
@@ -377,20 +405,20 @@
 </section>
 
 <!-- 6 · AI-NATIVE PROTOTYPING -->
-<section class="chapter" hidden>
+<section class="chapter" hidden aria-labelledby="sh-ai-native-prototyping">
   <div class="wrap">
     <p class="num">04.</p>
-    <h2>AI-native prototyping</h2>
+    <h2 id="sh-ai-native-prototyping">AI-native prototyping</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
-<section class="slide" hidden>
+<section class="slide" hidden aria-labelledby="sh-prototypes-we-could-hold-in-our-hands">
   <svg class="blob" viewBox="0 0 600 600" style="right:-160px;top:-60px;width:min(720px,80vw)" aria-hidden="true"><defs><linearGradient id="blobg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd9cf"/><stop offset="1" stop-color="#f3d3f7"/></linearGradient></defs><path fill="url(#blobg)" d="M421 63c76 43 146 120 151 205 5 86-56 180-136 236-80 57-179 77-262 44C91 515 24 430 8 336-7 241 28 136 98 79 168 22 345 20 421 63Z"/></svg>
   <div class="wrap split">
     <div>
       <p class="kicker">04.</p>
-      <h2 class="title">Prototypes we could hold in our hands</h2>
+      <h2 id="sh-prototypes-we-could-hold-in-our-hands" class="title">Prototypes we could hold in our hands</h2>
       <p class="lede">A camera is hard to judge in static frames. We tested gestures, timers and states on a real device.</p>
       <aside class="ai" style="margin-top:8px"><span class="ai-chip">✦ AI in every stage</span>
         <ul class="ai-steps">
@@ -412,18 +440,18 @@
 </section>
 
 <!-- 7 · KEY DECISIONS -->
-<section class="chapter">
+<section class="chapter" aria-labelledby="sh-key-decisions">
   <div class="wrap">
     <p class="num">04.</p>
-    <h2>Key decisions</h2>
+    <h2 id="sh-key-decisions">Key decisions</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
-<section class="slide">
+<section class="slide" aria-labelledby="sh-from-the-endgame-to-priorities">
   <div class="wrap">
     <p class="kicker">04.</p>
-    <h2 class="title">From the endgame to priorities</h2>
+    <h2 id="sh-from-the-endgame-to-priorities" class="title">From the endgame to priorities</h2>
     <p class="lede">We listed every feature from the endgame and ranked it by impact on getting good videos against effort. We went first for the causes of drop-off, and placed everything else around them.</p>
     <div class="dc">
       <div class="dc-item">
@@ -477,7 +505,7 @@
   </div>
 </section>
 
-<section class="slide dark" hidden>
+<section class="slide dark" hidden aria-label="Design trade-offs">
   <div class="wrap">
     <p class="lede" style="color:#fff">Three trade-offs that shaped the first version. <span class="tbc">TBC: confirm these were the hardest calls</span></p>
 
@@ -527,19 +555,19 @@
 </section>
 
 <!-- 8 · FINAL PRODUCT -->
-<section class="chapter">
+<section class="chapter" aria-labelledby="sh-final-product">
   <div class="wrap">
     <p class="num">05.</p>
-    <h2>Final product</h2>
+    <h2 id="sh-final-product">Final product</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
 
-<section class="slide">
+<section class="slide" aria-labelledby="sh-the-final-flow">
   <div class="wrap">
     <p class="kicker">05.</p>
-    <h2 class="title">The final flow</h2>
+    <h2 id="sh-the-final-flow" class="title">The final flow</h2>
     <p class="lede">From the review form to a sent review, with the camera and the preview at the centre.</p>
     <a class="pbtn pbtn-d" href="../prototype/index.html">Open the prototype<i aria-hidden="true">→</i></a>
     <div class="uf-head"><h3>User flow</h3><span>Tap a step to jump to it · scroll sideways →</span></div>
@@ -590,36 +618,36 @@
   </div>
 </section>
 
-<section id="s-story" class="slide grey">
+<section id="s-story" class="slide grey" aria-labelledby="sh-review-a-product-step-by-step">
   <button type="button" class="story-toggle" id="story-toggle" aria-pressed="true" aria-controls="s-story" title="Turn the step-by-step animation on or off"><span class="st-label">Animation</span><span class="st-switch" aria-hidden="true"></span></button>
   <canvas class="story-bg" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="kicker">05.</p>
-    <h2 class="title">Review a product, step by step</h2>
+    <h2 id="sh-review-a-product-step-by-step" class="title">Review a product, step by step</h2>
     <p class="lede">Scroll to follow a buyer through the happy path: from the review form to a posted review, with the guided video at the centre.</p>
     <a class="pbtn pbtn-d" href="../prototype/index.html">Try it yourself in the prototype<i aria-hidden="true">→</i></a>
     <div class="story">
       <div class="story-stage">
-        <div class="story-phone"><img class="on" src="img/story/s0-form.webp?v=3" alt="" width="540" height="1174"><div class="story-cycle story-lupa" data-kind="lupa"><img class="cy on" src="img/story/s6-hints.webp?v=5" alt="" width="540" height="1174" data-label="Too dark"><img class="cy" src="img/story/s6-static.webp?v=5" alt="" width="540" height="1174" data-label="Still camera"><img class="cy" src="img/story/s6-noprod.webp?v=5" alt="" width="540" height="1174" data-label="Product not in frame"><div class="lupa-lens"><img class="lz on" src="img/story/s6-hints.webp?v=5" alt="" aria-hidden="true"><img class="lz" src="img/story/s6-static.webp?v=5" alt="" aria-hidden="true"><img class="lz" src="img/story/s6-noprod.webp?v=5" alt="" aria-hidden="true"></div><span class="lupa-tag">Too dark</span></div><div class="story-cycle" data-kind="cycle"><img class="cy on" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174"><img class="cy" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174"><img class="cy" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174"></div><img class="" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s4-guided-2.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s5-guided-done.webp?v=7" alt="" width="540" height="1174" loading="lazy"><div class="story-cycle story-lupa" data-kind="lupa" data-variant="story-lupa-add"><img class="cy on" src="img/story/s7-preview.webp?v=5" alt="" width="540" height="1174" data-label="Add more"><div class="lupa-lens"><img class="lz on" src="img/story/s7-preview.webp?v=5" alt="" aria-hidden="true"></div><span class="lupa-tag">Add more</span></div><img class="" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s9-preview-all.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p1-trim.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p2-text.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p3-stickers.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p4-sound.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p5-subs.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s9-form-all.webp?v=3" alt="" width="540" height="1174" loading="lazy"></div>
+        <div class="story-phone" aria-hidden="true"><img class="on" src="img/story/s0-form.webp?v=3" alt="" width="540" height="1174"><div class="story-cycle story-lupa" data-kind="lupa"><img class="cy on" src="img/story/s6-hints.webp?v=5" alt="" width="540" height="1174" data-label="Too dark"><img class="cy" src="img/story/s6-static.webp?v=5" alt="" width="540" height="1174" data-label="Still camera"><img class="cy" src="img/story/s6-noprod.webp?v=5" alt="" width="540" height="1174" data-label="Product not in frame"><div class="lupa-lens"><img class="lz on" src="img/story/s6-hints.webp?v=5" alt="" aria-hidden="true"><img class="lz" src="img/story/s6-static.webp?v=5" alt="" aria-hidden="true"><img class="lz" src="img/story/s6-noprod.webp?v=5" alt="" aria-hidden="true"></div><span class="lupa-tag">Too dark</span></div><div class="story-cycle" data-kind="cycle"><img class="cy on" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174"><img class="cy" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174"><img class="cy" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174"></div><img class="" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s4-guided-2.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s5-guided-done.webp?v=7" alt="" width="540" height="1174" loading="lazy"><div class="story-cycle story-lupa" data-kind="lupa" data-variant="story-lupa-add"><img class="cy on" src="img/story/s7-preview.webp?v=5" alt="" width="540" height="1174" data-label="Add more"><div class="lupa-lens"><img class="lz on" src="img/story/s7-preview.webp?v=5" alt="" aria-hidden="true"></div><span class="lupa-tag">Add more</span></div><img class="" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s9-preview-all.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p1-trim.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p2-text.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p3-stickers.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p4-sound.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/p5-subs.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img class="" src="img/story/s9-form-all.webp?v=3" alt="" width="540" height="1174" loading="lazy"></div>
         <div class="story-nav"><button type="button" class="sn-btn sn-prev" aria-label="Previous step"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5-5 5 5"/></svg></button><p class="story-count"><span id="story-now">01</span> / 16</p><button type="button" class="sn-btn sn-next" aria-label="Next step"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></button></div>
       </div>
       <ol class="story-steps">
         <li class="story-step is-active" id="st-0" data-i="0">
-          <img class="story-inline" src="img/story/s0-form.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s0-form.webp?v=3" alt="Review form: Rating, media and comment, each with its reward" width="540" height="1174" loading="lazy">
           <span class="story-n">01</span>
           <h3>Start in the <span class="grad-text">review form</span></h3>
           <p>Rating, media and comment in one place, each with the reward it earns. The buyer sees what every action is worth before starting.</p>
           
         </li>
         <li class="story-step" id="st-1" data-i="1">
-          <img class="story-inline" src="img/story/s6-hints.webp?v=5" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s6-hints.webp?v=5" alt="Camera with the hint “Find a spot with more light” over a dark video" width="540" height="1174" loading="lazy">
           <span class="story-n">02</span>
           <h3>Quick helps while recording</h3>
           <p>While the camera is open, messages guide the buyer in the moment. Watch the lens: it follows each case the camera detects. Autofocus works on its own.</p><ol class="story-inside story-cases"><li><b>Too dark</b><span>Find a spot with more light</span></li><li><b>Still camera</b><span>Move the camera a little</span></li><li><b>Product not visible</b><span>The product isn’t visible</span></li></ol><p hidden></p>
           <div class="story-new"><b>Fixes before sending</b><span>The buyer finds out while recording, not after sending the video and waiting.</span></div>
         </li>
         <li class="story-step" id="st-2" data-i="2">
-          <span class="story-inline story-inline-three"><img src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy"><img src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy"><img src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy"></span>
+          <span class="story-inline story-inline-three"><img src="img/story/s1-camera.webp?v=5" alt="Camera in free video, ready to record" width="540" height="1174" loading="lazy"><img src="img/story/s3-guided-1.webp?v=3" alt="Camera in guided video: take 1 of 3 with an on-screen prompt" width="540" height="1174" loading="lazy"><img src="img/story/s2-modes.webp?v=5" alt="Camera in photo mode" width="540" height="1174" loading="lazy"></span>
           <span class="story-n">03</span>
           <h3>One <span class="grad-text">camera</span>, three modes</h3>
           <p>Once the camera opens, the buyer can take a <strong class="mode-k" data-k="0">guided video</strong>, <strong class="mode-k" data-k="1">a free video</strong> or <strong class="mode-k" data-k="2">a photo</strong>. Guided video comes first, because it gets the fullest videos.</p>
@@ -645,21 +673,21 @@
 </div>
 <div class="story-hspacers">
 <div class="story-step story-spacer" id="st-3" data-i="3" data-flow="h1">
-          <img class="story-inline" src="img/story/s3-guided-1.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s3-guided-1.webp?v=3" alt="Camera in guided video: take 1 of 3 with an on-screen prompt" width="540" height="1174" loading="lazy">
           <span class="story-n">04</span>
           <h3><span class="grad-text">Guided video</span></h3>
           <p>Tap video and the camera opens on guided video first, the mode that gets the fullest videos. Inside, three short takes:</p><ol class="story-inside"><li><b>1 · Show</b><span>The product from the front</span></li><li><b>2 · Close-up</b><span>Get closer to show the details</span></li><li><b>3 · Use</b><span>Show how it’s used</span></li></ol><p hidden></p>
           <div class="story-new"><b>Our own camera inside the review flow</b><span>It replaced the phone’s default camera with one consistent experience on iOS and Android.</span></div><div class="story-detail"><b>Flash on both cameras</b><span>The rear camera uses the torch; the front camera lights up the screen.</span></div>
         </div>
 <div class="story-step story-spacer" id="st-4" data-i="4" data-flow="h1">
-          <img class="story-inline" src="img/story/s4-guided-2.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s4-guided-2.webp?v=3" alt="Camera in guided video: take 2 of 3, asking to get closer to show the details" width="540" height="1174" loading="lazy">
           <span class="story-n">05</span>
           <h3>One prompt per take</h3>
           <p>Each take asks for one thing, and a finished take stays saved. A mistake never means starting over.</p>
           <div class="story-new"><b>A guided mode</b><span>Three short takes, each with an on-screen prompt: the full product, the details, the product in use.</span></div><div class="story-detail"><b>Focused recording</b><span>While recording, tabs and controls hide and framing guides appear.</span></div>
         </div>
 <div class="story-step story-spacer" id="st-5" data-i="5" data-flow="h1">
-          <img class="story-inline" src="img/story/s5-guided-done.webp?v=7" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s5-guided-done.webp?v=7" alt="Camera in guided video: the three takes are done, with a confirm button" width="540" height="1174" loading="lazy">
           <span class="story-n">06</span>
           <h3>Three takes, ready</h3>
           <p>When the three takes are done the buyer moves on, or goes back to retake just one.</p>
@@ -668,21 +696,21 @@
 </div>
         </li>
         <li class="story-step" id="st-6" data-i="6">
-          <img class="story-inline" src="img/story/s7-preview.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s7-preview.webp?v=3" alt="Preview of the guided video, with editing tools and the Add more and Save buttons" width="540" height="1174" loading="lazy">
           <span class="story-n">07</span>
           <h3>The <span class="grad-text">preview</span></h3>
           <p>When the guided video is ready, the preview shows it with the tickets it earned. Tap Add more to go back to the camera and add something else.</p>
           
         </li>
         <li class="story-step" id="st-7" data-i="7">
-          <img class="story-inline" src="img/story/s1-camera.webp?v=5" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s1-camera.webp?v=5" alt="Camera in free video, ready to record" width="540" height="1174" loading="lazy">
           <span class="story-n">08</span>
           <h3>Free <span class="grad-text">video</span></h3>
           <p>Back in the camera, the buyer can switch to free video: record continuously or in parts, for when they already know what to show.</p>
           <div class="story-detail"><b>Settings that persist</b><span>Flash and front/rear camera stay the same across modes.</span></div>
         </li>
         <li class="story-step" id="st-8" data-i="8">
-          <img class="story-inline" src="img/story/s2-modes.webp?v=5" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s2-modes.webp?v=5" alt="Camera in photo mode" width="540" height="1174" loading="lazy">
           <span class="story-n">09</span>
           <h3><span class="grad-text">Photo</span></h3>
           <p>Or take a photo, or pick one from the gallery, to complete the review.</p>
@@ -720,42 +748,42 @@
 </div>
 <div class="story-hspacers">
 <div class="story-step story-spacer" id="st-9" data-i="9" data-flow="h2">
-          <img class="story-inline" src="img/story/s9-preview-all.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s9-preview-all.webp?v=3" alt="Preview with the guided video, the free video and the photo as thumbnails" width="540" height="1174" loading="lazy">
           <span class="story-n">10</span>
           <h3>The <span class="grad-text">preview</span>, with everything added</h3>
           <p>Now the preview shows all three: the guided video, the free video and the photo. Swipe through the tools to polish each one.</p>
           
         </div>
 <div class="story-step story-spacer" id="st-10" data-i="10" data-flow="h2">
-          <img class="story-inline" src="img/story/p1-trim.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/p1-trim.webp?v=3" alt="Trim tool: a strip of frames to choose where the video starts and ends" width="540" height="1174" loading="lazy">
           <span class="story-n">11</span>
           <h3>Trim</h3>
           <p>Pick where the video starts and ends, and drag the selected part to move it. Only what matters stays.</p>
           
         </div>
 <div class="story-step story-spacer" id="st-11" data-i="11" data-flow="h2">
-          <img class="story-inline" src="img/story/p2-text.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/p2-text.webp?v=3" alt="Text tool: typing on the video, with font styles and a colour slider" width="540" height="1174" loading="lazy">
           <span class="story-n">12</span>
           <h3>Add text</h3>
           <p>Write on the video and change the font, colour and alignment.</p>
           
         </div>
 <div class="story-step story-spacer" id="st-12" data-i="12" data-flow="h2">
-          <img class="story-inline" src="img/story/p3-stickers.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/p3-stickers.webp?v=3" alt="Sticker picker, with suggestions taken from real reviews and emojis" width="540" height="1174" loading="lazy">
           <span class="story-n">13</span>
           <h3>Stickers</h3>
           <p>Add stickers and emojis. Some are suggested from the buyer’s own review, so they can say what matters in one tap.</p>
           <div class="story-new"><b>Stickers from real reviews</b><span>We analysed the comments buyers write most and turned them into stickers.</span></div>
         </div>
 <div class="story-step story-spacer" id="st-13" data-i="13" data-flow="h2">
-          <img class="story-inline" src="img/story/p4-sound.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/p4-sound.webp?v=3" alt="Preview with the sound tool, to turn the original audio off" width="540" height="1174" loading="lazy">
           <span class="story-n">14</span>
           <h3>Sound</h3>
           <p>One of the biggest problems in the videos we saw was background noise. With the sound tool the buyer can turn the original audio off, and the app also cleans it automatically, so the video sounds clearer and the quality goes up.</p>
           <div class="story-new"><b>Automatic quality</b><span>Audio clean-up, stabilisation and framing, and auto trim apply on their own, with no extra step.</span></div>
         </div>
 <div class="story-step story-spacer" id="st-14" data-i="14" data-flow="h2">
-          <img class="story-inline" src="img/story/p5-subs.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/p5-subs.webp?v=3" alt="Subtitles editor: each caption line can be edited, with a Show subtitles switch" width="540" height="1174" loading="lazy">
           <span class="story-n">15</span>
           <h3>Subtitles</h3>
           <p>Show captions and edit each line. A buyer watching without sound can still follow the review.</p>
@@ -764,7 +792,7 @@
 </div>
         </li>
         <li class="story-step" id="st-15" data-i="15">
-          <img class="story-inline" src="img/story/s9-form-all.webp?v=3" alt="" width="540" height="1174" loading="lazy">
+          <img class="story-inline" src="img/story/s9-form-all.webp?v=3" alt="Review form: Guided video, video and photo in one review" width="540" height="1174" loading="lazy">
           <span class="story-n">16</span>
           <h3>Back to the <span class="grad-text">form</span></h3>
           <p>The three pieces of media return to the form as thumbnails and the tickets update. Posting shows the tickets the buyer earned.</p>
@@ -986,10 +1014,10 @@
   </div>
 </section>
 
-<section id="s-form" class="slide grey" hidden>
+<section id="s-form" class="slide grey" hidden aria-labelledby="sh-the-review-form">
   <div class="wrap">
     <p class="kicker">05.</p>
-    <h2 class="title">The review form</h2>
+    <h2 id="sh-the-review-form" class="title">The review form</h2>
     <p class="lede">The entry point to the camera. One place for rating, media and comment, with the reward for each one visible before the buyer starts.</p>
     <div class="screens device">
         <figure><img src="img/form/form-01-start.webp?v=2" alt="Review form: Rating, media and comment, each with its reward" loading="lazy" width="540" height="1174"><figcaption><b>Start</b>Rating, media and comment, each with its reward</figcaption></figure>
@@ -1001,12 +1029,12 @@
   </div>
 </section>
 
-<section id="s-camera" class="slide" hidden>
+<section id="s-camera" class="slide" hidden aria-labelledby="sh-one-camera-three-ways-to-review">
   <div class="wrap">
     <p class="kicker">05.</p>
     <span class="release">Release 1 · Guided capture</span>
     <div class="cam-head">
-      <h2 class="title">One camera, <em>three ways</em> to review</h2>
+      <h2 id="sh-one-camera-three-ways-to-review" class="title">One camera, <em>three ways</em> to review</h2>
     </div>
     <div class="phones cam-stage">
       <div>
@@ -1026,12 +1054,12 @@
   </div>
 </section>
 
-<section class="slide grey" hidden>
+<section class="slide grey" hidden aria-labelledby="sh-details-that-make-it-work">
   <div class="wrap split reverse">
     <div class="media light"><div class="ph"><b>Image · Controls and gestures</b>Annotated camera screen: flash, timer, flip, tap to focus, pinch to zoom, framing guides while recording.</div></div>
     <div>
       <p class="kicker">05.</p>
-      <h2 class="title">Details that make it work</h2>
+      <h2 id="sh-details-that-make-it-work" class="title">Details that make it work</h2>
       <p><strong>Focused recording.</strong> While recording, tabs and controls hide and framing guides appear.</p>
       <p><strong>Flash on both cameras.</strong> The rear camera uses the torch; the front camera lights up the screen.</p>
       <p><strong>Timer for hands-free takes.</strong> The camera locks during the countdown so a stray tap can’t break it.</p>
@@ -1040,11 +1068,11 @@
   </div>
 </section>
 
-<section class="slide" hidden>
+<section class="slide" hidden aria-labelledby="sh-what-we-did-differently">
   <div class="wrap split">
     <div>
       <p class="kicker">05.</p>
-      <h2 class="title">What we did differently</h2>
+      <h2 id="sh-what-we-did-differently" class="title">What we did differently</h2>
       <p class="lede">We took guided capture from the quality model, and kept the flow short for buyers in a hurry.</p>
       <ol class="diff">
         <li><span>1</span><p><strong>Our own camera inside the review flow.</strong> It replaced the phone’s default camera with one consistent experience on iOS and Android.</p></li>
@@ -1061,10 +1089,10 @@
   </div>
 </section>
 
-<section id="s-quick" class="slide" hidden>
+<section id="s-quick" class="slide" hidden aria-labelledby="sh-quick-helps-while-recording">
   <div class="wrap">
     <span class="release two">Release 2 · Better videos, no extra effort · Full rollout</span>
-    <h2 class="title">Quick helps while recording</h2>
+    <h2 id="sh-quick-helps-while-recording" class="title">Quick helps while recording</h2>
     <p class="lede">The second release, planned from day one, helps buyers in the situations they run into most, with a hint in the moment.</p>
     <div class="qs">
       <div class="qs-shot">
@@ -1086,10 +1114,10 @@
   </div>
 </section>
 
-<section id="s-preview" class="slide grey" hidden>
+<section id="s-preview" class="slide grey" hidden aria-labelledby="sh-the-preview-simple-edits-after">
   <div class="wrap">
     <span class="release two">Release 2 · Better videos, no extra effort · Full rollout</span>
-    <h2 class="title">The preview: simple edits after</h2>
+    <h2 id="sh-the-preview-simple-edits-after" class="title">The preview: simple edits after</h2>
     <p class="lede">Before posting, buyers can polish the video with a few tools, and the app improves it on its own.</p>
     <div class="qs qs-three">
       <div class="qs-shot">
@@ -1125,15 +1153,15 @@
 </section>
 
 <!-- 9 · RESULTS + LEARNINGS -->
-<section class="chapter">
+<section class="chapter" aria-labelledby="sh-results-learnings">
   <div class="wrap">
     <p class="num">06.</p>
-    <h2>Results &amp; learnings</h2>
+    <h2 id="sh-results-learnings">Results &amp; learnings</h2>
     <div class="rule-wrap"><div class="rule"></div></div>
   </div>
 </section>
 
-<section class="slide">
+<section class="slide" aria-label="Metrics and learnings">
   <div class="wrap">
         <div class="rs">
       <div class="rs-c">
@@ -1184,6 +1212,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="end">
   <div class="end-grid" aria-hidden="true"></div>
   <div class="wrap end-in">
@@ -1192,7 +1222,7 @@
       <a class="end-pill end-mail" href="mailto:marialeon.lop@gmail.com"><i class="end-ic" aria-hidden="true">✉</i><b>marialeon.lop@gmail.com</b></a>
     </div>
     <h2>Thanks for<br><span class="grad-text">scrolling.</span></h2>
-    <a class="next" href="lives.html"><i class="end-arrow" aria-hidden="true">→</i><span>Next case · Live shopping</span></a>
+    <a class="next" href="accessibility.html"><i class="end-arrow" aria-hidden="true">→</i><span>Next case · Accessible video feed</span></a>
     <a class="pbtn pbtn-l" href="../prototype/index.html">Try the prototype<i aria-hidden="true">→</i></a>
     <p class="end-sub">Let’s talk about the next one.</p>
   </div>
@@ -1207,7 +1237,7 @@ document.querySelectorAll('.chapter h2').forEach(function(h){var t=h.textContent
 </script>
 <button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
 <script src="site.js?v=6"></script>
-<script src="../i18n/es-case.js?v=9"></script>
+<script src="../i18n/es-case.js?v=13"></script>
 <script src="../i18n/engine.js?v=6"></script>
 </body>
 </html>

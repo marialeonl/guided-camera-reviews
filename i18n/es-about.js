@@ -31,5 +31,6 @@ Object.assign(window.I18N_ES, {
 "3fqfy0": "Idiomas",
 "1kz24u7": "Retrato de María Paula León, sonriendo, sentada en unas escaleras de madera.",
 "5ahjm6": "María Paula León es diseñadora UX / Product Designer. E-commerce, video social y compras en vivo, con foco en accesibilidad, sistemas de diseño y prototipado asistido por IA.",
-"mnj6he": "Sobre mí · María Paula León"
+"mnj6he": "Sobre mí · María Paula León",
+"10l4k9s": "<a class=\"pbtn pbtn-l\" href=\"assets/MariaPaulaLeon_CV_EN.pdf\" data-href-en=\"assets/MariaPaulaLeon_CV_EN.pdf\" data-href-es=\"assets/MariaPaulaLeon_CV_ES.pdf\" download=\"\">Descargar CV<i aria-hidden=\"true\">↓</i></a> <a class=\"pbtn\" href=\"https://www.linkedin.com/in/mariapaula-leon\" target=\"_blank\" rel=\"noopener\">LinkedIn<i aria-hidden=\"true\">↗</i></a>"
 });
