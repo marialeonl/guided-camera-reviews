@@ -81,7 +81,7 @@ html:not([lang="es"]) .rz-nb { white-space: nowrap; }
 .rz .tag { background: #E4EEFC; color: var(--navy-2); }
 
 /* ---------- Approach ---------- */
-.rz-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 48px 0 0; padding: 0; list-style: none; counter-reset: st; }
+.rz-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 48px 0 0; padding: 0; list-style: none; counter-reset: st; }
 .rz-steps > li { margin: 0; padding: 22px 20px 20px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); box-shadow: var(--rz-shadow); counter-increment: st; }
 .rz-steps > li::before { content: counter(st); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--rz-blue); color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
 .rz-steps > li:last-child::before { background: var(--rz-orange); }

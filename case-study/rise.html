@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css?v=185">
   <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="rise.css?v=22">
+  <link rel="stylesheet" href="rise.css?v=23">
 </head>
 <body class="rz">
 
@@ -117,13 +117,13 @@
   <div class="wrap">
     <p class="kicker">01.</p>
     <h2 class="title" id="rz-how">How we worked</h2>
-    <p class="lede">Five phases, each with its own methods.</p>
+    <p class="lede">Four phases, each with its own methods.</p>
     <ol class="rz-steps">
       <li><h3>Discover</h3><ul><li>User interviews</li><li>User research</li><li>Competitive analysis</li></ul></li>
       <li><h3>Define</h3><ul><li>Empathy map</li><li>Personas</li><li>Journey map</li></ul></li>
       <li><h3>Ideate</h3><ul><li>Card sorting</li></ul></li>
       <li><h3>Prototype</h3><ul><li>Information architecture</li><li>User flow</li><li>Wireframes</li><li>Visual design</li></ul></li>
-      <li><h3>Test</h3><ul><li>Usability testing</li><li>Implementing feedback</li></ul></li>
+      <!-- Test phase hidden on purpose (2026-11-08): Rise was never built or tested with users. To restore, put this back as a fifth <li><h3>Test</h3> with Usability testing and Implementing feedback, and change the lede to "Five phases" and rise.css .rz-steps to 5 columns. -->
     </ol>
   </div>
 </section>
@@ -520,7 +520,8 @@
   </div>
 </section>
 
-<!-- 8 · SUCCESS -->
+<!-- Chapter 06 "Measuring success" is hidden on purpose (2026-11-08): Rise was never finished, so there are no results.
+     To bring it back, delete this line and the closing marker below.
 <section class="chapter" aria-labelledby="rz-ch6">
   <div class="wrap">
     <p class="num">06.</p>
@@ -562,6 +563,7 @@
     </ul>
   </div>
 </section>
+     end of hidden chapter 06 -->
 
 <section class="slide grey" aria-labelledby="rz-col">
   <div class="wrap">
@@ -645,7 +647,7 @@ document.querySelectorAll('.chapter h2').forEach(function(h){var t=h.textContent
 </script>
 <button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
 <script src="site.js?v=6"></script>
-<script src="../i18n/es-rise.js?v=10"></script>
+<script src="../i18n/es-rise.js?v=12"></script>
 <script src="../i18n/engine.js?v=6"></script>
 </body>
 </html>
