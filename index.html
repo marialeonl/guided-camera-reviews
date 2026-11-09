@@ -35,13 +35,13 @@
   <link rel="stylesheet" href="case-study/tokens.css">
   <link rel="stylesheet" href="case-study/styles.css?v=185">
 <link rel="stylesheet" href="case-study/header.css">
-  <link rel="stylesheet" href="case-study/work.css?v=27">
+  <link rel="stylesheet" href="case-study/work.css?v=28">
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 
-<script src="case-study/header.js?v=5"></script>
+<script src="case-study/header.js?v=7"></script>
 
 <main id="main">
 
@@ -157,6 +157,34 @@
         </div>
       </li>
 
+      <li class="wk-item wk-item-rise">
+        <div class="wk-thumbs">
+          <a class="wk-thumb wk-thumb-proto" href="case-study/rise.html" tabindex="-1" aria-hidden="true">
+            <video class="wk-rise-vid" id="wk-rise-vid" muted playsinline preload="none" poster="case-study/img/rise/logo-motion.webp?v=1" width="1024" height="576"><source src="case-study/img/rise/logo-motion.mp4?v=1" type="video/mp4"></video>
+            <img class="wk-rise-wire" src="case-study/img/rise/card-wire.webp?v=1" width="1100" height="876" alt="" decoding="async" loading="lazy">
+            <span class="wk-tag">Case study</span>
+          </a>
+        </div>
+
+        <div class="wk-text">
+          <div class="wk-head">
+            <p class="wk-eyebrow">03 · Learning tool</p>
+            <h3 class="wk-title"><a href="case-study/rise.html">Rise, a <span class="grad-text">learning tool</span></a></h3>
+          </div>
+          <div class="wk-body">
+            <p class="wk-desc">A platform where people set learning goals, track their progress and plan their career.</p>
+            <ul class="wk-meta" aria-label="Project details">
+              <li>UX/UI Designer</li>
+              <li>Web app</li>
+              <li>Research · Brand</li>
+            </ul>
+            <div class="wk-cta">
+              <span class="wk-go" aria-hidden="true">Read the case study<i>→</i></span>
+            </div>
+          </div>
+        </div>
+      </li>
+
     </ol>
   </div>
 </section>
@@ -164,8 +192,15 @@
 </main>
 
 <button type="button" class="to-top" id="to-top"><i aria-hidden="true">↑</i>Back to top</button>
+<script>
+(function(){var v=document.getElementById('wk-rise-vid');if(!v||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+/* the clip fades the logo out after 4.2 s so it can loop; hold the full logo instead */
+v.addEventListener('ended',function(){try{v.currentTime=4.2;}catch(x){}});
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){try{v.currentTime=0;}catch(x){}var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{threshold:.5}).observe(v);})();
+</script>
 <script src="case-study/site.js?v=6"></script>
-<script src="i18n/es-work.js?v=12"></script>
+<script src="i18n/es-work.js?v=14"></script>
 <script src="i18n/engine.js?v=6"></script>
 </body>
 </html>

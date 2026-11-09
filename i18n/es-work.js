@@ -42,6 +42,12 @@ Object.assign(window.I18N_ES, {
 "1blggm0": "iOS y Android",
 "svxdyq": "<span class=\"wk-go\" aria-hidden=\"true\">Leer el caso de estudio<i>→</i></span>",
 "k8g8e2": "02 · Accesibilidad",
+"wf29dx": "03 · Herramienta de aprendizaje",
+"k00975": "<a href=\"case-study/rise.html\">Rise, una <span class=\"grad-text\">herramienta de aprendizaje</span></a>",
+"4tkbub": "Una plataforma donde las personas definen metas de aprendizaje, siguen su progreso y planean su carrera.",
+"duzz6w": "Diseñadora UX/UI",
+"zyppo6": "Aplicación web",
+"1s7tujw": "Investigación · Marca"
 });
 /* Screenshots with interface text that have a Spanish copy in img/es/ (same file name) */
 window.I18N_IMG = ["story/p1-trim.webp", "story/p2-text.webp", "story/p3-stickers.webp", "story/p4-sound.webp", "story/p5-subs.webp", "story/s0-form.webp", "story/s1-camera.webp", "story/s2-modes.webp", "story/s3-guided-1.webp", "story/s4-guided-2.webp", "story/s5-guided-done.webp", "story/s5-guided-done-round.webp", "story/s6-hints.webp", "story/s6-noprod.webp", "story/s6-static.webp", "story/s7-preview.webp", "story/s8-form-back.webp", "story/s9-form-all.webp", "story/s9-preview-all.webp", "camera/edit-preview.webp", "camera/free-video.webp", "camera/guided.webp", "camera/photo.webp", "camera/too-dark.webp", "form/form-01-start.webp", "form/form-02-guided.webp", "form/form-03-photo.webp", "form/form-04-all-three.webp", "drops/form.png", "drops/recording.png", "drops/validation.png", "up/card.webp"];

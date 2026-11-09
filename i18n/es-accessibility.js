@@ -156,6 +156,7 @@ Object.assign(window.I18N_ES, {
 "1lbhl9e": "Caso de estudio: lograr que un feed de video social funcione con VoiceOver y TalkBack. Una barra de controles, orden de lectura, etiquetas y estados, casos borde y guías para iOS y Android.",
 "1b446jc": "Feed de video accesible · María Paula León",
 "13cwgnv": "Caso de estudio 02 · Accesibilidad",
+"1qn6a90": "<i class=\"end-arrow\" aria-hidden=\"true\">→</i><span>Próximo caso · Rise, una herramienta de aprendizaje</span>",
 "1aycdjw": "Labels, mensajes de estado y descripciones, redactados junto a Contenido",
 "17jx85x": "Resultados",
 "6mw1lf": "Un modelo accesible y escalable para el feed de video",

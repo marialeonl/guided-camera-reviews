@@ -23,7 +23,10 @@
       es: { s: '01 · Comercio social', t: 'Cámara guiada para <span class="grad-text">opiniones en video</span>' } },
     { href: 'accessibility.html',
       en: { s: '02 · Accessibility', t: 'Accessible <span class="grad-text">video feed</span>' },
-      es: { s: '02 · Accesibilidad', t: 'Feed de video <span class="grad-text">accesible</span>' } }
+      es: { s: '02 · Accesibilidad', t: 'Feed de video <span class="grad-text">accesible</span>' } },
+    { href: 'rise.html',
+      en: { s: '03 · Learning tool', t: 'Rise, a <span class="grad-text">learning tool</span>' },
+      es: { s: '03 · Herramienta de aprendizaje', t: 'Rise, una <span class="grad-text">herramienta de aprendizaje</span>' } }
   ];
 
   /* Same choice as the rest of the site: ?lang= > localStorage "mpl-lang" (the page engines read the same sources) */
@@ -158,5 +161,7 @@
   }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   window.addEventListener('load', update);
+  /* While the Spanish copy is applied the body is hidden, so a dark hero is not seen on first paint: look again when the page class or lang changes */
+  if (window.MutationObserver) new MutationObserver(function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'lang'] });
   update();
 })();
